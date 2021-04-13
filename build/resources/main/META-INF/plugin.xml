@@ -1,0 +1,22 @@
+<idea-plugin>
+  <version>1.0</version>
+  <change-notes>
+      Add change notes here.&lt;br&gt;
+      &lt;em&gt;most HTML tags may be used&lt;/em&gt;</change-notes>
+  <idea-version since-build="203.7717" until-build="203.*"/>
+  <id>it.unisa.vitrum.VITRuM</id>
+  <name>VITRuM</name>
+  <vendor email="gianluca.dilillo@gmail.com" url="http://www.sesa.unisa.it/">SESA Lab.</vendor>
+  <description>
+      Plugin that calculates and visualize certain Test-Related Factors of a Java project.
+    </description>
+  <depends>com.intellij.modules.platform</depends>
+  <extensions defaultExtensionNs="com.intellij"/>
+  <actions>
+    <group id="TemeviGroupedActions" text="VITRuM" description="Sample desc" popup="true">
+      <add-to-group group-id="ToolsMenu" anchor="before" relative-to-action="ToolsXmlGroup"/>
+      <action id="Run" class="init.PluginInit" text="Calculate Test Factors"/>
+      <action id="Configure" class="config.PluginConfig" text="Edit Configuration"/>
+    </group>
+  </actions>
+</idea-plugin>
