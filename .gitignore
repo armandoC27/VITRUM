@@ -1,3 +1,8 @@
 # Class Compiled
 /out/
 TestFactorsPlugin.zip
+.gradle
+.idea
+core/build
+plugin/build
+build
