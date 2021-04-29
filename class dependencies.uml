@@ -3,42 +3,42 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="1915.0866175979547" y="-569.6881901509219">utils.VectorFind</node>
-    <node x="485.73500426615806" y="1187.2988133308204">data.ClassMutationCoverageInfo</node>
-    <node x="-937.264643226023" y="428.9429255597868">config.TestSmellMetricThresholds.TestSmells</node>
-    <node x="-1269.4241850499084" y="1184.7276193194696">config.TestSmellMetricThresholds</node>
-    <node x="2282.811239621675" y="18.673173866563502">data.TestSmellsMetrics</node>
-    <node x="1121.8210673479082" y="-238.1972077751584">gui.PluginInitGUI</node>
-    <node x="-1215.4265609673866" y="2232.7616932796736">gui.MyLine</node>
-    <node x="1609.2567855586067" y="202.12997868584898">storage.ReportManager</node>
-    <node x="1422.5364522011553" y="937.0626410783116">data.ClassCKInfo</node>
-    <node x="716.6666666666661" y="309.9825784668567">data.FlakyTestsInfo</node>
-    <node x="-1490.1360207588593" y="2106.5662165247377">config.Config</node>
-    <node x="1165.306883456869" y="1394.108758786132">processor.MutationCoverageProcessor</node>
-    <node x="-858.0535200281329" y="2030.2393337111298">gui.ConfigUI</node>
-    <node x="2154.3421705920464" y="1098.4785497763826">processor.SmellynessProcessor</node>
-    <node x="-362.9624340515396" y="254.38252162623542">data.TestClassAnalysis</node>
-    <node x="1572.5670580781964" y="-124.6692232551436">data.ClassCoverageInfo</node>
-    <node x="640.6737681285617" y="-785.7082205279056">processor.CoverageProcessor</node>
-    <node x="2823.8873916709854" y="1435.2700852693258">gui.MetricsChart</node>
-    <node x="-1704.898322550421" y="1905.130349971">config.PluginConfig</node>
-    <node x="-185.70739015956337" y="2031.7355151247484">gui.AnalysisResultsUI.ClassListListener</node>
-    <node x="704.7388427723492" y="1555.526076567362">config.TestSmellMetricsThresholdsList</node>
-    <node x="-47.70723241075075" y="-216.66666666666652">data.TestProjectAnalysis</node>
-    <node x="1401.1728708097285" y="1650.918405328019">storage.AnalysisHistoryManager</node>
-    <node x="1952.4563039883797" y="353.7159622386648">data.ClassTestSmellsInfo</node>
-    <node x="-260.59176683623355" y="744.0996921482354">gui.AnalysisResultsUI</node>
-    <node x="519.9101612624329" y="-162.21432185361664">processor.FlakyTestsProcessor</node>
-    <node x="-81.71200031984768" y="1550.8803276269578">storage.ConfigFileManager</node>
-    <node x="-579.2910210982177" y="-406.91780474937764">init.PluginInit</node>
+    <node x="450.3262499879979" y="2722.9770390321373">utils.VectorFind</node>
+    <node x="1778.3816578622018" y="4041.2856897051333">gui.MyLine</node>
+    <node x="1971.0878526054264" y="3003.395238590617">storage.AnalysisHistoryManager</node>
+    <node x="772.2978321415626" y="237.65672256739435">data.TestClassAnalysis</node>
+    <node x="1708.6641116292838" y="0.0">data.ClassTestSmellsInfo</node>
+    <node x="331.1760071569629" y="2397.3508929389204">data.ClassCoverageInfo</node>
+    <node x="192.84054323068585" y="950.8237008811907">data.ClassMutationCoverageInfo</node>
+    <node x="96.7722149138965" y="1257.7202939229173">storage.ReportManager</node>
+    <node x="1414.9985983755926" y="102.20517530240318">data.ClassCKInfo</node>
+    <node x="92.28491175468162" y="2156.997203142012">processor.CoverageProcessor</node>
+    <node x="2825.2153537522495" y="839.0356979533119">gui.AnalysisResultsUI</node>
+    <node x="857.3084853337634" y="2935.7029623990948">data.FlakyTestsInfo</node>
+    <node x="2593.8654041752106" y="2690.727275396972">config.TestSmellMetricThresholds.TestSmells</node>
+    <node x="2622.9116625440456" y="540.6689204028908">config.TestSmellMetricThresholds</node>
+    <node x="2928.5165770034737" y="1014.4435220433711">gui.MetricsChart</node>
+    <node x="2056.428622717164" y="4316.867130375468">config.Config</node>
+    <node x="1965.9108543019477" y="4057.159554945525">config.PluginConfig</node>
+    <node x="1110.6259707497745" y="3065.515744248645">processor.FlakyTestsProcessor</node>
+    <node x="2357.035176138803" y="2864.5729517640684">gui.AnalysisResultsUI.ClassListListener</node>
+    <node x="2870.4505962665944" y="1376.9222209102995">config.TestSmellMetricsThresholdsList</node>
+    <node x="2703.8952952556347" y="2437.172161859873">storage.ConfigFileManager</node>
+    <node x="297.3533577801925" y="634.5639362023608">processor.MutationCoverageProcessor</node>
+    <node x="2100.3015872599635" y="101.17765255869404">data.TestSmellsMetrics</node>
+    <node x="0.0" y="1495.930174074741">data.TestProjectAnalysis</node>
+    <node x="1496.9227291780885" y="3101.314871239456">gui.PluginInitGUI</node>
+    <node x="1760.6244528599655" y="3100.9995210821717">gui.ConfigUI</node>
+    <node x="1106.1911311817357" y="199.16604072717018">init.PluginInit</node>
+    <node x="2827.2349050376533" y="1984.7470772274353">processor.SmellynessProcessor</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="init.PluginInit" target="data.TestClassAnalysis">
+    <edge source="processor.SmellynessProcessor" target="config.TestSmellMetricThresholds">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="processor.SmellynessProcessor" target="config.TestSmellMetricThresholds">
+    <edge source="init.PluginInit" target="data.TestClassAnalysis">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
@@ -47,54 +47,54 @@
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="gui.AnalysisResultsUI" target="data.TestProjectAnalysis">
-      <point x="-4.8464769421033225" y="-1.2294963398323944" />
-      <point x="-4.846476942103287" y="-1.2294963398323944" />
+      <point x="1.4895164612723875" y="4.772980275634836" />
+      <point x="1.4895164612723875" y="4.772980275634801" />
     </edge>
     <edge source="gui.PluginInitGUI" target="gui.AnalysisResultsUI">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="processor.CoverageProcessor" target="data.ClassCoverageInfo">
-      <point x="4.565731177530097" y="2.038160644927075" />
-      <point x="4.565731177530097" y="2.038160644927075" />
+      <point x="4.440339859560254" y="-2.298560839220954" />
+      <point x="4.440339859560254" y="-2.298560839220954" />
     </edge>
     <edge source="gui.PluginInitGUI" target="processor.MutationCoverageProcessor">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
+    <edge source="gui.ConfigUI" target="config.TestSmellMetricThresholds">
+      <point x="-4.705333443514917" y="-1.6911053146802715" />
+      <point x="-4.705333443514974" y="-1.6911053146803852" />
+    </edge>
     <edge source="storage.ConfigFileManager" target="config.TestSmellMetricsThresholdsList">
-      <point x="-2.4050190447613176" y="-4.383592521475521" />
-      <point x="-2.405019044761275" y="-4.383592521475407" />
+      <point x="-4.8784897870782515" y="-1.0955991043141466" />
+      <point x="-4.8784897870782515" y="-1.0955991043141182" />
     </edge>
     <edge source="gui.AnalysisResultsUI" target="storage.ConfigFileManager">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="gui.ConfigUI" target="config.TestSmellMetricThresholds">
-      <point x="-4.58679445236271" y="-1.9903056679252131" />
-      <point x="-4.58679445236271" y="-1.9903056679251563" />
-    </edge>
     <edge source="gui.AnalysisResultsUI" target="config.TestSmellMetricsThresholdsList">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="gui.MetricsChart" target="config.TestSmellMetricThresholds">
+      <point x="-4.172846695471208" y="2.7545145590639777" />
+      <point x="-4.172846695471208" y="2.7545145590639777" />
     </edge>
     <edge source="processor.FlakyTestsProcessor" target="data.TestProjectAnalysis">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="gui.MetricsChart" target="config.TestSmellMetricThresholds">
-      <point x="-4.999993044089251" y="0.008340207336175354" />
-      <point x="-4.999993044089251" y="0.008340207336175354" />
-    </edge>
     <edge source="config.TestSmellMetricsThresholdsList" target="config.TestSmellMetricThresholds.TestSmells">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="utils.VectorFind" target="data.FlakyTestsInfo">
+    <edge source="processor.SmellynessProcessor" target="data.TestProjectAnalysis">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="processor.SmellynessProcessor" target="data.TestProjectAnalysis">
+    <edge source="utils.VectorFind" target="data.FlakyTestsInfo">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
@@ -103,24 +103,24 @@
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="data.TestClassAnalysis" target="data.ClassTestSmellsInfo">
-      <point x="-2.581898967137704" y="-4.281798421632402" />
-      <point x="-2.5818989671375903" y="-4.281798421632402" />
+      <point x="-1.0569977478050987" y="-4.886998645501762" />
+      <point x="-1.0569977478050987" y="-4.886998645501762" />
     </edge>
     <edge source="storage.ConfigFileManager" target="config.TestSmellMetricThresholds">
-      <point x="-3.8442388314795153" y="-3.197159333931495" />
-      <point x="-3.8442388314795153" y="-3.197159333931438" />
+      <point x="-4.982713848917001" y="0.4154066679909647" />
+      <point x="-4.982713848917001" y="0.4154066679909647" />
     </edge>
     <edge source="storage.ReportManager" target="data.ClassCKInfo">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="config.TestSmellMetricsThresholdsList" target="config.TestSmellMetricThresholds">
-      <point x="-4.809242708144438" y="-1.3679124877559161" />
-      <point x="-4.809242708144438" y="-1.3679124877559445" />
+      <point x="-4.505474469379806" y="2.1681097310252255" />
+      <point x="-4.505474469379806" y="2.168109731025197" />
     </edge>
     <edge source="init.PluginInit" target="data.TestProjectAnalysis">
-      <point x="-0.8739698205669697" y="-4.923025162716385" />
-      <point x="-0.8739698205669484" y="-4.923025162716385" />
+      <point x="4.070608949911616" y="2.9034708155757016" />
+      <point x="4.070608949911502" y="2.903470815575673" />
     </edge>
     <edge source="gui.PluginInitGUI" target="utils.VectorFind">
       <point x="0.0" y="0.0" />
@@ -131,40 +131,40 @@
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="gui.PluginInitGUI" target="data.TestClassAnalysis">
-      <point x="4.744541484711135" y="1.5777598359240983" />
-      <point x="4.744541484711135" y="1.5777598359240983" />
+      <point x="-4.849956847273546" y="1.2156967465550679" />
+      <point x="-4.849956847273575" y="1.2156967465550679" />
     </edge>
     <edge source="processor.MutationCoverageProcessor" target="data.ClassMutationCoverageInfo">
-      <point x="-3.9805640111715093" y="3.025741256777792" />
-      <point x="-3.9805640111715093" y="3.0257412567776782" />
+      <point x="4.164797570469318" y="2.7666696942377484" />
+      <point x="4.164797570469318" y="2.7666696942377484" />
     </edge>
     <edge source="gui.AnalysisResultsUI" target="data.TestClassAnalysis">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="gui.AnalysisResultsUI" target="gui.AnalysisResultsUI.ClassListListener">
-      <point x="0.0" y="-7.035091502681553" />
-      <point x="0.0" y="-7.035091502681553" />
-    </edge>
-    <edge source="gui.AnalysisResultsUI" target="config.TestSmellMetricThresholds">
-      <point x="-2.7025515565208025" y="-4.206686948698234" />
-      <point x="-2.7025515565208025" y="-4.206686948698149" />
-    </edge>
-    <edge source="data.TestProjectAnalysis" target="data.TestClassAnalysis">
-      <point x="4.022136596789956" y="2.970255409348283" />
-      <point x="4.022136596790006" y="2.97025540934834" />
+      <point x="10.223496023301095" y="0.0" />
+      <point x="10.223496023301323" y="0.0" />
     </edge>
     <edge source="gui.PluginInitGUI" target="processor.CoverageProcessor">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="data.TestProjectAnalysis" target="data.TestClassAnalysis">
+      <point x="-4.38128918501684" y="-2.4092125429805478" />
+      <point x="-4.38128918501684" y="-2.40921254298064" />
+    </edge>
+    <edge source="gui.AnalysisResultsUI" target="config.TestSmellMetricThresholds">
+      <point x="-3.952885218198844" y="3.0618129354592156" />
+      <point x="-3.952885218198844" y="3.0618129354592156" />
     </edge>
     <edge source="gui.ConfigUI" target="storage.ConfigFileManager">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="config.TestSmellMetricThresholds.TestSmells" target="config.TestSmellMetricThresholds">
-      <point x="-11.304168480942053" y="0.0" />
-      <point x="-11.304168480942053" y="0.0" />
+      <point x="-10.0039726799954" y="0.0" />
+      <point x="-10.003972679995513" y="1.1368683772161603E-13" />
     </edge>
     <edge source="processor.SmellynessProcessor" target="config.TestSmellMetricsThresholdsList">
       <point x="0.0" y="0.0" />
@@ -175,20 +175,20 @@
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="gui.AnalysisResultsUI" target="gui.MetricsChart">
-      <point x="-2.284866023274162" y="-4.4474023042319" />
-      <point x="-2.284866023274162" y="-4.4474023042319" />
+      <point x="4.41191504025619" y="-2.3526592778301847" />
+      <point x="4.41191504025619" y="-2.3526592778301847" />
     </edge>
     <edge source="gui.PluginInitGUI" target="data.FlakyTestsInfo">
-      <point x="4.530753632663618" y="2.1147745790285626" />
-      <point x="4.530753632663618" y="2.1147745790285697" />
+      <point x="-1.2662762360042947" y="4.836997466831235" />
+      <point x="-1.2662762360042734" y="4.836997466831235" />
+    </edge>
+    <edge source="data.TestClassAnalysis" target="data.FlakyTestsInfo">
+      <point x="4.9985430383475205" y="-0.1206958731170289" />
+      <point x="4.9985430383475205" y="-0.1206958731170289" />
     </edge>
     <edge source="processor.CoverageProcessor" target="data.TestProjectAnalysis">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="data.TestClassAnalysis" target="data.FlakyTestsInfo">
-      <point x="-4.941574078245139" y="0.7621322911516017" />
-      <point x="-4.941574078245139" y="0.7621322911515733" />
     </edge>
     <edge source="storage.ReportManager" target="data.ClassMutationCoverageInfo">
       <point x="0.0" y="0.0" />
@@ -199,38 +199,34 @@
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="data.TestClassAnalysis" target="data.ClassCKInfo">
-      <point x="-4.597507946690257" y="-1.9654314234082335" />
-      <point x="-4.597507946690143" y="-1.9654314234082904" />
+      <point x="-1.5852681572177971" y="-4.742038050217616" />
+      <point x="-1.5852681572178255" y="-4.742038050217616" />
     </edge>
     <edge source="config.TestSmellMetricThresholds" target="config.TestSmellMetricThresholds.TestSmells">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="processor.SmellynessProcessor" target="data.TestSmellsMetrics">
-      <point x="-3.8491483218140274" y="-3.1912469657918336" />
-      <point x="-3.8491483218140274" y="-3.1912469657919473" />
+      <point x="-4.551839846119719" y="2.0689983120526563" />
+      <point x="-4.551839846119719" y="2.0689983120525994" />
     </edge>
     <edge source="init.PluginInit" target="gui.PluginInitGUI">
-      <point x="2.3564099086449914" y="4.409912963136549" />
-      <point x="2.3564099086449914" y="4.409912963136549" />
+      <point x="4.95859902999581" y="-0.6421025305389776" />
+      <point x="4.958599029995824" y="-0.6421025305389776" />
     </edge>
     <edge source="gui.PluginInitGUI" target="gui.ConfigUI">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="processor.SmellynessProcessor" target="data.ClassTestSmellsInfo">
-      <point x="-4.374659402448515" y="-2.4212300825342936" />
-      <point x="-4.374659402448515" y="-2.4212300825342936" />
+      <point x="-4.088636586549001" y="2.878028989279585" />
+      <point x="-4.088636586548887" y="2.878028989279528" />
     </edge>
     <edge source="gui.PluginInitGUI" target="data.ClassMutationCoverageInfo">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="gui.AnalysisResultsUI.ClassListListener" target="storage.AnalysisHistoryManager">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="storage.ReportManager" target="data.ClassCoverageInfo">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
@@ -242,27 +238,31 @@
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
+    <edge source="storage.ReportManager" target="data.ClassCoverageInfo">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
     <edge source="gui.PluginInitGUI" target="data.TestProjectAnalysis">
-      <point x="-1.6909083473628925" y="-4.705404229268652" />
-      <point x="-1.6909083473628783" y="-4.705404229268652" />
+      <point x="-3.5268374431636147" y="3.5442090301644384" />
+      <point x="-3.5268374431636857" y="3.5442090301644384" />
     </edge>
     <edge source="utils.VectorFind" target="data.ClassCoverageInfo">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="gui.AnalysisResultsUI.ClassListListener" target="gui.AnalysisResultsUI">
-      <point x="0.0" y="7.035091502681098" />
-      <point x="0.0" y="7.035091502681325" />
+      <point x="-10.223496023301209" y="0.0" />
+      <point x="-10.223496023301095" y="0.0" />
     </edge>
     <edge source="gui.AnalysisResultsUI.ClassListListener" target="config.TestSmellMetricThresholds">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="config.PluginConfig" target="gui.ConfigUI">
+    <edge source="processor.SmellynessProcessor" target="storage.ConfigFileManager">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="processor.SmellynessProcessor" target="storage.ConfigFileManager">
+    <edge source="config.PluginConfig" target="gui.ConfigUI">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
@@ -271,16 +271,16 @@
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="gui.PluginInitGUI" target="data.ClassCoverageInfo">
-      <point x="4.313689981345533" y="2.5282560678933805" />
-      <point x="4.313689981345533" y="2.5282560678933237" />
+      <point x="-2.4316370112399" y="4.36888331791647" />
+      <point x="-2.4316370112399" y="4.368883317916357" />
     </edge>
     <edge source="gui.AnalysisResultsUI.ClassListListener" target="config.TestSmellMetricThresholds.TestSmells">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="data.TestClassAnalysis" target="data.ClassCoverageInfo">
-      <point x="-4.991125164983487" y="0.29777439021694363" />
-      <point x="-4.991125164983487" y="0.29777439021694363" />
+      <point x="4.870944860968393" y="1.1286700852801914" />
+      <point x="4.870944860968393" y="1.1286700852800777" />
     </edge>
     <edge source="gui.ConfigUI" target="config.TestSmellMetricsThresholdsList">
       <point x="0.0" y="0.0" />
@@ -294,35 +294,31 @@
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="gui.PluginInitGUI" target="storage.ReportManager">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
     <edge source="storage.ReportManager" target="data.TestProjectAnalysis">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
+    <edge source="gui.PluginInitGUI" target="storage.ReportManager">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
     <edge source="data.TestClassAnalysis" target="data.ClassMutationCoverageInfo">
-      <point x="4.627079511515831" y="-1.8947652081751585" />
-      <point x="4.627079511515831" y="-1.8947652081751585" />
+      <point x="3.675337185735316" y="3.3899699956123186" />
+      <point x="3.675337185735316" y="3.389969995612205" />
     </edge>
     <edge source="data.ClassTestSmellsInfo" target="data.TestSmellsMetrics">
-      <point x="4.0406476062645424" y="-2.9450240953153752" />
-      <point x="4.040647606264429" y="-2.945024095315489" />
+      <point x="1.4129536924290846" y="-4.796202858830156" />
+      <point x="1.4129536924290278" y="-4.796202858830156" />
     </edge>
     <edge source="processor.FlakyTestsProcessor" target="data.FlakyTestsInfo">
-      <point x="3.0521199541723263" y="3.9603741976413858" />
-      <point x="3.0521199541722126" y="3.960374197641322" />
-    </edge>
-    <edge source="storage.ReportManager" target="data.ClassTestSmellsInfo">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="-1.7878136133822409" y="4.669445629173197" />
+      <point x="-1.7878136133822409" y="4.669445629173197" />
     </edge>
     <edge source="gui.AnalysisResultsUI.ClassListListener" target="data.TestClassAnalysis">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="gui.MetricsChart" target="storage.AnalysisHistoryManager">
+    <edge source="storage.ReportManager" target="data.ClassTestSmellsInfo">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
@@ -330,21 +326,25 @@
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
+    <edge source="gui.MetricsChart" target="storage.AnalysisHistoryManager">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
     <edge source="gui.PluginInitGUI" target="data.ClassCKInfo">
-      <point x="-2.7279119957859166" y="-4.190285926192473" />
-      <point x="-2.7279119957859166" y="-4.190285926192473" />
+      <point x="-4.995498646043927" y="0.21211618838106006" />
+      <point x="-4.995498646043927" y="0.21211618838106006" />
     </edge>
     <edge source="storage.ReportManager" target="data.TestSmellsMetrics">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
   </edges>
-  <settings layout="Circular" zoom="0.2" x="1191.4999999999982" y="618.0" />
+  <settings layout="Circular" zoom="0.5" x="2202.999999999998" y="1633.1666666666667" />
   <SelectedNodes />
   <Categories>
-    <Category>Inner Classes</Category>
-    <Category>Properties</Category>
     <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>public</VISIBILITY>

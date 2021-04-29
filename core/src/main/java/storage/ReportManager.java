@@ -7,7 +7,7 @@ import it.unisa.testSmellDiffusion.utility.FileUtility;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class ReportManager {
     private static final Logger LOGGER = Logger.getLogger("global");
