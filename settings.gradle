@@ -1,4 +1,5 @@
 rootProject.name = 'VITRuM'
 include 'plugin'
 include 'core'
+include 'CLI'
 

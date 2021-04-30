@@ -136,6 +136,7 @@ public class PluginInitGUI extends JFrame {
                         initFrame.setVisible(false);
                         JFrame frame = swingProgressBar();
                         String pluginPath = PathManager.getPluginsPath() + "\\TestFactorsPlugin\\lib";
+                        System.err.println(pluginPath);
                         project.setPluginPath(pluginPath);
                         Vector<PackageBean> packages = project.getPackages();
                         Vector<PackageBean> testPackages = project.getTestPackages();
