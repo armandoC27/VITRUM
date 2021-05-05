@@ -11,12 +11,28 @@ import org.apache.log4j.Logger;
 
 public class ReportManager {
     private static final Logger LOGGER = Logger.getLogger("global");
+    private static boolean flag = false;
+    private static String path;
 
-    public static void saveReport(TestProjectAnalysis proj){
+    public static void saveReport(TestProjectAnalysis proj, String pathPar){
+        path = pathPar;
+        flag = true;
+        saveReport(proj);
+    }
+
+        public static void saveReport(TestProjectAnalysis proj){
        // LOGGER.info("Starting report");
         String fileName = new SimpleDateFormat("yyyyMMddHHmm'.csv'").format(new Date());
-            String outputDir = proj.getPath() + "\\reports";
-            String output=proj.getName() + ";" + proj.getLoc() +";" + proj.getNom() + ";" + proj.getRfc() + ";" + proj.getWmc() + ";" + proj.getTestClassesNumber() + "\n";
+        String outputDir = "";
+        if(flag){
+            outputDir = path;
+            flag = false;
+        } else {
+            outputDir = proj.getPath() + "\\reports";
+        }
+            String output = "";
+            // da chiedere se va bene toglierla in quanto contiene valori globali che sono derivabili
+            // proj.getName() + ";" + proj.getLoc() +";" + proj.getNom() + ";" + proj.getRfc() + ";" + proj.getWmc() + ";" + proj.getTestClassesNumber() + "\n";
             output += "testsuite;production;loc;nom;wmc;rfc;lc;bc;mc;";
            TestSmellsMetrics idList = proj.getClassAnalysis().get(0).getSmells().getMetrics();
         for(TestSmellMetric metric : idList.getArMetrics()){
