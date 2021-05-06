@@ -33,7 +33,7 @@ public class ReportManager {
             String output = "";
             // da chiedere se va bene toglierla in quanto contiene valori globali che sono derivabili
             // proj.getName() + ";" + proj.getLoc() +";" + proj.getNom() + ";" + proj.getRfc() + ";" + proj.getWmc() + ";" + proj.getTestClassesNumber() + "\n";
-            output += "testsuite;production;loc;nom;wmc;rfc;lc;bc;mc;";
+            output += "testsuite;production;loc;nom;wmc;rfc;lc;bc;mc;ft;";
            TestSmellsMetrics idList = proj.getClassAnalysis().get(0).getSmells().getMetrics();
         for(TestSmellMetric metric : idList.getArMetrics()){
             output+=metric.getId() + ";";
@@ -70,9 +70,14 @@ public class ReportManager {
                 ClassTestSmellsInfo smellsInfo = info.getSmells();
                 TestSmellsMetrics list = smellsInfo.getMetrics();
                 ClassMutationCoverageInfo mutationInfo = info.getMutationCoverage();
+                FlakyTestsInfo flakyTestsInfo = info.getFlakyTests();
+                float numFlaky = -1;
+                if(flakyTestsInfo.getFlakyMethods() != null && flakyTestsInfo.getFlakyMethods().size() > 0)
+                    numFlaky = flakyTestsInfo.getFlakyMethods().size();
 
               output+=info.getBelongingPackage() + "." + info.getName() + ";" + info.getProductionClass() + ";" + ckInfo.getLoc() + ";" + ckInfo.getNom() + ";" + ckInfo.getWmc() + ";" + ckInfo.getRfc() + ";" +
-                        covInfo.getLineCoverage() + ";" + covInfo.getBranchCoverage() + ";" + mutationInfo.getMutationCoverage() + ";";
+                        covInfo.getLineCoverage() + ";" + covInfo.getBranchCoverage() + ";" + mutationInfo.getMutationCoverage() + ";"
+              + numFlaky + ";";
 
                 for(TestSmellMetric metric : list.getArMetrics()){
                     output+=metric.getValue() + ";";

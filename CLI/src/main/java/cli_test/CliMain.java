@@ -8,14 +8,14 @@ public class CliMain {
         int initRes = Init.initConfig();
 
         Options options = new Options();
-        options.addOption("flaky", false, "calculate flaky test");
-        options.addOption("mutation", false, "mutation test");
+        options.addOption("flaky", true, "calculate flaky test");
+        options.addOption("mutation", true, "mutation test");
         options.addOption("lc", false, "line coverage test");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = null;
         try {
-            cmd = parser.parse( options, args);
+            cmd = parser.parse(options, args);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -23,12 +23,22 @@ public class CliMain {
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp("help", options);
 
-        boolean isFlaky, isMutation, isLC;
+        boolean isFlaky = false, isMutation = false, isLC = false;
+        int numFlaky = 10, numMutation = 10;
+
         if(cmd.hasOption("flaky")) {
             isFlaky = true;
+            String argFlaky = cmd.getOptionValue("flaky");
+            if(argFlaky != null) {
+                numFlaky = Integer.parseInt(argFlaky);
+            }
         }
         if(cmd.hasOption("mutation")) {
             isMutation = true;
+            String argMutation = cmd.getOptionValue("mutation");
+            if(argMutation != null) {
+                numMutation = Integer.parseInt(argMutation);
+            }
         }
         if(cmd.hasOption("lc")) {
             isLC = true;
@@ -52,7 +62,11 @@ public class CliMain {
                 System.err.println("TESTING SOURCE FILES NOT FOUND");
                 break;
             default:
-                processCLI.process(pathSalvataggio);
+                System.out.println("Vitrum test: " +
+                        "-flaky:" + isFlaky + " numEsec:" + numFlaky +
+                        " -mutation:" + isMutation + " numEsec:" + numMutation +
+                        " -lc: " + isLC);
+                processCLI.process(pathSalvataggio, isFlaky, isMutation, isLC, numFlaky, numMutation);
                 break;
         }
     }

@@ -24,7 +24,11 @@ public class ProcessCLI {
         this.project = project;
     }
 
-    public void process(String pathSalvataggio) {
+    public void process(String pathSalvataggio, boolean isFlaky, boolean isMutation, boolean isLC, int numFlaky, int numMutation) {
+
+        //project.setPluginPath("C:\\Users\\Armando\\VITRUM\\plugin\\build\\idea-sandbox\\plugins\\plugin\\lib");
+        //System.out.println(project.getConfigPath());
+
 
         Vector<PackageBean> packages = project.getPackages();
         Vector<PackageBean> testPackages = project.getTestPackages();
@@ -34,12 +38,12 @@ public class ProcessCLI {
         Vector<FlakyTestsInfo> flakyInfos = null;
         Vector<TestClassAnalysis> classAnalyses = new Vector<>();
 
-        if (/*lineBranchCoverage.isSelected()*/false) {
+        if (isLC) {
             String configDir = System.getProperty("user.home") + "\\.temevi";
             coverageInfos = CoverageProcessor.calculate(project);
         }
-        if (/*flakyTests.isSelected()*/false) {
-            flakyInfos = FlakyTestsProcessor.calculate(project, /*(int) ftExecNumber.getValue()*/10);
+        if (isFlaky) {
+            flakyInfos = FlakyTestsProcessor.calculate(project, numFlaky);
         }
         for (ClassBean prodClass : classes) {
             ClassBean testSuite = utils.getTestClassBy(prodClass.getName(), testPackages);
@@ -63,12 +67,12 @@ public class ProcessCLI {
                 } else {
                     analysis.setCoverage(new ClassCoverageInfo());
                 }
-                if (/*mutationCoverage.isSelected()*/false) {
-                    analysis.setMutationCoverage(MutationCoverageProcessor.calculate(testSuite, prodClass, project, /*(Long) mcTimeout.getValue())*/10L));
-                } else if (/*!mutationCoverage.isSelected()*/true)
+                if (isMutation) {
+                    analysis.setMutationCoverage(MutationCoverageProcessor.calculate(testSuite, prodClass, project, numMutation));
+                } else if (!isMutation)
                     analysis.setMutationCoverage(new ClassMutationCoverageInfo());
 
-                if (/*flakyTests.isSelected()*/false)
+                if (isFlaky)
                     analysis.setFlakyTests(VectorFind.findFlakyInfo(flakyInfos, testSuite.getName()));
                 else
                     analysis.setFlakyTests(new FlakyTestsInfo());
