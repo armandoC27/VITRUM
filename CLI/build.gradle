@@ -13,4 +13,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile project(":core")
     implementation files('lib/TestSmellDiffusion.jar')
-    implementation group: 'commons-io', name: 'commons-io', version: '2.4'}
+    implementation group: 'commons-io', name: 'commons-io', version: '2.4'
+    // https://mvnrepository.com/artifact/commons-cli/commons-cli
+    implementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
+}
