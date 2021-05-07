@@ -2,7 +2,7 @@
   <configuration default="false" name="CliMain" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="cli_test.CliMain" />
     <module name="VITRuM.CLI.main" />
-    <option name="PROGRAM_PARAMETERS" value="C:\\Users\\Armando\\Desktop\\jpacman-framework C:\\Users\\Armando\\Desktop -flaky 11 -mutation 11 -lc" />
+    <option name="PROGRAM_PARAMETERS" value="C:\\Users\\vince\\documenti\\github\\jpacman-framework C:\\Users\\vince\\Desktop -flaky 11 -mutation 11 -lc" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="cli_test.*" />

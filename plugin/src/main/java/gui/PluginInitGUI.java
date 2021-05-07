@@ -2,10 +2,14 @@ package gui;
 
 import com.intellij.openapi.application.PathManager;
 import data.*;
+
+//TODO: vanno SOLO in core queste librerie??
 import it.unisa.testSmellDiffusion.beans.ClassBean;
 import it.unisa.testSmellDiffusion.beans.PackageBean;
 import it.unisa.testSmellDiffusion.metrics.CKMetrics;
 import it.unisa.testSmellDiffusion.testMutation.TestMutationUtilities;
+
+
 import org.apache.commons.io.FileUtils;
 import processor.*;
 import storage.ReportManager;
@@ -135,9 +139,11 @@ public class PluginInitGUI extends JFrame {
                     public void run() {
                         initFrame.setVisible(false);
                         JFrame frame = swingProgressBar();
-                        String pluginPath = PathManager.getPluginsPath() + "\\TestFactorsPlugin\\lib";
-                        System.err.println(pluginPath);
-                        project.setPluginPath(pluginPath);
+
+                        //TODO: verificare che sia esatto questo
+//                        String pluginPath = "C:\\Users\\vince\\IdeaProjects\\VITRUM\\core\\lib\\libTest";
+//                        System.err.println(pluginPath);
+//                        project.setPluginPath(pluginPath);
                         Vector<PackageBean> packages = project.getPackages();
                         Vector<PackageBean> testPackages = project.getTestPackages();
                         TestMutationUtilities utils = new TestMutationUtilities();

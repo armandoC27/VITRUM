@@ -84,6 +84,15 @@ public class Init {
         String testPath = srcPath + "/test";
         File main = new File(mainPath);
         File test = new File(testPath);
+
+
+        final String dir = System.getProperty("user.dir")+"";
+        System.err.println("current dir = " + dir);
+
+
+        //TODO: mettere qui il percorso relativo
+        projectAnalysis.setPluginPath("C:\\Users\\vince\\IdeaProjects\\VITRUM\\core\\lib\\libTest");
+
         if (!main.exists() || !test.exists()) {
             return 1;
 

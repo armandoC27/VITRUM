@@ -72,7 +72,7 @@ public class ReportManager {
                 ClassMutationCoverageInfo mutationInfo = info.getMutationCoverage();
                 FlakyTestsInfo flakyTestsInfo = info.getFlakyTests();
                 float numFlaky = -1;
-                if(flakyTestsInfo.getFlakyMethods() != null && flakyTestsInfo.getFlakyMethods().size() > 0)
+                if(flakyTestsInfo.getFlakyMethods() != null)
                     numFlaky = flakyTestsInfo.getFlakyMethods().size();
 
               output+=info.getBelongingPackage() + "." + info.getName() + ";" + info.getProductionClass() + ";" + ckInfo.getLoc() + ";" + ckInfo.getNom() + ";" + ckInfo.getWmc() + ";" + ckInfo.getRfc() + ";" +

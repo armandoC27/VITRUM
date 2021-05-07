@@ -16,4 +16,14 @@ dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.4'
     // https://mvnrepository.com/artifact/commons-cli/commons-cli
     implementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
+
+
 }
+
+jar {
+    from { (configurations.runtime).collect { it.isDirectory() ? it : zipTree(it) } } {
+        exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+    }
+    manifest {
+        attributes("Main-Class": "cli_test.CliMain")
+    }}
