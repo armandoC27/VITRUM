@@ -10,11 +10,7 @@ import com.intellij.openapi.roots.ProjectRootManager;
 
 
 import data.TestProjectAnalysis;
-import gui.ConfigUI;
 import gui.PluginInitGUI;
-import it.unisa.testSmellDiffusion.beans.PackageBean;
-import it.unisa.testSmellDiffusion.utility.FileUtility;
-import it.unisa.testSmellDiffusion.utility.FolderToJavaProjectConverter;
 
 import javax.swing.*;
 
@@ -25,7 +21,7 @@ public class PluginInit extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        int initRes = Init.initConfig();
+        int initRes = InitCore.initConfig();
 
 
 
@@ -35,7 +31,7 @@ public class PluginInit extends AnAction {
         String projectSDK = ProjectRootManager.getInstance(proj).getProjectSdk().getHomePath();
         TestProjectAnalysis projectAnalysis = new TestProjectAnalysis();
 
-        int res= Init.process(projectFolder,proj.getName(),projectSDK,projectAnalysis);
+        int res= InitCore.process(projectFolder,proj.getName(),projectSDK,projectAnalysis);
         switch (res){
             case 1:
 

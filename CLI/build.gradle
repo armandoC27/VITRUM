@@ -15,9 +15,7 @@ dependencies {
     implementation files('lib/TestSmellDiffusion.jar')
     implementation group: 'commons-io', name: 'commons-io', version: '2.4'
     // https://mvnrepository.com/artifact/commons-cli/commons-cli
-    implementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
-
-
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
 }
 
 jar {
@@ -26,4 +24,5 @@ jar {
     }
     manifest {
         attributes("Main-Class": "cli_test.CliMain")
-    }}
+    }
+}

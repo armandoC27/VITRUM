@@ -5,7 +5,7 @@ import it.unisa.testSmellDiffusion.utility.FileUtility;
 import javax.swing.*;
 import java.io.File;
 
-public class Config {
+public class ConfigCore {
 
     public static String configOption() {
        // TestSmellMetricsThresholdsList list = new ConfigFileHandler().readThresholds(new File("C:\\Users\\Psycho\\IdeaProjects\\ProgettoExample\\default_config.ini"));

@@ -27,7 +27,7 @@ dependencies {
     // https://mvnrepository.com/artifact/log4j/log4j
     implementation group: 'log4j', name: 'log4j', version: '1.2.17'
 
-    implementation files('lib/libTest/jsoup-1.8.1.jar')
+    implementation files('lib/jsoup-1.8.1.jar')
 
 }
 

@@ -140,10 +140,10 @@ public class PluginInitGUI extends JFrame {
                         initFrame.setVisible(false);
                         JFrame frame = swingProgressBar();
 
-                        //TODO: verificare che sia esatto questo
-//                        String pluginPath = "C:\\Users\\vince\\IdeaProjects\\VITRUM\\core\\lib\\libTest";
-//                        System.err.println(pluginPath);
-//                        project.setPluginPath(pluginPath);
+                        String pluginPath = PathManager.getPluginsPath() + "\\plugin\\lib";
+                        //System.err.println(pluginPath);
+                        project.setPluginPath(pluginPath);
+
                         Vector<PackageBean> packages = project.getPackages();
                         Vector<PackageBean> testPackages = project.getTestPackages();
                         TestMutationUtilities utils = new TestMutationUtilities();

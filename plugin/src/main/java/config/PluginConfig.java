@@ -11,7 +11,7 @@ public class PluginConfig extends AnAction {
     private static final Logger LOGGER = Logger.getInstance("global");
     @Override
     public void actionPerformed(AnActionEvent e) {
-        String pluginFolder = Config.configOption();
+        String pluginFolder = ConfigCore.configOption();
 
         JFrame frame = new ConfigUI(pluginFolder);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

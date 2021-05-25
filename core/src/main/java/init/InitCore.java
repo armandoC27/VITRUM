@@ -10,7 +10,7 @@ import it.unisa.testSmellDiffusion.beans.PackageBean;
 import it.unisa.testSmellDiffusion.utility.FileUtility;
 import it.unisa.testSmellDiffusion.utility.FolderToJavaProjectConverter;
 
-public class Init {
+public class InitCore {
 
     public static int initConfig() {
 
@@ -90,8 +90,6 @@ public class Init {
         System.err.println("current dir = " + dir);
 
 
-        //TODO: mettere qui il percorso relativo
-        projectAnalysis.setPluginPath("C:\\Users\\vince\\IdeaProjects\\VITRUM\\core\\lib\\libTest");
 
         if (!main.exists() || !test.exists()) {
             return 1;
