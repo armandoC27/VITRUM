@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 
 public class InitCoreTest {
     private static String projectFolder;
@@ -17,17 +19,22 @@ public class InitCoreTest {
     private static data.TestProjectAnalysis projectAnalysis;
     private static String pathSalvataggio;
     private static String nomeRepo;
+    private static String pathComune;
 
 
     @BeforeAll
     public static void setUp() {
-        projectFolder = "C:\\Users\\saver\\IdeaProjects\\jpacman-framework";
-        //plugin
+        pathComune = System.getProperty("user.dir");
+        pathComune = pathComune.substring(0, pathComune.length() - 4);
+        pathComune += "progettiTest";
+
+        projectFolder = pathComune + "\\jpacman-framework";
+
         projectSDK = System.getProperty("java.home"); //"C:\\Program Files (x86)\\Java\\jdk-11";
 
         projectAnalysis = new data.TestProjectAnalysis();
-        pathSalvataggio = "C:\\Users\\saver\\Desktop";
 
+        pathSalvataggio = pathComune + "\\fileResults";
 
         String[] arrayRepo;
         if (projectFolder.contains("/"))
@@ -38,13 +45,14 @@ public class InitCoreTest {
 
         nomeRepo = arrayRepo[arrayRepo.length - 1];
 
-        projectAnalysis.setPluginPath("../../../../../plugin/lib/libTest");
+        projectAnalysis.setPluginPath(pathComune + "plugin/lib/libTest");
 
     }
 
     @Test
     public void processTestCorrectStructure() {
         int test;
+        System.out.println(projectFolder);
         test = InitCore.process(projectFolder, nomeRepo, projectSDK, projectAnalysis);
         assertEquals(0, test);
     }
@@ -52,14 +60,15 @@ public class InitCoreTest {
     @Test
     public void processTestIncorrectPath() {
         int test;
-        test = InitCore.process("C:\\Users\\pathErrato\\IdeaProjects\\jpacman-framework", nomeRepo, projectSDK, projectAnalysis);
+        test = InitCore.process(pathComune + "\\pathErrato" + "\\jpacman-framework", nomeRepo, projectSDK, projectAnalysis);
         assertEquals(1, test,"With one is not OK.");
     }
 
     @Test
     public void processTestWithoutTestClasses() {
         int test;
-        test = InitCore.process("C:\\Users\\saver\\IdeaProjects\\VITRUM\\plugin", nomeRepo, projectSDK, projectAnalysis);
+        System.out.println(pathComune + "\\HelloWorld");
+        test = InitCore.process(pathComune + "\\HelloWorld", nomeRepo, projectSDK, projectAnalysis);
         assertEquals(2, test,"With 2 is not OK.");
     }
 }
