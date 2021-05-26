@@ -2,7 +2,6 @@
 *~
 
 # All generated files will be in target thanks to the use of maven
-target/
 
 # for eclipse users
 .classpath
@@ -10,6 +9,4 @@ target/
 .settings/
 
 # for intellij users
-.idea/
 *.iml
-/bin
