@@ -4,11 +4,11 @@ import init.InitCore;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.File;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class InitCoreTest {
     private static String projectFolder;
     private static String projectSDK;
@@ -64,15 +64,53 @@ public class InitCoreTest {
         assertEquals(2, test,"With 2 is not OK.");
     }
 
+
     @Test
-    public void initConfig() {
+    @Order(1)
+    public void initConfigDeleteFiles() {
         String userDir = System.getProperty("user.home");
         String pluginFolder = userDir + "\\.temevi";
+        File file = new File(pluginFolder);
+
+        //ora controllo anche che i file richiesti esistano
+        File config = new File(pluginFolder + "\\default_config.ini");
+        File jacocoProp = new File(pluginFolder + "\\jacoco-agent.properties");
+
+        config.delete();
+        jacocoProp.delete();
 
         InitCore.initConfig();
 
+        assertTrue(file.exists()); //controllo che la cartella esista
+        //controllo che il metodo abbia creato i file
+        assertTrue(config.exists());
+        assertTrue(jacocoProp.exists());
+    }
+
+    @Test
+    @Order(2)
+    public void initConfigExistFiles() {
+        String userDir = System.getProperty("user.home");
+        String pluginFolder = userDir + "\\.temevi";
         File file = new File(pluginFolder);
-        assertTrue(file.exists());
+
+        //ora controllo anche che i file richiesti esistano
+        File config = new File(pluginFolder + "\\default_config.ini");
+        File jacocoProp = new File(pluginFolder + "\\jacoco-agent.properties");
+
+        long lastUpdateConfig=config.lastModified();
+        long lastUpdateJacocoProp=jacocoProp.lastModified();
+
+        //chiamo il metodo e questo, se funziona bene, non deve fare alcuna scrittura su file
+        InitCore.initConfig();
+
+        File configNew = new File(pluginFolder + "\\default_config.ini");
+        File jacocoPropNew = new File(pluginFolder + "\\jacoco-agent.properties");
+
+        //mi controlla che non siano stati ricreati
+
+        assertEquals(lastUpdateConfig,configNew.lastModified());
+        assertEquals(lastUpdateJacocoProp,jacocoPropNew.lastModified());
 
     }
 }
