@@ -1,9 +1,6 @@
 package initTest;
 
-import data.TestClassAnalysis;
 import init.InitCore;
-import it.unisa.testSmellDiffusion.beans.PackageBean;
-import it.unisa.testSmellDiffusion.utility.FolderToJavaProjectConverter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
-
 public class InitCoreTest {
     private static String projectFolder;
     private static String projectSDK;
@@ -20,7 +16,6 @@ public class InitCoreTest {
     private static String pathSalvataggio;
     private static String nomeRepo;
     private static String pathComune;
-
 
     @BeforeAll
     public static void setUp() {
@@ -42,7 +37,6 @@ public class InitCoreTest {
         else
             arrayRepo = projectFolder.split("\\\\");
 
-
         nomeRepo = arrayRepo[arrayRepo.length - 1];
 
         projectAnalysis.setPluginPath(pathComune + "plugin/lib/libTest");
@@ -52,7 +46,6 @@ public class InitCoreTest {
     @Test
     public void processTestCorrectStructure() {
         int test;
-        System.out.println(projectFolder);
         test = InitCore.process(projectFolder, nomeRepo, projectSDK, projectAnalysis);
         assertEquals(0, test);
     }
@@ -67,8 +60,19 @@ public class InitCoreTest {
     @Test
     public void processTestWithoutTestClasses() {
         int test;
-        System.out.println(pathComune + "\\HelloWorld");
         test = InitCore.process(pathComune + "\\HelloWorld", nomeRepo, projectSDK, projectAnalysis);
         assertEquals(2, test,"With 2 is not OK.");
+    }
+
+    @Test
+    public void initConfig() {
+        String userDir = System.getProperty("user.home");
+        String pluginFolder = userDir + "\\.temevi";
+
+        InitCore.initConfig();
+
+        File file = new File(pluginFolder);
+        assertTrue(file.exists());
+
     }
 }
