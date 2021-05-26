@@ -1,4 +1,4 @@
-package cli_test;
+package cli;
 
 import init.InitCore;
 import org.apache.commons.cli.*;
@@ -58,7 +58,13 @@ public class CliMain {
         ProcessCLI processCLI = new ProcessCLI(projectAnalysis);
         String pathSalvataggio = args[1];
 
-        String[] arrayRepo = args[0].split("/");
+        String[] arrayRepo;
+        if(args[0].contains("/"))
+             arrayRepo = args[0].split("/");
+        else
+            arrayRepo = args[0].split("\\\\");
+
+
         String nomeRepo = arrayRepo[arrayRepo.length-1];
 
         projectAnalysis.setPluginPath(args[2]);
