@@ -108,7 +108,6 @@ public class InitCoreTest {
         File jacocoPropNew = new File(pluginFolder + "\\jacoco-agent.properties");
 
         //mi controlla che non siano stati ricreati
-
         assertEquals(lastUpdateConfig,configNew.lastModified());
         assertEquals(lastUpdateJacocoProp,jacocoPropNew.lastModified());
 
