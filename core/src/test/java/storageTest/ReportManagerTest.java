@@ -92,8 +92,6 @@ public class ReportManagerTest {
 
     }
 
-    //TODO: fare un controllo sulla data perché potrebbero essere diverse
-    //TODO: manca un pezzo di codice da mettere nel setup il quale è uguale al setUp di mutationCoverage
     @Test
     public void saveReportTest() {
         String fileName = new SimpleDateFormat("yyyyMMddHHmm'.csv'").format(new Date());
