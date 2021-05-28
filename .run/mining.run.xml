@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="mining" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="miningVitrum.MyStudyTest" />
+    <module name="VITRuM.mining.main" />
+    <option name="PROGRAM_PARAMETERS" value="mining\file.txt C:\Users\Armando\Desktop\risProva\" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="cli.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
