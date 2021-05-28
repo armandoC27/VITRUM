@@ -6,8 +6,7 @@ import it.unisa.testSmellDiffusion.beans.ClassBean;
 import it.unisa.testSmellDiffusion.beans.PackageBean;
 import it.unisa.testSmellDiffusion.metrics.CKMetrics;
 import it.unisa.testSmellDiffusion.testMutation.TestMutationUtilities;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import processor.CoverageProcessor;
 import processor.FlakyTestsProcessor;
 import processor.MutationCoverageProcessor;
@@ -16,13 +15,18 @@ import storage.ReportManager;
 import utils.VectorFind;
 
 import java.io.File;
+import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@RunWith(JUnitPlatform.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReportManagerTest {
     private static String projectFolder;
     private static String projectSDK;
@@ -32,7 +36,9 @@ public class ReportManagerTest {
     private static String pathComune;
 
     @BeforeAll
-    public static void setUp() {
+    public static void setUp() throws  Exception{
+        System.out.println("before");
+
         pathComune = System.getProperty("user.dir");
         pathComune = pathComune.substring(0, pathComune.length() - 4);
 
@@ -65,7 +71,10 @@ public class ReportManagerTest {
         TestMutationUtilities utils = new TestMutationUtilities();
         Vector<TestClassAnalysis> classAnalyses = new Vector<>();
         ArrayList<ClassBean> classes = utils.getClasses(packages);
-        for (ClassBean prodClass : classes) {
+
+
+
+       /* for (ClassBean prodClass : classes) {
             ClassBean testSuite = utils.getTestClassBy(prodClass.getName(), testPackages);
             if (testSuite != null) {
                 TestClassAnalysis analysis = new TestClassAnalysis();
@@ -87,21 +96,26 @@ public class ReportManagerTest {
                 analysis.setFlakyTests(new FlakyTestsInfo());
                 classAnalyses.add(analysis);
             }
-        }
-        projectAnalysis.setClassAnalysis(classAnalyses);
+        }*/
+       // projectAnalysis.setClassAnalysis(classAnalyses);
 
     }
 
     @Test
-    public void saveReportTest() {
+    @Order(1)
+    void saveReportTest() {
+        System.out.println("entrato");
+
         String fileName = new SimpleDateFormat("yyyyMMddHHmm'.csv'").format(new Date());
         File fileResult = new File(pathSalvataggio + "/" + fileName);
         if (fileResult.exists())
             fileResult.delete();
 
+
         File resultFilesBefore = new File(pathSalvataggio);
 
         File[] spaceBefore = resultFilesBefore.listFiles();
+
 
         ReportManager.saveReport(projectAnalysis, pathSalvataggio);
 
@@ -111,6 +125,7 @@ public class ReportManagerTest {
 
         System.err.println(spaceAfter.length + "  ===  " + spaceBefore.length);
         assertTrue(spaceAfter.length > spaceBefore.length);
+        assertEquals(1,0,"sono ");
 
     }
 
