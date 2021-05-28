@@ -10,7 +10,11 @@ repositories {
 }
 
 dependencies {
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
     testImplementation('org.junit.jupiter:junit-jupiter:5.5.2')
+    // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.7.0'
 
     implementation files('lib/TestSmellDiffusion.jar')
     // https://mvnrepository.com/artifact/org.knowm.xchart/xchart
@@ -28,6 +32,7 @@ dependencies {
     implementation group: 'log4j', name: 'log4j', version: '1.2.17'
 
     implementation files('lib/jsoup-1.8.1.jar')
+
 
 }
 

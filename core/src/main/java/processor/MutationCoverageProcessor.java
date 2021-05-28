@@ -45,6 +45,7 @@ public class MutationCoverageProcessor {
            // LOGGER.info("STARTING PITEST");
             //LOGGER.info(cmd);
             Process p = rt.exec(cmd);
+
             long time = System.currentTimeMillis();
             p.waitFor(timeoutInSeconds, TimeUnit.SECONDS);
             p.destroyForcibly();
