@@ -1,27 +1,15 @@
 package cli;
 
+import data.TestProjectAnalysis;
 import init.InitCore;
 import org.apache.commons.cli.*;
 
 public class CliMain {
     public static void main(String args[]) {
-        int initRes = InitCore.initConfig();
 
-        Options options = new Options();
-        options.addOption("flaky", true, "calculate flaky test");
-        options.addOption("mutation", true, "mutation test");
-        options.addOption("lc", false, "line coverage test");
+        CommandLine cmd= initializeOptions(args);
 
-        CommandLineParser parser = new DefaultParser();
-        CommandLine cmd = null;
-        try {
-            cmd = parser.parse(options, args);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp("help", options);
+        InitCore.initConfig();
 
         boolean isFlaky = false, isMutation = false, isLC = false;
         int numFlaky = 10, numMutation = 10;
@@ -54,8 +42,9 @@ public class CliMain {
         //plugin
         String projectSDK = System.getProperty("java.home"); //"C:\\Program Files (x86)\\Java\\jdk-11";
 
-        data.TestProjectAnalysis projectAnalysis = new data.TestProjectAnalysis();
+        TestProjectAnalysis projectAnalysis = new TestProjectAnalysis();
         ProcessCLI processCLI = new ProcessCLI(projectAnalysis);
+
         String pathSalvataggio = args[1];
 
         String[] arrayRepo;
@@ -85,5 +74,25 @@ public class CliMain {
                 processCLI.process(pathSalvataggio, isFlaky, isMutation, isLC, numFlaky, numMutation);
                 break;
         }
+    }
+
+    private static CommandLine initializeOptions(String[] args) {
+
+        Options options = new Options();
+        options.addOption("flaky", true, "calculate flaky test");
+        options.addOption("mutation", true, "mutation test");
+        options.addOption("lc", false, "line coverage test");
+
+        HelpFormatter formatter = new HelpFormatter();
+        formatter.printHelp("help", options);
+
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd = null;
+        try {
+            cmd = parser.parse(options, args);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return cmd;
     }
 }

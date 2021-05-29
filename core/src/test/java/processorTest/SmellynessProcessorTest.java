@@ -80,7 +80,7 @@ public class SmellynessProcessorTest {
     }
 
     @Test
-    public void calculateMutation() {
+    public void calculateSmellyness() {
         System.err.println(testSuite.getName());
         ClassTestSmellsInfo testResult =SmellynessProcessor.calculate(testSuite, productionClass, packages, projectAnalysis);
 
