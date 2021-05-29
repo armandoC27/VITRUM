@@ -6,55 +6,7 @@ import java.util.List;
 
 public class UtilsCSV {
 
-    protected static final String ARCHITECTURE_SMELLS_CSV = "ArchitectureSmells.csv";
-    protected static final String DESIGN_SMELLS_CSV = "DesignSmells.csv";
-    protected static final String IMPLEMENTATION_SMELLS_CSV = "ImplementationSmells.csv";
-    protected static final String METHOD_METRICS_CSV = "MethodMetrics.csv";
-    protected static final String TYPE_METRICS_CSV = "TypeMetrics.csv";
-
     protected static final String RESULT_TEST_CSV = "resultTest.csv";
-
-
-    public static void mergeCSV(String pathDestination, String nomeFile, String hashCommit,
-                                String pathCommit, String projectName) throws IOException {
-
-        nomeFile = Paths.get(pathCommit, hashCommit, nomeFile).toString();
-        System.out.println("#### merge di " + nomeFile);
-
-        BufferedReader br = null;
-        final String lineSep = System.getProperty("line.separator");
-        File file = new File(nomeFile);
-        Writer output = new BufferedWriter(new FileWriter(pathDestination, true));
-
-        try {
-            //names don't conflict or just use different folders
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-            String line;
-            int i = 0;
-            int numCol = 0;
-            for (line = br.readLine(); line != null; line = br.readLine(), i++) {
-                if (i != 0) {
-                    if (UtilsWord.countOccurences(line, ',') != numCol) {
-                        StringBuilder buffer = new StringBuilder(line);
-                        line = buffer.reverse().toString().replaceFirst(",", "");
-                        line = new StringBuffer(line).reverse().toString();
-                    }
-                    String[] lineArray = line.split(",");
-                    line = line.replaceAll(lineArray[3], projectName);
-
-                    output.append(line).append(lineSep);
-                } else {
-                    numCol = UtilsWord.countOccurences(line, ',');
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null)
-                br.close();
-            output.close();
-        }
-    }
 
     public static void mergeCSVTest(String pathDestination, String nomeFile, String hashCommit,
                                 String pathCommit, String projectName) throws IOException {
@@ -72,7 +24,7 @@ public class UtilsCSV {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
             String line;
             int i = 0;
-            int numCol = 0;
+
             for (line = br.readLine(); line != null; line = br.readLine(), i++) {
                 if (i != 0) {
 
@@ -177,7 +129,7 @@ public class UtilsCSV {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
             String line;
             int i = 0;
-            int numCol = 0;
+
             for (line = br.readLine(); line != null; line = br.readLine(), i++) {
                 if (i != 0) {
                     output.append(line).append(lineSep);

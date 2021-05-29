@@ -93,9 +93,7 @@ public class ProcessCLI {
             ex.printStackTrace();
         }
 
-
         // constraints.fill = GridBagConstraints.HORIZONTAL; // natural height, maximum width
-
 
     }
 

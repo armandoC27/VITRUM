@@ -58,7 +58,7 @@ public class SmellynessProcessorTest {
         Vector<TestClassAnalysis> classAnalyses = new Vector<>();
         ArrayList<ClassBean> classes = utils.getClasses(packages);
 
-        productionClass = classes.get(1);
+        productionClass = classes.get(0);
         testSuite = utils.getTestClassBy(productionClass.getName(), testPackages);
         if (testSuite != null) {
             TestClassAnalysis analysis = new TestClassAnalysis();
@@ -74,9 +74,7 @@ public class SmellynessProcessorTest {
             projectAnalysis.setNom(projectAnalysis.getNom() + nom);
             projectAnalysis.setTestClassesNumber(projectAnalysis.getTestClassesNumber() + 1);
         }
-
         projectAnalysis.setClassAnalysis(classAnalyses);
-
     }
 
     @Test
@@ -84,9 +82,8 @@ public class SmellynessProcessorTest {
         System.err.println(testSuite.getName());
         ClassTestSmellsInfo testResult =SmellynessProcessor.calculate(testSuite, productionClass, packages, projectAnalysis);
 
-        System.err.println(testResult.getAssertionRoulette()+" ==== "+testResult.getEagerTest()+" === "+testResult.getLazyTest());
-
-        assertEquals(1,1);
+        assertEquals(testResult.getMetrics().getArMetrics().get(0).getValue(),2);
+        assertEquals(testResult.getMetrics().getEtMetrics().get(0).getValue(),2);
     }
 
 }
