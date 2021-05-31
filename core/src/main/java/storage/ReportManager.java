@@ -12,7 +12,8 @@ import org.apache.log4j.Logger;
 public class ReportManager {
     private static final Logger LOGGER = Logger.getLogger("global");
 
-    //flag per capire se il metodo è chiamato dal modulo CLI, in caso affermativo il report viene salvato al percorso indicato nella variabile static "path"
+    //flag per capire se il metodo è chiamato dal modulo CLI, in caso affermativo
+    // il report viene salvato al percorso indicato nella variabile static "path"
     private static boolean flagCLI = false;
     private static String path;
 
@@ -27,6 +28,7 @@ public class ReportManager {
         String fileName = new SimpleDateFormat("yyyyMMddHHmm'.csv'").format(new Date());
         String outputDir = "";
         if(flagCLI){
+            fileName= "resultTest.csv";
             outputDir = path;
             flagCLI = false;
         } else {

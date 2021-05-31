@@ -31,8 +31,7 @@ public class ReportManagerTest {
     private static String pathComune;
 
     @BeforeAll
-    public static void setUp() throws  Exception{
-        System.out.println("before");
+    public static void setUp(){
 
         pathComune = System.getProperty("user.dir");
         pathComune = pathComune.substring(0, pathComune.length() - 4);
@@ -94,30 +93,50 @@ public class ReportManagerTest {
     }
 
     @Test
-    @Order(1)
-    void saveReportTest() {
-        System.out.println("entrato");
+    void saveReportTestWithoutPath() {
 
         String fileName = new SimpleDateFormat("yyyyMMddHHmm'.csv'").format(new Date());
-        File fileResult = new File(pathSalvataggio + "/" + fileName);
+        File fileResult = new File(projectAnalysis.getPath()+"/reports/" + fileName);
         if (fileResult.exists())
             fileResult.delete();
 
 
-        File resultFilesBefore = new File(pathSalvataggio);
+        File resultFilesBefore = new File(projectAnalysis.getPath()+"/reports"); //apro la cartella che contiene tutti i files di result
 
-        File[] spaceBefore = resultFilesBefore.listFiles();
+        File[] filesBefore = resultFilesBefore.listFiles(); //prendo il numero di files nella cartella report
 
 
-        ReportManager.saveReport(projectAnalysis, pathSalvataggio);
+        ReportManager.saveReport(projectAnalysis); //chiamo il metodo
 
-        File resultFilesAfter = new File(pathSalvataggio);
+        File resultFilesAfter = new File(projectAnalysis.getPath()+"/reports"); //prendo di nuovo il num di files della cartella report
 
-        File[] spaceAfter = resultFilesAfter.listFiles();
+        File[] filesAfter = resultFilesAfter.listFiles();
 
-        System.err.println(spaceAfter.length + "  ===  " + spaceBefore.length);
-        assertTrue(spaceAfter.length > spaceBefore.length);
+        System.err.println(filesAfter.length + "  ===  " + filesBefore.length);
+        assertTrue(filesAfter.length > filesBefore.length);
 
+    }
+
+    @Test
+    void saveReportTestWithPath() {
+        boolean exists=false;
+
+        String fileName = "\\resultTest.csv";
+        File fileResult = new File(pathSalvataggio + fileName);
+        if (fileResult.exists()){
+            exists=true;
+            fileResult.delete();
+        }
+
+        ReportManager.saveReport(projectAnalysis,pathSalvataggio); //chiamo il metodo
+
+        File resultFileAfter = new File(pathSalvataggio + fileName);
+
+        assertTrue(resultFileAfter.exists());
+
+        if(!exists){
+            resultFileAfter.delete();
+        }
     }
 
 }
