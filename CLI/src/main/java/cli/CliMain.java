@@ -31,9 +31,16 @@ public class CliMain {
         if(cmd.hasOption("lc")) {
             isLC = true;
         }
+        if(cmd.hasOption("mining")){
+            String argMining = cmd.getOptionValue("mining");
+            if(argMining==null){
+                System.err.println("Per poter effettuare il mining è necessario specificare un percorso di un file contenente le url delle repository da analizzare.");
+            }
+        }
+
 
         //TODO se non agginge opzioni (es. -mutation) allora le librerie non servono
-        if(args.length < 3 || args.length > 8){
+        if(args.length < 3 || args.length > 9){
             System.err.println("Errore con i parametri passati!");
             return;
         }
@@ -82,6 +89,7 @@ public class CliMain {
         options.addOption("flaky", true, "calculate flaky test");
         options.addOption("mutation", true, "mutation test");
         options.addOption("lc", false, "line coverage test");
+        options.addOption("mining",true,"mining on repository versions");
 
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp("help", options);

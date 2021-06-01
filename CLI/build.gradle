@@ -16,6 +16,7 @@ dependencies {
     testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.7.0'
 
     compile project(":core")
+    compile project(":mining")
     implementation files('lib/TestSmellDiffusion.jar')
     implementation group: 'commons-io', name: 'commons-io', version: '2.4'
     // https://mvnrepository.com/artifact/commons-cli/commons-cli
