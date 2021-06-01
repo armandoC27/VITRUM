@@ -2,7 +2,7 @@
   <configuration default="false" name="mining" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="miningVitrum.MyStudyTest" />
     <module name="VITRuM.mining.main" />
-    <option name="PROGRAM_PARAMETERS" value="mining\file.txt C:\Users\vince\Desktop\risProva\" />
+    <option name="PROGRAM_PARAMETERS" value="mining\file.txt C:\Users\saver\Desktop\risProva\" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="cli.*" />

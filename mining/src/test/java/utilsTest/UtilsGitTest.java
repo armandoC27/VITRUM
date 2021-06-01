@@ -1,6 +1,7 @@
 package utilsTest;
 
 import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import utils.UtilsGit;
@@ -32,6 +33,7 @@ public class UtilsGitTest {
     }
 
     @Test
+    @Order(1)
     public void getTagsTest(){
         String pathCommit = System.getProperty("user.dir");
         pathCommit = pathCommit.substring(0, pathCommit.length() - 6);
@@ -47,6 +49,7 @@ public class UtilsGitTest {
     }
 
     @Test
+    @Order(2)
     public void getHashTagTest(){
         String pathCommit = System.getProperty("user.dir");
         pathCommit = pathCommit.substring(0, pathCommit.length() - 6);
