@@ -6,6 +6,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import utils.UtilsGit;
 
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -55,7 +56,11 @@ public class UtilsGitTest {
 
         String line = "https://github.com/square/javapoet.git";
 
-        UtilsGit.getHashTag(UtilsGit.getTags(line,baseOutputDirectory));
+        List<String> lista = UtilsGit.getHashTag(UtilsGit.getTags(line,baseOutputDirectory));
+
+        assertEquals(lista.get(0),"ffe1e0d82c97e2be0524dcbb42b12ee4de74df54");
+
+
 
     }
 }
