@@ -22,10 +22,30 @@ public class MyStudyTest implements Study {
         file = args[0];
         baseOutputFolder = args[1];
         File fileOutputFolder = new File(baseOutputFolder);
-        if(!fileOutputFolder.exists()) {
+        if (!fileOutputFolder.exists()) {
             fileOutputFolder.mkdirs();
         }
         new RepoDriller().start(new MyStudyTest());
+    }
+
+    public static void startMining(String reposFile, String destinationPath) {
+
+        if (destinationPath.endsWith("\\") || destinationPath.endsWith("/")) {
+            baseOutputFolder = destinationPath;
+        } else if (destinationPath.contains("\\")) {
+
+            baseOutputFolder = destinationPath + "\\";
+        } else {
+            baseOutputFolder = destinationPath + "/";
+        }
+
+        file = reposFile;
+        File fileOutputFolder = new File(baseOutputFolder);
+        if (!fileOutputFolder.exists()) {
+            fileOutputFolder.mkdirs();
+        }
+        new RepoDriller().start(new MyStudyTest());
+
     }
 
     @Override
@@ -37,13 +57,13 @@ public class MyStudyTest implements Study {
             for (line = br.readLine(); line != null; line = br.readLine()) {
 
                 String repoDir = UtilsGit.getNameFromGitUrl(line);
-                File folder = new File(Paths.get(baseOutputFolder,repoDir).toString());
+                File folder = new File(Paths.get(baseOutputFolder, repoDir).toString());
 
                 if (!folder.exists()) {
                     boolean mkdir = folder.mkdir();
 
-                    if(mkdir){
-                        System.out.println("### Creata directory "+folder.getAbsolutePath());
+                    if (mkdir) {
+                        System.out.println("### Creata directory " + folder.getAbsolutePath());
                     }
                 }
 
@@ -53,9 +73,9 @@ public class MyStudyTest implements Study {
                 Process p = builder.start();
                 p.waitFor();
 
-                HashMap<String,String> hashTags = UtilsGit.getTags(line, baseOutputFolder);
+                HashMap<String, String> hashTags = UtilsGit.getTags(line, baseOutputFolder);
 
-                developerVisitor = new DeveloperVisitorTest(repoDir ,hashTags);
+                developerVisitor = new DeveloperVisitorTest(repoDir, hashTags);
                 new RepositoryMining()
                         .in(
                                 GitRemoteRepository.singleProject(line)
@@ -70,7 +90,7 @@ public class MyStudyTest implements Study {
                 File file = new File(repoDir);
                 boolean b = UtilsFileDirectory.deleteDirectory(file);
 
-                if(b){
+                if (b) {
                     System.out.println("#### Cartella eliminata: " + file);
                 }
                 UtilsFileDirectory.addColumnsCSVTest(line, baseOutputFolder);

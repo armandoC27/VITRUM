@@ -46,21 +46,21 @@ public class InitCoreTest {
     @Test
     public void processTestCorrectStructure() {
         int test;
-        test = InitCore.process(projectFolder, nomeRepo, projectSDK, projectAnalysis);
+        test = InitCore.init(projectFolder, nomeRepo, projectSDK, projectAnalysis);
         assertEquals(0, test);
     }
 
     @Test
     public void processTestIncorrectPath() {
         int test;
-        test = InitCore.process(pathComune + "\\pathErrato" + "\\jpacman-framework", nomeRepo, projectSDK, projectAnalysis);
+        test = InitCore.init(pathComune + "\\pathErrato" + "\\jpacman-framework", nomeRepo, projectSDK, projectAnalysis);
         assertEquals(1, test,"With one is not OK.");
     }
 
     @Test
     public void processTestWithoutTestClasses() {
         int test;
-        test = InitCore.process(pathComune + "\\HelloWorld", nomeRepo, projectSDK, projectAnalysis);
+        test = InitCore.init(pathComune + "\\HelloWorld", nomeRepo, projectSDK, projectAnalysis);
         assertEquals(2, test,"With 2 is not OK.");
     }
 

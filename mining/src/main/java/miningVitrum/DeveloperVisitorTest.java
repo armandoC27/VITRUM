@@ -1,5 +1,6 @@
 package miningVitrum;
 
+import cli.CliMain;
 import org.repodriller.domain.Commit;
 import org.repodriller.persistence.PersistenceMechanism;
 import org.repodriller.scm.CommitVisitor;
@@ -54,27 +55,34 @@ public class DeveloperVisitorTest implements CommitVisitor {
 
             for (String modulo : pathsModuli) {
                 try {
-                    System.out.println("#### "+repo.getPath() +" Per il commit "+commit.getHash()+" analizzo il modulo "+modulo);
+                    System.out.println("#### " + repo.getPath() + " Per il commit " + commit.getHash() + " analizzo il modulo " + modulo);
                     int lastIndex = modulo.lastIndexOf("\\");
                     String moduleName = modulo.substring(lastIndex + 1);
                     String tempCsvModule = Paths.get(pathOutput.getName(), pathProject.getName(), commit.getHash(), moduleName).toString();
                     UtilsFileDirectory.createTempDirectory(tempCsvModule);
-                    Process runtimeProcess = Runtime.getRuntime().exec
-                            ("java -jar Vitrum.jar " + modulo + " " + pathOutput.getPath() + "/" + pathProject.getName() + "/" + commit.getHash()
-                                            + "/" + moduleName,
-                                    null,
-                                    new File("./mining"));
+//                    Process runtimeProcess = Runtime.getRuntime().exec
+//                            ("java -jar Vitrum.jar " + modulo + " " + pathOutput.getPath() + "/" + pathProject.getName() + "/" + commit.getHash()
+//                                            + "/" + moduleName,
+//                                    null,
+//                                    new File("/mining"));
+
+                    new CliMain(false, false, false, 0, 0)
+                            .startVitrumCLI(pathOutput.getPath() + "/" + pathProject.getName() + "/" + commit.getHash()
+                                    + "/" + moduleName, modulo, "");
+
+                    System.err.println("********************************** " + System.getProperty("user.dir"));
+
                     System.out.println("### VITRuM, progetto " + projectName +
                             " commit " + commit.getHash() + "-> START");
-                    int processComplete = runtimeProcess.waitFor(); // value 0 indicates normal termination
+                    //int processComplete = runtimeProcess.waitFor(); // value 0 indicates normal termination
 
-                    if (processComplete == 0) {
-                        System.out.println("## VITRuM, progetto " + projectName +
-                                " commit " + commit.getHash() + "-> END");
-                        UtilsCSV.mergeModules(pathOutput.getPath() + "/" + pathProject.getName() + "/" + commit.getHash() + "/" + "resultTest.csv",
-                                pathOutput.getPath() + "/" + pathProject.getName() + "/" + commit.getHash() + "/" + moduleName + "/" + "resultTest.csv");
-                    }
-               } catch (Exception e) {
+//                    if (processComplete == 0) {
+                    System.out.println("## VITRuM, progetto " + projectName +
+                            " commit " + commit.getHash() + "-> END");
+                    UtilsCSV.mergeModules(pathOutput.getPath() + "/" + pathProject.getName() + "/" + commit.getHash() + "/" + "resultTest.csv",
+                            pathOutput.getPath() + "/" + pathProject.getName() + "/" + commit.getHash() + "/" + moduleName + "/" + "resultTest.csv");
+//                    }
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

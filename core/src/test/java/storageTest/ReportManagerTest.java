@@ -55,10 +55,10 @@ public class ReportManagerTest {
 
         nomeRepo = arrayRepo[arrayRepo.length - 1];
 
-        InitCore.process(projectFolder, nomeRepo, projectSDK, projectAnalysis);
+        InitCore.init(projectFolder, nomeRepo, projectSDK, projectAnalysis);
 
         projectAnalysis.setPluginPath(pathComune + "plugin/lib/libTest");
-        InitCore.process(projectFolder, nomeRepo, projectSDK, projectAnalysis);
+        InitCore.init(projectFolder, nomeRepo, projectSDK, projectAnalysis);
 
         Vector<PackageBean> testPackages = projectAnalysis.getTestPackages();
         Vector<PackageBean> packages = projectAnalysis.getPackages();

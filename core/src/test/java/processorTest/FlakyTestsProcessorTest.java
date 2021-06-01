@@ -1,12 +1,10 @@
 package processorTest;
 
 
-import data.ClassCoverageInfo;
 import data.FlakyTestsInfo;
 import init.InitCore;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import processor.CoverageProcessor;
 import processor.FlakyTestsProcessor;
 
 import java.util.Vector;
@@ -46,7 +44,7 @@ public class FlakyTestsProcessorTest {
 
         nomeRepo = arrayRepo[arrayRepo.length - 1];
 
-        InitCore.process(projectFolder, nomeRepo, projectSDK, projectAnalysis);
+        InitCore.init(projectFolder, nomeRepo, projectSDK, projectAnalysis);
     }
 
     @Test

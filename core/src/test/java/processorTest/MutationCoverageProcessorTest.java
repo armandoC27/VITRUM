@@ -9,9 +9,7 @@ import it.unisa.testSmellDiffusion.metrics.CKMetrics;
 import it.unisa.testSmellDiffusion.testMutation.TestMutationUtilities;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import processor.CoverageProcessor;
 import processor.MutationCoverageProcessor;
-import processor.SmellynessProcessor;
 
 import java.util.ArrayList;
 import java.util.Vector;
@@ -51,7 +49,7 @@ public class MutationCoverageProcessorTest {
 
         nomeRepo = arrayRepo[arrayRepo.length - 1];
 
-        InitCore.process(projectFolder, nomeRepo, projectSDK, projectAnalysis);
+        InitCore.init(projectFolder, nomeRepo, projectSDK, projectAnalysis);
 
         Vector<PackageBean> testPackages = projectAnalysis.getTestPackages();
         Vector<PackageBean> packages = projectAnalysis.getPackages();

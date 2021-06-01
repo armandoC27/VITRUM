@@ -31,7 +31,7 @@ public class PluginInit extends AnAction {
         String projectSDK = ProjectRootManager.getInstance(proj).getProjectSdk().getHomePath();
         TestProjectAnalysis projectAnalysis = new TestProjectAnalysis();
 
-        int res= InitCore.process(projectFolder,proj.getName(),projectSDK,projectAnalysis);
+        int res= InitCore.init(projectFolder,proj.getName(),projectSDK,projectAnalysis);
         switch (res){
             case 1:
 

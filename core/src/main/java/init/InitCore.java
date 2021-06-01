@@ -76,7 +76,7 @@ public class InitCore {
         return 0;
     }
 
-    public static int process(String projectFolder,String projectName,String projectSDK,TestProjectAnalysis projectAnalysis){
+    public static int init(String projectFolder, String projectName, String projectSDK, TestProjectAnalysis projectAnalysis){
 
         File root = new File(projectFolder);
         String srcPath = root.getAbsolutePath() + "/src";

@@ -42,7 +42,7 @@ public class ProcessCLITest {
         String  nomeRepo = arrayRepo[arrayRepo.length - 1];
 
         processCLI = new ProcessCLI(projectAnalysis);
-        InitCore.process(projectFolder, nomeRepo, projectSDK, projectAnalysis);
+        InitCore.init(projectFolder, nomeRepo, projectSDK, projectAnalysis);
     }
 
     @Test

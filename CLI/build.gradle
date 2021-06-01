@@ -16,11 +16,10 @@ dependencies {
     testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.7.0'
 
     compile project(":core")
-    compile project(":mining")
+
     implementation files('lib/TestSmellDiffusion.jar')
     implementation group: 'commons-io', name: 'commons-io', version: '2.4'
-    // https://mvnrepository.com/artifact/commons-cli/commons-cli
-    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+
 }
 
 jar {
@@ -28,7 +27,7 @@ jar {
         exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
     }
     manifest {
-        attributes("Main-Class": "cli_test.CliMain")
+        attributes("Main-Class": "cli.CliMain")
     }
 }
 

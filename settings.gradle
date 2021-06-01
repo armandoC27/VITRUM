@@ -3,4 +3,5 @@ include 'plugin'
 include 'core'
 include 'CLI'
 include 'mining'
+include 'manager'
 
