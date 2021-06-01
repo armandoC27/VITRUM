@@ -9,10 +9,12 @@ public class UtilsCSV {
     protected static final String RESULT_TEST_CSV = "resultTest.csv";
 
     public static void mergeCSVTest(String pathDestination, String nomeFile, String hashCommit,
-                                String pathCommit, String projectName) throws IOException {
+                                String pathCommit) throws IOException {
 
         nomeFile = Paths.get(pathCommit, hashCommit, nomeFile).toString();
         System.out.println("#### merge di " + nomeFile);
+
+
 
         BufferedReader br = null;
         final String lineSep = System.getProperty("line.separator");
@@ -57,7 +59,7 @@ public class UtilsCSV {
                 String repoDir = Paths.get(baseOutputFolder + repoName).toString();
 
                 UtilsCSV.mergeCSVTest(Paths.get(repoDir, RESULT_TEST_CSV).toString(), RESULT_TEST_CSV,
-                        hashCommit, pathCommit, repoName);
+                        hashCommit, pathCommit);
 
             } catch (IOException e) {
                 e.printStackTrace();
