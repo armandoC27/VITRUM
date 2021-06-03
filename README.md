@@ -14,14 +14,14 @@ To use VITRuM follow these steps:
      SecondParameter: path of project cloned on your machine
      ThirdParameter: path of libraries that you have already downloaded (only for dynamic analysis) 
      Options for dynamic analysis:
-     -mutation: requires a parameter (to run with mutation coverage)
-     -flaky: requires a parameter (to run with flaky test option)
-     -lc: no requires a parameter (to run with line coverage and branch coverage)
+     -mutation: requires a argument (to run with mutation coverage)
+     -flaky: requires a argument, number of time to run flaky (to run with flaky test option)
+     -lc: not requires a argument (to run with line coverage and branch coverage)
   2)Run VITRuM on a list of projects on every version:
     FirstParameter: path of directory's save
-    SecondParameter: path of a .txt file witch contains all Github link projects to mine
     Option:
-    -mining: to run with mining option
+    -mining: with argument, path of a .txt file witch contains all Github link projects to mine
+
 In the first case you will have a file "ResultTest.csv" which contains the result of the analysis of the project that you specify.
 In the second case you will have a folder for each project that you specified in the .txt file and in these tou will find a file "ResultTest.csv" for every project with added the corrispondent hash commit and version in every row of the file.
 
