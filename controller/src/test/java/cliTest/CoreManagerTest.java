@@ -20,7 +20,8 @@ public class CoreManagerTest {
     @BeforeAll
     public static void setUp(){
         pathComune = System.getProperty("user.dir");
-        pathComune = pathComune.substring(0, pathComune.length() - 3); //questo è diventato 3 poiché siamo nel modulo CLI che è composto soltanto da 3 lettere
+        System.err.println(pathComune);
+        pathComune = pathComune.substring(0, pathComune.length() - 10); //questo è diventato 3 poiché siamo nel modulo CLI che è composto soltanto da 3 lettere
 
         projectAnalysis = new data.TestProjectAnalysis();
         projectAnalysis.setPluginPath(pathComune + "plugin/lib/libTest");

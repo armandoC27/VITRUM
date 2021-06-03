@@ -14,3 +14,39 @@ javapoet-1.13.0-1;5ca6d5b206bccb53305ad6235df45a173e983297;Thu Jun 18 17:43:13 C
 javapoet-1.13.0-1;5ca6d5b206bccb53305ad6235df45a173e983297;Thu Jun 18 17:43:13 CEST 2020;com.squareup.javapoet.TestUtil;com.squareup.javapoet.Util;10;1;5;3;0.0;0.0;0.0;0.0;0.0;0.0;0.0
 javapoet-1.13.0-1;5ca6d5b206bccb53305ad6235df45a173e983297;Thu Jun 18 17:43:13 CEST 2020;com.squareup.javapoet.AnnotationSpecTest;com.squareup.javapoet.AnnotationSpec;8;1;2;1;-1.0;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0
 javapoet-1.13.0-1;5ca6d5b206bccb53305ad6235df45a173e983297;Thu Jun 18 17:43:13 CEST 2020;com.squareup.javapoet.ClassNameTest;com.squareup.javapoet.ClassName;143;15;19;63;-1.0;-1.0;-1.0;-1.0;2.0;4.0;3.0;0.0;3.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardTest;nl.tudelft.jpacman.board.Board;30;3;6;9;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardFactoryTest;nl.tudelft.jpacman.board.BoardFactory;62;6;12;23;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.SquareTest;nl.tudelft.jpacman.board.Square;43;4;5;16;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.level.LevelTest;nl.tudelft.jpacman.level.Level;105;9;14;37;-1.0;-1.0;-1.0;36.0;0.0;0.0;0.0
+nl.tudelft.jpacman.npc.ghost.NavigationTest;nl.tudelft.jpacman.npc.ghost.Navigation;98;9;19;62;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.sprite.SpriteTest;nl.tudelft.jpacman.sprite.Sprite;71;9;21;28;-1.0;-1.0;-1.0;7.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardTest;nl.tudelft.jpacman.board.Board;30;3;6;9;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardFactoryTest;nl.tudelft.jpacman.board.BoardFactory;62;6;12;23;-1.0;-1.0;-1.0;-1.0;3.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.SquareTest;nl.tudelft.jpacman.board.Square;43;4;5;16;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.level.LevelTest;nl.tudelft.jpacman.level.Level;105;9;14;37;-1.0;-1.0;-1.0;-1.0;2.0;3.0;3.0;36.0;0.0;0.0;0.0
+nl.tudelft.jpacman.npc.ghost.NavigationTest;nl.tudelft.jpacman.npc.ghost.Navigation;98;9;19;62;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.sprite.SpriteTest;nl.tudelft.jpacman.sprite.Sprite;71;9;21;28;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;7.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardTest;nl.tudelft.jpacman.board.Board;30;3;6;9;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardFactoryTest;nl.tudelft.jpacman.board.BoardFactory;62;6;12;23;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.SquareTest;nl.tudelft.jpacman.board.Square;43;4;5;16;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.level.LevelTest;nl.tudelft.jpacman.level.Level;105;9;14;37;-1.0;-1.0;-1.0;36.0;0.0;0.0;0.0
+nl.tudelft.jpacman.npc.ghost.NavigationTest;nl.tudelft.jpacman.npc.ghost.Navigation;98;9;19;62;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.sprite.SpriteTest;nl.tudelft.jpacman.sprite.Sprite;71;9;21;28;-1.0;-1.0;-1.0;7.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardTest;nl.tudelft.jpacman.board.Board;30;3;6;9;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardFactoryTest;nl.tudelft.jpacman.board.BoardFactory;62;6;12;23;-1.0;-1.0;-1.0;-1.0;3.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.SquareTest;nl.tudelft.jpacman.board.Square;43;4;5;16;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.level.LevelTest;nl.tudelft.jpacman.level.Level;105;9;14;37;-1.0;-1.0;-1.0;-1.0;2.0;3.0;3.0;36.0;0.0;0.0;0.0
+nl.tudelft.jpacman.npc.ghost.NavigationTest;nl.tudelft.jpacman.npc.ghost.Navigation;98;9;19;62;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.sprite.SpriteTest;nl.tudelft.jpacman.sprite.Sprite;71;9;21;28;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;7.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardTest;nl.tudelft.jpacman.board.Board;30;3;6;9;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardFactoryTest;nl.tudelft.jpacman.board.BoardFactory;62;6;12;23;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.SquareTest;nl.tudelft.jpacman.board.Square;43;4;5;16;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.level.LevelTest;nl.tudelft.jpacman.level.Level;105;9;14;37;-1.0;-1.0;-1.0;36.0;0.0;0.0;0.0
+nl.tudelft.jpacman.npc.ghost.NavigationTest;nl.tudelft.jpacman.npc.ghost.Navigation;98;9;19;62;-1.0;-1.0;-1.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.sprite.SpriteTest;nl.tudelft.jpacman.sprite.Sprite;71;9;21;28;-1.0;-1.0;-1.0;7.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardTest;nl.tudelft.jpacman.board.Board;30;3;6;9;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.BoardFactoryTest;nl.tudelft.jpacman.board.BoardFactory;62;6;12;23;-1.0;-1.0;-1.0;-1.0;3.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.board.SquareTest;nl.tudelft.jpacman.board.Square;43;4;5;16;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.level.LevelTest;nl.tudelft.jpacman.level.Level;105;9;14;37;-1.0;-1.0;-1.0;-1.0;2.0;3.0;3.0;36.0;0.0;0.0;0.0
+nl.tudelft.jpacman.npc.ghost.NavigationTest;nl.tudelft.jpacman.npc.ghost.Navigation;98;9;19;62;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;0.0;0.0;0.0;0.0
+nl.tudelft.jpacman.sprite.SpriteTest;nl.tudelft.jpacman.sprite.Sprite;71;9;21;28;-1.0;-1.0;-1.0;-1.0;2.0;2.0;0.0;7.0;0.0;0.0;0.0

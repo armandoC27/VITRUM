@@ -47,7 +47,7 @@ public class CoverageProcessorTest {
 
         nomeRepo = arrayRepo[arrayRepo.length - 1];
 
-        InitCore.process(projectFolder, nomeRepo, projectSDK, projectAnalysis);
+        InitCore.init(projectFolder, nomeRepo, projectSDK, projectAnalysis);
     }
 
     @Test

@@ -217,7 +217,10 @@ public class PluginInitGUI extends JFrame {
                                 JFrame frame = (JFrame) e.getSource();
                                 try {
                                     FileUtils.deleteDirectory(new File(System.getProperty("user.home") + "\\.temevi" + "\\htmlCoverage"));
-                                    FileUtils.forceDelete(new File(System.getProperty("user.home") + "\\.temevi" + "\\coverage.csv"));
+                                    File covergeFile=new File(System.getProperty("user.home") + "\\.temevi" + "\\coverage.csv");
+                                    if(covergeFile.exists()){
+                                        FileUtils.forceDelete(new File(System.getProperty("user.home") + "\\.temevi" + "\\coverage.csv"));
+                                    }
                                     FileUtils.forceDelete(new File(System.getProperty("user.home") + "\\.temevi" + "\\jacoco.exec"));
                                     FileUtils.deleteDirectory(new File(System.getProperty("user.home") + "\\.temevi\\pitreport"));
                                 } catch (Exception ex) {
