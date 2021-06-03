@@ -1,4 +1,4 @@
-package cli;
+package controllerLogic;
 
 import data.*;
 import it.unisa.testSmellDiffusion.beans.ClassBean;
@@ -17,10 +17,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class ProcessCLI {
+public class CoreManager {
     private TestProjectAnalysis project;
 
-    public ProcessCLI(TestProjectAnalysis project) {
+    public CoreManager(TestProjectAnalysis project) {
         this.project = project;
     }
 

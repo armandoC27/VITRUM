@@ -5,7 +5,7 @@
     <option name="PROGRAM_PARAMETERS" value="mining\file.txt C:\Users\saver\Desktop\risProva\" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="cli.*" />
+        <option name="PATTERN" value="controllerLogic.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

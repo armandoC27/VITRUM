@@ -1,10 +1,10 @@
-package manager;
+package cliLogic;
 
-import cli.CliMain;
+import controllerLogic.CoreController;
 import miningVitrum.MyStudyTest;
 import org.apache.commons.cli.*;
 
-public class MainManager {
+public class MainVitrum {
 
     private static CommandLine cmd;
     private static String destinationPath;
@@ -12,6 +12,11 @@ public class MainManager {
 
     public static void main(String[] args) {
 
+        if(args.length== 0)
+        {
+            System.err.println("Devi inserire il path di destinazione!");
+            System.exit(1);
+        }
         cmd= initializeOptions(args);
         destinationPath = args[0];
 
@@ -80,7 +85,7 @@ public class MainManager {
             librariesPath=args[2];
         }
 
-        CliMain cli=new CliMain(isFlaky,isMutation,isLC,numFlaky,numMutation);
+        CoreController cli=new CoreController(isFlaky,isMutation,isLC,numFlaky,numMutation);
         cli.startVitrumCLI(destinationPath,projectFolder,librariesPath);
     }
 

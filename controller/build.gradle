@@ -15,16 +15,14 @@ dependencies {
     // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner
     testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.7.0'
 
-    // https://mvnrepository.com/artifact/org.repodriller/repodriller
-    implementation group: 'org.repodriller', name: 'repodriller', version: '1.4.0'
+    compile project(":core")
 
-    // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
-    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
-
-    compile project(":controller")
+    implementation files('lib/TestSmellDiffusion.jar')
+    implementation group: 'commons-io', name: 'commons-io', version: '2.4'
 
 }
 
 test {
     useJUnitPlatform()
 }
+

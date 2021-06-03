@@ -10,16 +10,14 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
-    testImplementation('org.junit.jupiter:junit-jupiter:5.5.2')
-    // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner
-    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.7.0'
 
-    compile project(":core")
+    // https://mvnrepository.com/artifact/commons-cli/commons-cli
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+    // https://mvnrepository.com/artifact/org.repodriller/repodriller
+    implementation group: 'org.repodriller', name: 'repodriller', version: '1.4.0'
 
-    implementation files('lib/TestSmellDiffusion.jar')
-    implementation group: 'commons-io', name: 'commons-io', version: '2.4'
-
+    compile project(":controller")
+    compile project(":mining")
 }
 
 jar {
@@ -27,11 +25,10 @@ jar {
         exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
     }
     manifest {
-        attributes("Main-Class": "cli.CliMain")
+        attributes("Main-Class": "cliLogic.MainVitrum")
     }
 }
 
 test {
     useJUnitPlatform()
 }
-

@@ -1,7 +1,7 @@
 package cliTest;
 
 
-import cli.ProcessCLI;
+import controllerLogic.CoreManager;
 import data.ClassCoverageInfo;
 import data.ClassMutationCoverageInfo;
 import data.FlakyTestsInfo;
@@ -11,9 +11,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ProcessCLITest {
+public class CoreManagerTest {
 
-    private static ProcessCLI processCLI;
+    private static CoreManager coreManager;
     private static String pathComune,pathSalvataggio;
     private static TestProjectAnalysis projectAnalysis;
 
@@ -41,14 +41,14 @@ public class ProcessCLITest {
 
         String  nomeRepo = arrayRepo[arrayRepo.length - 1];
 
-        processCLI = new ProcessCLI(projectAnalysis);
+        coreManager = new CoreManager(projectAnalysis);
         InitCore.init(projectFolder, nomeRepo, projectSDK, projectAnalysis);
     }
 
     @Test
     public void processTestNoFlaky(){
         //controlla che il flaky test sia null poiché ho passato false come parametro
-        processCLI.process(pathSalvataggio, false,false,false,3,0);
+        coreManager.process(pathSalvataggio, false,false,false,3,0);
         FlakyTestsInfo flakyTestsInfo = projectAnalysis.getClassAnalysis().get(0).getFlakyTests();
         assertNull(flakyTestsInfo.getFlakyMethods());
     }
@@ -56,7 +56,7 @@ public class ProcessCLITest {
     @Test
     public void processTestNoMutation(){
 
-        processCLI.process(pathSalvataggio, false,false,false,3,10);
+        coreManager.process(pathSalvataggio, false,false,false,3,10);
         ClassMutationCoverageInfo classMutationCoverageInfo = projectAnalysis.getClassAnalysis().get(0).getMutationCoverage();
         assertEquals(classMutationCoverageInfo.getMutationCoverage(),-1);
     }
@@ -64,7 +64,7 @@ public class ProcessCLITest {
     @Test
     public void processTestNoLineCoverage(){
 
-        processCLI.process(pathSalvataggio, false,false,false,3,10);
+        coreManager.process(pathSalvataggio, false,false,false,3,10);
         ClassCoverageInfo classCoverageInfo = projectAnalysis.getClassAnalysis().get(0).getCoverage();
         assertEquals(classCoverageInfo.getLineCoverage(),-1);
         assertEquals(classCoverageInfo.getBranchCoverage(),-1);
@@ -73,7 +73,7 @@ public class ProcessCLITest {
     @Test
     public void processTestFlaky(){
         //controlla che il flaky test sia null poiché ho passato false come parametro
-        processCLI.process(pathSalvataggio, true,false,false,3,0);
+        coreManager.process(pathSalvataggio, true,false,false,3,0);
         FlakyTestsInfo flakyTestsInfo = projectAnalysis.getClassAnalysis().get(0).getFlakyTests();
         assertNotNull(flakyTestsInfo.getFlakyMethods());
     }
@@ -81,7 +81,7 @@ public class ProcessCLITest {
     @Test
     public void processTestMutation(){
 
-        processCLI.process(pathSalvataggio, false,true,false,3,10);
+        coreManager.process(pathSalvataggio, false,true,false,3,10);
         ClassMutationCoverageInfo classMutationCoverageInfo = projectAnalysis.getClassAnalysis().get(0).getMutationCoverage();
         assertNotEquals(classMutationCoverageInfo.getMutationCoverage(),-1);
     }
@@ -89,7 +89,7 @@ public class ProcessCLITest {
     @Test
     public void processTestLineCoverage(){
 
-        processCLI.process(pathSalvataggio, false,false,true,3,10);
+        coreManager.process(pathSalvataggio, false,false,true,3,10);
         ClassCoverageInfo classCoverageInfo = projectAnalysis.getClassAnalysis().get(0).getCoverage();
         assertNotEquals(classCoverageInfo.getLineCoverage(),-1);
         assertNotEquals(classCoverageInfo.getBranchCoverage(),-1);

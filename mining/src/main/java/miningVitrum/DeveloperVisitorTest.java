@@ -1,6 +1,6 @@
 package miningVitrum;
 
-import cli.CliMain;
+import controllerLogic.CoreController;
 import org.repodriller.domain.Commit;
 import org.repodriller.persistence.PersistenceMechanism;
 import org.repodriller.scm.CommitVisitor;
@@ -66,7 +66,7 @@ public class DeveloperVisitorTest implements CommitVisitor {
 //                                    null,
 //                                    new File("/mining"));
 
-                    new CliMain(false, false, false, 0, 0)
+                    new CoreController(false, false, false, 0, 0)
                             .startVitrumCLI(pathOutput.getPath() + "/" + pathProject.getName() + "/" + commit.getHash()
                                     + "/" + moduleName, modulo, "");
 

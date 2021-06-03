@@ -1,15 +1,15 @@
-package cli;
+package controllerLogic;
 
 import data.TestProjectAnalysis;
 import init.InitCore;
 
-public class CliMain {
+public class CoreController {
 
     private static String projectSDK;
     private boolean isFlaky = false, isMutation = false, isLC = false;
     private int numFlaky, numMutation;
 
-    public CliMain(boolean isFlaky, boolean isMutation, boolean isLC, int numFlaky, int numMutation) {
+    public CoreController(boolean isFlaky, boolean isMutation, boolean isLC, int numFlaky, int numMutation) {
         this.isFlaky = isFlaky;
         this.isMutation = isMutation;
         this.isLC = isLC;
@@ -23,7 +23,7 @@ public class CliMain {
         InitCore.initConfig();
 
         TestProjectAnalysis projectAnalysis = new TestProjectAnalysis();
-        ProcessCLI processCLI = new ProcessCLI(projectAnalysis);
+        CoreManager coreManager = new CoreManager(projectAnalysis);
 
         projectAnalysis.setPluginPath(librariesPath);
 
@@ -38,7 +38,7 @@ public class CliMain {
 
         InitCore.init(projectPath, nomeRepo, projectSDK, projectAnalysis);
 
-        processCLI.process(destinationPath, this.isFlaky, this.isMutation, this.isLC, this.numFlaky, this.numMutation);
+        coreManager.process(destinationPath, this.isFlaky, this.isMutation, this.isLC, this.numFlaky, this.numMutation);
     }
 
 }

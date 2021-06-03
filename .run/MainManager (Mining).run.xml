@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="manager.MainManager (Mining)" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="manager.MainManager" />
-    <module name="VITRuM.manager.main" />
+  <configuration default="false" name="cliLogic.MainVitrum (Mining)" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="cliLogic.MainVitrum" />
+    <module name="VITRuM.CLI.main" />
     <option name="PROGRAM_PARAMETERS" value="C:\\Users\\vince\\Desktop -mining mining/file.txt" />
     <method v="2">
       <option name="Make" enabled="true" />
