@@ -23,7 +23,7 @@ public class UtilsCSVTest {
     public void mergeCSVTest_Test(/*String pathDestination, String nomeFile, String hashCommit,
                                   String pathCommit, String projectName*/) throws IOException {
 
-        String nomeFile = "resultTest.csv";
+        String nomeFile = "resultTestMerge.csv";
         String hashCommit = "fileResults";
         String pathCommit = System.getProperty("user.dir");
         pathCommit = pathCommit.substring(0, pathCommit.length() - 6);
@@ -33,9 +33,10 @@ public class UtilsCSVTest {
         String pathDestination = pathCommit+ "\\fileResults\\risultatiFinali\\resultTest.csv";
 
         int numbDestination = NumberOfCharacters(pathDestination);
-        int numbMerge = NumberOfCharacters(pathCommit+"\\fileResults\\resultTest.csv");
+        int numbMerge = NumberOfCharacters(pathCommit+"\\fileResults\\resultTestMerge.csv");
         UtilsCSV.mergeCSVTest(pathDestination,nomeFile,hashCommit,pathCommit);
         int numActual = NumberOfCharacters(pathDestination);
+        System.out.println(numbDestination+" "+numbMerge+" "+numActual);
         assertEquals(numbDestination+numbMerge-1,numActual );
 
 
@@ -59,6 +60,8 @@ public class UtilsCSVTest {
         UtilsCSV.mergeAllTest(hashCommits,line,pathCommit,baseOutputFolder);
 
         int numActual= NumberOfCharacters(baseOutputFolder+"javapoet\\resultTest.csv");
+
+
         assertEquals(numbDestination+numMerge1+numMerge2-2,numActual);
 
 
@@ -132,8 +135,8 @@ public class UtilsCSVTest {
         String pathDestination = pathCommit+ "\\fileResults\\risultatiFinali\\resultTest.csv";
 
         int numbDestination = NumberOfCharacters(pathDestination);
-        int numbMerge = NumberOfCharacters(pathCommit+"\\fileResults\\resultTest.csv");
-        UtilsCSV.mergeModules(pathDestination,pathCommit+"\\fileResults\\resultTest.csv");
+        int numbMerge = NumberOfCharacters(pathCommit+"\\fileResults\\resultTestMerge.csv");
+        UtilsCSV.mergeModules(pathDestination,pathCommit+"\\fileResults\\resultTestMerge.csv");
         int numActual = NumberOfCharacters(pathDestination);
         assertEquals(numbDestination+numbMerge-1,numActual );
 

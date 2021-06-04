@@ -1,0 +1,12 @@
+[
+  {
+    "name": "javawriter-2.5.1",
+    "zipball_url": "https://api.github.com/repos/square/javapoet/zipball/refs/tags/javawriter-2.5.1",
+    "tarball_url": "https://api.github.com/repos/square/javapoet/tarball/refs/tags/javawriter-2.5.1",
+    "commit": {
+      "sha": "ffe1e0d82c97e2be0524dcbb42b12ee4de74df54",
+      "url": "https://api.github.com/repos/square/javapoet/commits/ffe1e0d82c97e2be0524dcbb42b12ee4de74df54"
+    },
+    "node_id": "MDM6UmVmNzk2MTk5MTpyZWZzL3RhZ3MvamF2YXdyaXRlci0yLjUuMQ=="
+  }
+]
