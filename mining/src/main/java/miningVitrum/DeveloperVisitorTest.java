@@ -70,8 +70,6 @@ public class DeveloperVisitorTest implements CommitVisitor {
                             .startVitrumCLI(pathOutput.getPath() + "/" + pathProject.getName() + "/" + commit.getHash()
                                     + "/" + moduleName, modulo, "");
 
-                    System.err.println("********************************** " + System.getProperty("user.dir"));
-
                     System.out.println("### VITRuM, progetto " + projectName +
                             " commit " + commit.getHash() + "-> START");
                     //int processComplete = runtimeProcess.waitFor(); // value 0 indicates normal termination
