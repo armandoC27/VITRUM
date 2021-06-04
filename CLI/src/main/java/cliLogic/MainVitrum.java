@@ -10,6 +10,9 @@ public class MainVitrum {
     private static String destinationPath;
     private static String librariesPath,projectFolder;
 
+    private static boolean isFlaky = false, isMutation = false, isLC = false;
+    private static int numFlaky = 10, numMutation = 10;
+
     public static void main(String[] args) {
 
         if(args.length== 0)
@@ -18,6 +21,10 @@ public class MainVitrum {
             System.exit(1);
         }
         cmd= initializeOptions(args);
+        if(cmd == null){
+            System.err.println("Errore nell'inserimento delle options!");
+            return;
+        }
         destinationPath = args[0];
 
         if(cmd.hasOption("mining")){
@@ -48,10 +55,7 @@ public class MainVitrum {
         MyStudyTest.startMining(reposFile,destinationPath);
     }
 
-    private static  void manageCLI(String[] args){
-        boolean isFlaky = false, isMutation = false, isLC = false;
-        int numFlaky = 10, numMutation = 10;
-
+    private static void manageCLI(String[] args){
         if(cmd.hasOption("flaky")) {
             isFlaky = true;
 
@@ -108,5 +112,29 @@ public class MainVitrum {
             e.printStackTrace();
         }
         return cmd;
+    }
+
+    public static CommandLine getCmd() {
+        return cmd;
+    }
+
+    public static boolean isIsFlaky() {
+        return isFlaky;
+    }
+
+    public static boolean isIsMutation() {
+        return isMutation;
+    }
+
+    public static boolean isIsLC() {
+        return isLC;
+    }
+
+    public static int getNumFlaky() {
+        return numFlaky;
+    }
+
+    public static int getNumMutation() {
+        return numMutation;
     }
 }

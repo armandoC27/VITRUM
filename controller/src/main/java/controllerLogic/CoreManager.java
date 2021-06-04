@@ -90,9 +90,11 @@ public class CoreManager {
             if(covergeFile.exists()){
                 FileUtils.forceDelete(new File(System.getProperty("user.home") + "\\.temevi" + "\\coverage.csv"));
             }
-            FileUtils.forceDelete(new File(System.getProperty("user.home") + "\\.temevi" + "\\jacoco.exec"));
+            File jacocoFile = new File(System.getProperty("user.home") + "\\.temevi" + "\\jacoco.exec");
+            if(jacocoFile.exists()){
+                FileUtils.forceDelete(new File(System.getProperty("user.home") + "\\.temevi" + "\\jacoco.exec"));
+            }
             try {
-
                 FileUtils.deleteDirectory(new File(System.getProperty("user.home") + "\\.temevi\\pitreport"));
 
             }catch(IOException e){

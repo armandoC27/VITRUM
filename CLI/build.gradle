@@ -10,6 +10,10 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation('org.junit.jupiter:junit-jupiter:5.5.2')
+    // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.7.0'
 
     // https://mvnrepository.com/artifact/commons-cli/commons-cli
     compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
