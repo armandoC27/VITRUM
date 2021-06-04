@@ -41,9 +41,6 @@ public class MainVitrumTest {
         };
 
         MainVitrum.main(args);
-        assertFalse(MainVitrum.isIsLC());
-        assertFalse(MainVitrum.isIsFlaky());
-        assertFalse(MainVitrum.isIsMutation());
         assertTrue(file.exists());
     }
 
