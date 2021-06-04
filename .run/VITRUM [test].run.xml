@@ -15,7 +15,7 @@
       </option>
       <option name="vmOptions" value="" />
     </ExternalSystemSettings>
-    <extension name="coverage" sample_coverage="false" />
+    <extension name="coverage" sample_coverage="false" track_test_folders="true" />
     <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
     <method v="2" />
   </configuration>
