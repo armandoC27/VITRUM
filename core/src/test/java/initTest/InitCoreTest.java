@@ -7,7 +7,26 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
 import java.io.File;
-
+/*The following files are used in this class:
+ *
+ *  1)  VITRUM\progettiTest\helloWorld
+ *       this directory contains an example of project without test
+ *
+ *  2)  VITRUM\progettiTest\jpacman-framework
+ *       is used to analyze a project
+ *
+ *  3)  VITRUM\plugin\lib\libTest
+ *       is used to make dinamyc analysis
+ *
+ *  4)  VITRUM\progettiTest\fileResults
+ *       is used to save the results of the operation
+ *
+ *  5)   C:\Users\<User Name>\.temevi
+ *          is used for configuration system
+ *
+ *  6)   C:\Users\<User Name>\.temevi\default_config.ini
+ *          is used for configuration system
+ * */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class InitCoreTest {
     private static String projectFolder;

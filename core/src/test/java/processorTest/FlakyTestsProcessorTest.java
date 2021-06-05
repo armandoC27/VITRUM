@@ -11,6 +11,15 @@ import java.util.Vector;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/*The following files are used in this class:
+ *
+ *  1)  VITRUM\progettiTest\jpacman-framework
+ *       is used to analyze a project
+ *
+ *  2)  VITRUM\progettiTest\fileResults
+ *       is used to save the results of the operation
+ *
+ * */
 
 public class FlakyTestsProcessorTest {
     private static String projectFolder;

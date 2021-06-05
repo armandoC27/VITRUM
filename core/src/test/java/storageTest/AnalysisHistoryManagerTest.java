@@ -9,7 +9,18 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//in questa classe di test si fa riferimento ai file 999999000000.csv e 999999111111.csv presenti nella cartella reports di jpacman-framework che si trova nella directory del progetto "progettiTest"
+/*The following files are used in this class:
+ *
+ *  1)  VITRUM\progettiTest\jpacman-framework
+ *       is used to analyze a project
+ *
+ *  2)  VITRUM\progettiTest\fileResults
+ *       is used to save the results of the operation
+ *
+ * in this class of tests reference is made to the files 999999999000000.csv and 999999999111111.csv
+ * present in the reports folder of jpacman-framework which is located in the project directory "progettiTest"
+ *
+ * */
 public class AnalysisHistoryManagerTest {
 
     private static String pathReports;

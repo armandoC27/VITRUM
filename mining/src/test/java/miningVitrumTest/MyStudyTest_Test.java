@@ -14,6 +14,13 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/*The following files are used in this class:
+ *
+ *  1)  VITRUM\progettiTest\fileResults\javapoet\resultTest.csv
+ *       is used verify the operation of MyStudyTest.startMining(fileWithProjects, destinationPath);
+ *
+ * */
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MyStudyTest_Test {
 

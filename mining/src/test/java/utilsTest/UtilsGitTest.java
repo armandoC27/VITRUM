@@ -11,6 +11,16 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*The following files are used in this class:
+ *
+ * 1)  VITRUM\progettiTest\jpacman-framework
+ *       is used to analyze a project
+ *
+ * 3)  VITRUM\\progettiTest\fileResults\risultatiFinali
+ *       is used to base output folder  of this operation : UtilsGit.getHashTag(UtilsGit.getTags(line,baseOutputDirectory))
+ *
+ *
+ * */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UtilsGitTest {
 

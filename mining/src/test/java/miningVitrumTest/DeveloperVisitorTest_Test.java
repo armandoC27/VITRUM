@@ -23,7 +23,14 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-
+/*The following files are used in this class:
+ *
+ *  1)  VITRUM\progettiTest\jpacman-framework
+ *       is used to analyze a project
+ *
+ *  2)  C:\Users\<User Name>\AppData\Local\Temp\output\jpacman-framework\6f703ade639d7d2c9a4152e748ad5696595f5226\resultTest.csv
+ *      is used to verify the operation of dev.process(s,c,null)
+ * */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DeveloperVisitorTest_Test {
 

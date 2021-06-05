@@ -11,6 +11,17 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/*The following files are used in this class:
+ *  1)  VITRUM\progettiTest\jpacman-framework
+ *       is used to analyze a project
+ *
+ *  2)  VITRUM\plugin\lib\libTest
+ *       is used to make dinamyc analysis
+ *
+ *  3)  VITRUM\progettiTest\fileResults
+ *       is used to save the results of the operation
+ * */
+
 public class CoreManagerTest {
 
     private static CoreManager coreManager;

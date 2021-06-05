@@ -8,6 +8,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 
+/*The following files are used in this class:
+*
+*  1)  VITRUM\progettiTest\mainVitrumTest\resultTest.csv
+*       is used to verify the correct creation of file
+*
+*  2)  VITRUM\progettiTest\jpacman-framework
+*       is used to analyze a project
+*
+*  3)  VITRUM\plugin\lib\libTest
+*       is used to make dinamyc analysis
+*
+*  4)  VITRUM\progettiTest\mainVitrumTest\javapoet\resultTest.csv
+*       is used to verify the correct creation of file
+* */
+
 public class MainVitrumTest {
     private static String path;
     private static String destinationPath;

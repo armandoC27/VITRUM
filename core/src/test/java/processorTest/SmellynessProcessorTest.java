@@ -16,7 +16,15 @@ import java.util.Vector;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+/*The following files are used in this class:
+ *
+ *  2)  VITRUM\progettiTest\jpacman-framework
+ *       is used to analyze a project
+ *
+ *  4)  VITRUM\progettiTest\fileResults
+ *       is used to save the results of the operation
+ *
+ * */
 public class SmellynessProcessorTest {
     private static String projectFolder;
     private static String projectSDK;

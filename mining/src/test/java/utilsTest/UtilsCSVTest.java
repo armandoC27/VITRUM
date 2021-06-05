@@ -16,6 +16,24 @@ import org.junit.jupiter.api.Test;
 import utils.UtilsCSV;
 import utils.UtilsGit;
 
+/*The following files are used in this class:
+ *
+ * 1)  VITRUM\progettiTest\fileResults\risultatiFinali\resultTest.csv
+ *       it is a destination of merging
+ *
+ * 2)  VITRUM\progettiTest\fileResults\resultTestMerge.csv
+ *       file that must be merged with 1)
+ *
+ * 3)  VITRUM\progettiTest\fileResults\cartella1\resultTest.csv
+ *       file that must be merged
+ *
+ * 4)  VITRUM\progettiTest\fileResults\cartella2\resultTest.csv
+ *       file that must be merged
+ *
+ * 5)  VITRUM\progettiTest\fileResults\risultatiFinali\javapoet\resultTest.csv
+ *       it is a  merge destination of 3) and 4)
+ *
+ * */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UtilsCSVTest {
 

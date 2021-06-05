@@ -13,6 +13,15 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*The following files are used in this class:
+ *
+ *  1)   C:\Users\<User Name>\.temevi
+ *          is used for configuration system
+ *
+ *  2)   C:\Users\<User Name>\.temevi\default_config.ini
+ *          is used for configuration system
+ *
+ * */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ConfigFileManagerTest {
 

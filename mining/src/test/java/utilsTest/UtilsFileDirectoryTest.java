@@ -8,7 +8,19 @@ import org.junit.jupiter.api.*;
 import utils.UtilsFileDirectory;
 
 import java.io.*;
-
+/*The following files are used in this class:
+ *
+ * 1)  VITRUM\progettiTest\jpacman-framework
+ *       is used to analyze a project
+ *
+ * 2)  VITRUM\progettiTest\fileResults\risultatiFinali\javapoet2\resultTest.csv
+ *       is used to verify a result of UtilsFileDirectory.addColumnsCSVTest(line,baseOutputDirectory);
+ *
+ * 3)  VITRUM\progettiTest\fileResults\risultatiFinali\javapoet3\resultTest.csv
+ *       is used to verify a result of UtilsFileDirectory.addColumnsCSVExtended(baseOutputDirectory);
+ *
+ *
+ * */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UtilsFileDirectoryTest {
 
