@@ -113,13 +113,10 @@ public class DeveloperVisitorTest_Test {
             }
         };
 
-
-
         SCMRepository s = new SCMRepository(scm,null,repo+"\\jpacman-framework",null,null);
 
 
         String baseOutputFolder = repo+"\\baseOutputFolder\\";
-
 
 
         String repoDir = "jpacman-framework";
@@ -128,8 +125,6 @@ public class DeveloperVisitorTest_Test {
         HashMap<String, String> hashTags = UtilsGit.getTags(line, baseOutputFolder);
 
         DeveloperVisitorTest dev= new DeveloperVisitorTest(repoDir,hashTags);
-
-
 
         dev.process(s,c,null);
 
@@ -142,7 +137,6 @@ public class DeveloperVisitorTest_Test {
     }
 
     private int NumberOfCharacters(String pathDestination) {
-
 
         File file = new File(pathDestination);
         FileInputStream fis = null;

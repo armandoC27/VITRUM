@@ -1,4 +1,4 @@
-package cliTest;
+package controllerTest;
 
 
 import controllerLogic.CoreManager;

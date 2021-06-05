@@ -67,8 +67,6 @@ public class AnalysisHistoryManager {
                             values.add(Double.parseDouble(data[pos]));
 
                         }
-
-
                     }
                 }
 

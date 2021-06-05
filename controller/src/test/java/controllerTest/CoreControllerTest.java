@@ -1,8 +1,7 @@
-package cliTest;
+package controllerTest;
 
 
 import controllerLogic.CoreController;
-import data.FlakyTestsInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

@@ -99,6 +99,10 @@ public class MyStudyTest implements Study {
                 UtilsCSV.mergeAllTest(hashCommits, line, developerVisitor.getPathCommit(), baseOutputFolder);
 
             }
+
+            //elimino la cartella output appena creata
+            UtilsFileDirectory.deleteDirectory(new File(System.getProperty("java.io.tmpdir")+"\\output"));
+
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
