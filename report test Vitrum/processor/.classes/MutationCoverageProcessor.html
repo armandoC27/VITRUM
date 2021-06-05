@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MutationCoverageProcessor</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">processor</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MutationCoverageProcessor (processor)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MutationCoverageProcessor</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (2/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84,6%
+  </span>
+  <span class="absValue">
+    (33/ 39)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package processor;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import data.ClassMutationCoverageInfo;
+<i>4</i>&nbsp;import data.TestProjectAnalysis;
+<i>5</i>&nbsp;import it.unisa.testSmellDiffusion.beans.ClassBean;
+<i>6</i>&nbsp;import it.unisa.testSmellDiffusion.utility.CoverageInfo;
+<i>7</i>&nbsp;import it.unisa.testSmellDiffusion.utility.PitestHTMLParser;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import java.io.File;
+<i>10</i>&nbsp;import java.text.SimpleDateFormat;
+<i>11</i>&nbsp;import java.util.Date;
+<i>12</i>&nbsp;import java.util.concurrent.TimeUnit;
+<i>13</i>&nbsp;import org.apache.log4j.Logger;
+<i>14</i>&nbsp;
+<b class="nc"><i>15</i>&nbsp;public class MutationCoverageProcessor {</b>
+<b class="fc"><i>16</i>&nbsp;    private static final Logger LOGGER = Logger.getLogger(&quot;global&quot;);</b>
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    public static ClassMutationCoverageInfo calculate(ClassBean testSuite, ClassBean productionClass, TestProjectAnalysis proj, long timeoutInSeconds) {
+<i>21</i>&nbsp;        try {
+<b class="fc"><i>22</i>&nbsp;            ClassMutationCoverageInfo mutationInfo = new ClassMutationCoverageInfo();</b>
+<b class="fc"><i>23</i>&nbsp;            double mutationCoverage = -1;</b>
+<i>24</i>&nbsp;            String mainBuildPath;
+<i>25</i>&nbsp;            String testBuildPath;
+<i>26</i>&nbsp;            String mainPath;
+<i>27</i>&nbsp;            String testPath;
+<b class="fc"><i>28</i>&nbsp;            String javaPath = proj.getJavaPath();</b>
+<b class="fc"><i>29</i>&nbsp;            boolean isMaven = proj.isMaven();</b>
+<b class="fc"><i>30</i>&nbsp;            String reportPath = proj.getConfigPath() + &quot;\\pitreport&quot;;</b>
+<b class="fc"><i>31</i>&nbsp;            mainPath = proj.getPath() + &quot;\\src\\main&quot;;</b>
+<b class="fc"><i>32</i>&nbsp;            testPath = proj.getPath() + &quot;\\src\\test&quot;;</b>
+<i>33</i>&nbsp;
+<b class="fc"><i>34</i>&nbsp;            if (!isMaven) {</b>
+<b class="nc"><i>35</i>&nbsp;                mainBuildPath = proj.getPath() + &quot;\\out\\production\\&quot; + proj.getName();</b>
+<b class="nc"><i>36</i>&nbsp;                testBuildPath = proj.getPath() + &quot;\\out\\test\\&quot; + proj.getName();</b>
+<i>37</i>&nbsp;            } else {
+<b class="fc"><i>38</i>&nbsp;                mainBuildPath = proj.getPath() + &quot;\\target\\classes\\&quot;;</b>
+<b class="fc"><i>39</i>&nbsp;                testBuildPath = proj.getPath() + &quot;\\target\\test-classes\\&quot;;</b>
+<i>40</i>&nbsp;            }
+<b class="fc"><i>41</i>&nbsp;            String cmd = &quot;\&quot;&quot; + javaPath + &quot;\&quot; -cp &quot; + mainBuildPath + &quot;;&quot; + testBuildPath + &quot;;&quot; + proj.getPluginPath() + &quot;\\*; &quot;</b>
+<b class="fc"><i>42</i>&nbsp;                    + &quot;org.pitest.mutationtest.commandline.MutationCoverageReport --reportDir &quot; + reportPath + &quot;\\&quot; + testSuite.getBelongingPackage() + &quot;.&quot; + testSuite.getName() + &quot; --targetClasses &quot; + productionClass.getBelongingPackage() + &quot;.&quot; + productionClass.getName() + &quot; &quot;</b>
+<b class="fc"><i>43</i>&nbsp;                    + &quot;--targetTests &quot; + testSuite.getBelongingPackage() + &quot;.&quot; + testSuite.getName() + &quot; --sourceDirs &quot; + mainPath + &quot;,&quot; + testPath;</b>
+<b class="fc"><i>44</i>&nbsp;            Runtime rt = Runtime.getRuntime();</b>
+<i>45</i>&nbsp;           // LOGGER.info(&quot;STARTING PITEST&quot;);
+<i>46</i>&nbsp;            //LOGGER.info(cmd);
+<b class="fc"><i>47</i>&nbsp;            Process p = rt.exec(cmd);</b>
+<i>48</i>&nbsp;
+<b class="fc"><i>49</i>&nbsp;            long time = System.currentTimeMillis();</b>
+<b class="fc"><i>50</i>&nbsp;            p.waitFor(timeoutInSeconds, TimeUnit.SECONDS);</b>
+<b class="fc"><i>51</i>&nbsp;            p.destroyForcibly();</b>
+<i>52</i>&nbsp;           // LOGGER.info(&quot;ENDING PITEST&quot;);
+<i>53</i>&nbsp;
+<b class="fc"><i>54</i>&nbsp;            SimpleDateFormat format = new SimpleDateFormat(&quot;yyyyMMddHHmm&quot;);</b>
+<b class="fc"><i>55</i>&nbsp;            String mutationFileName = format.format(new Date());</b>
+<b class="fc"><i>56</i>&nbsp;            mutationFileName = reportPath + &quot;\\&quot; + testSuite.getBelongingPackage() + &quot;.&quot; + testSuite.getName() + &quot;/&quot; + mutationFileName + &quot;/index.html&quot;;</b>
+<b class="fc"><i>57</i>&nbsp;            mutationInfo.setReportName(mutationFileName);</b>
+<b class="fc"><i>58</i>&nbsp;            if (new File(mutationFileName).exists()) {</b>
+<b class="fc"><i>59</i>&nbsp;                PitestHTMLParser pitHTML = new PitestHTMLParser(mutationFileName);</b>
+<b class="fc"><i>60</i>&nbsp;                CoverageInfo ci = pitHTML.getCoverageInfo();</b>
+<b class="fc"><i>61</i>&nbsp;                mutationCoverage = (double) Math.round((ci.getMutationCoverage())) / 100;</b>
+<b class="fc"><i>62</i>&nbsp;                mutationInfo.setMutationCoverage(mutationCoverage);</b>
+<b class="fc"><i>63</i>&nbsp;                mutationInfo.setMutatedLines(ci.getNumberOfMutatedLines());</b>
+<b class="fc"><i>64</i>&nbsp;                mutationInfo.setCoveredMutatedLines(ci.getCoveredMutatedLines());</b>
+<b class="fc"><i>65</i>&nbsp;            } else {</b>
+<b class="fc"><i>66</i>&nbsp;                mutationCoverage = Double.NaN;</b>
+<i>67</i>&nbsp;            }
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;            // }
+<b class="fc"><i>70</i>&nbsp;            return mutationInfo;</b>
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;
+<b class="nc"><i>73</i>&nbsp;        } catch (Exception e) {</b>
+<b class="nc"><i>74</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i>75</i>&nbsp;            return null;</b>
+<i>76</i>&nbsp;        }
+<i>77</i>&nbsp;    }
+<i>78</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-05 10:36</div>
+</div>
+</body>
+</html>

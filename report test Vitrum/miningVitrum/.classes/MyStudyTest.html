@@ -1,0 +1,195 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MyStudyTest</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">miningVitrum</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MyStudyTest (miningVitrum)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MyStudyTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    74,5%
+  </span>
+  <span class="absValue">
+    (38/ 51)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package miningVitrum;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.repodriller.RepoDriller;
+<i>4</i>&nbsp;import org.repodriller.RepositoryMining;
+<i>5</i>&nbsp;import org.repodriller.Study;
+<i>6</i>&nbsp;import org.repodriller.filter.range.Commits;
+<i>7</i>&nbsp;import org.repodriller.scm.GitRemoteRepository;
+<i>8</i>&nbsp;import utils.UtilsCSV;
+<i>9</i>&nbsp;import utils.UtilsFileDirectory;
+<i>10</i>&nbsp;import utils.UtilsGit;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import java.io.*;
+<i>13</i>&nbsp;import java.nio.file.Paths;
+<i>14</i>&nbsp;import java.util.HashMap;
+<i>15</i>&nbsp;import java.util.List;
+<i>16</i>&nbsp;
+<b class="fc"><i>17</i>&nbsp;public class MyStudyTest implements Study {</b>
+<i>18</i>&nbsp;    private static String file;
+<i>19</i>&nbsp;    private static String baseOutputFolder;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    public static void main(String[] args) {
+<b class="nc"><i>22</i>&nbsp;        file = args[0];</b>
+<b class="nc"><i>23</i>&nbsp;        baseOutputFolder = args[1];</b>
+<b class="nc"><i>24</i>&nbsp;        File fileOutputFolder = new File(baseOutputFolder);</b>
+<b class="nc"><i>25</i>&nbsp;        if (!fileOutputFolder.exists()) {</b>
+<b class="nc"><i>26</i>&nbsp;            fileOutputFolder.mkdirs();</b>
+<i>27</i>&nbsp;        }
+<b class="nc"><i>28</i>&nbsp;        new RepoDriller().start(new MyStudyTest());</b>
+<b class="nc"><i>29</i>&nbsp;    }</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    public static void startMining(String reposFile, String destinationPath) {
+<i>32</i>&nbsp;
+<b class="pc"><i>33</i>&nbsp;        if (destinationPath.endsWith(&quot;\\&quot;) || destinationPath.endsWith(&quot;/&quot;)) {</b>
+<b class="nc"><i>34</i>&nbsp;            baseOutputFolder = destinationPath;</b>
+<b class="pc"><i>35</i>&nbsp;        } else if (destinationPath.contains(&quot;\\&quot;)) {</b>
+<i>36</i>&nbsp;
+<b class="fc"><i>37</i>&nbsp;            baseOutputFolder = destinationPath + &quot;\\&quot;;</b>
+<i>38</i>&nbsp;        } else {
+<b class="nc"><i>39</i>&nbsp;            baseOutputFolder = destinationPath + &quot;/&quot;;</b>
+<i>40</i>&nbsp;        }
+<i>41</i>&nbsp;
+<b class="fc"><i>42</i>&nbsp;        file = reposFile;</b>
+<b class="fc"><i>43</i>&nbsp;        File fileOutputFolder = new File(baseOutputFolder);</b>
+<b class="pc"><i>44</i>&nbsp;        if (!fileOutputFolder.exists()) {</b>
+<b class="nc"><i>45</i>&nbsp;            fileOutputFolder.mkdirs();</b>
+<i>46</i>&nbsp;        }
+<b class="fc"><i>47</i>&nbsp;        new RepoDriller().start(new MyStudyTest());</b>
+<i>48</i>&nbsp;
+<b class="fc"><i>49</i>&nbsp;    }</b>
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    @Override
+<i>52</i>&nbsp;    public void execute() {
+<i>53</i>&nbsp;        DeveloperVisitorTest developerVisitor;
+<i>54</i>&nbsp;        try {
+<b class="fc"><i>55</i>&nbsp;            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));</b>
+<i>56</i>&nbsp;            String line;
+<b class="fc"><i>57</i>&nbsp;            for (line = br.readLine(); line != null; line = br.readLine()) {</b>
+<i>58</i>&nbsp;
+<b class="fc"><i>59</i>&nbsp;                String repoDir = UtilsGit.getNameFromGitUrl(line);</b>
+<b class="fc"><i>60</i>&nbsp;                File folder = new File(Paths.get(baseOutputFolder, repoDir).toString());</b>
+<i>61</i>&nbsp;
+<b class="pc"><i>62</i>&nbsp;                if (!folder.exists()) {</b>
+<b class="fc"><i>63</i>&nbsp;                    boolean mkdir = folder.mkdir();</b>
+<i>64</i>&nbsp;
+<b class="pc"><i>65</i>&nbsp;                    if (mkdir) {</b>
+<b class="fc"><i>66</i>&nbsp;                        System.out.println(&quot;### Creata directory &quot; + folder.getAbsolutePath());</b>
+<i>67</i>&nbsp;                    }
+<i>68</i>&nbsp;                }
+<i>69</i>&nbsp;
+<b class="fc"><i>70</i>&nbsp;                ProcessBuilder builder = new ProcessBuilder(&quot;curl&quot;, UtilsGit.getUrlTagsFromGitUrl(line));</b>
+<b class="fc"><i>71</i>&nbsp;                builder.redirectOutput(new File(baseOutputFolder + UtilsGit.getNameFromGitUrl(line) + &quot;/tag.json&quot;));</b>
+<i>72</i>&nbsp;
+<b class="fc"><i>73</i>&nbsp;                Process p = builder.start();</b>
+<b class="fc"><i>74</i>&nbsp;                p.waitFor();</b>
+<i>75</i>&nbsp;
+<b class="fc"><i>76</i>&nbsp;                HashMap&lt;String, String&gt; hashTags = UtilsGit.getTags(line, baseOutputFolder);</b>
+<i>77</i>&nbsp;
+<b class="fc"><i>78</i>&nbsp;                developerVisitor = new DeveloperVisitorTest(repoDir, hashTags);</b>
+<b class="fc"><i>79</i>&nbsp;                new RepositoryMining()</b>
+<b class="fc"><i>80</i>&nbsp;                        .in(</b>
+<b class="fc"><i>81</i>&nbsp;                                GitRemoteRepository.singleProject(line)</b>
+<i>82</i>&nbsp;                        )
+<b class="fc"><i>83</i>&nbsp;                        .through(Commits.list(UtilsGit.getHashTag(hashTags)))</b>
+<i>84</i>&nbsp;                        //.visitorsAreThreadSafe(true) // Threads are possible.
+<i>85</i>&nbsp;                        //.visitorsChangeRepoState(true) // Each thread needs its own copy of the repo.
+<i>86</i>&nbsp;                        //.withThreads() // Now pick a good number of threads for my machine.
+<b class="fc"><i>87</i>&nbsp;                        .process(developerVisitor)</b>
+<b class="fc"><i>88</i>&nbsp;                        .mine();</b>
+<i>89</i>&nbsp;
+<b class="fc"><i>90</i>&nbsp;                File file = new File(repoDir);</b>
+<b class="fc"><i>91</i>&nbsp;                boolean b = UtilsFileDirectory.deleteDirectory(file);</b>
+<i>92</i>&nbsp;
+<b class="pc"><i>93</i>&nbsp;                if (b) {</b>
+<b class="nc"><i>94</i>&nbsp;                    System.out.println(&quot;#### Cartella eliminata: &quot; + file);</b>
+<i>95</i>&nbsp;                }
+<b class="fc"><i>96</i>&nbsp;                UtilsFileDirectory.addColumnsCSVTest(line, baseOutputFolder);</b>
+<i>97</i>&nbsp;
+<b class="fc"><i>98</i>&nbsp;                List&lt;String&gt; hashCommits = developerVisitor.getHashCommit();</b>
+<b class="fc"><i>99</i>&nbsp;                UtilsCSV.mergeAllTest(hashCommits, line, developerVisitor.getPathCommit(), baseOutputFolder);</b>
+<i>100</i>&nbsp;
+<i>101</i>&nbsp;            }
+<i>102</i>&nbsp;
+<i>103</i>&nbsp;            //elimino la cartella output appena creata
+<b class="fc"><i>104</i>&nbsp;            UtilsFileDirectory.deleteDirectory(new File(System.getProperty(&quot;java.io.tmpdir&quot;)+&quot;\\output&quot;));</b>
+<i>105</i>&nbsp;
+<b class="nc"><i>106</i>&nbsp;        } catch (IOException | InterruptedException e) {</b>
+<b class="nc"><i>107</i>&nbsp;            e.printStackTrace();</b>
+<b class="fc"><i>108</i>&nbsp;        }</b>
+<i>109</i>&nbsp;
+<b class="fc"><i>110</i>&nbsp;    }</b>
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-05 10:36</div>
+</div>
+</body>
+</html>

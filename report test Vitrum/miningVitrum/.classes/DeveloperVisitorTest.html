@@ -1,0 +1,190 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DeveloperVisitorTest</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">miningVitrum</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DeveloperVisitorTest (miningVitrum)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DeveloperVisitorTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    89,4%
+  </span>
+  <span class="absValue">
+    (42/ 47)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package miningVitrum;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import controllerLogic.CoreController;
+<i>4</i>&nbsp;import org.repodriller.domain.Commit;
+<i>5</i>&nbsp;import org.repodriller.persistence.PersistenceMechanism;
+<i>6</i>&nbsp;import org.repodriller.scm.CommitVisitor;
+<i>7</i>&nbsp;import org.repodriller.scm.SCMRepository;
+<i>8</i>&nbsp;import utils.UtilsCSV;
+<i>9</i>&nbsp;import utils.UtilsFileDirectory;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;import java.io.File;
+<i>12</i>&nbsp;import java.io.IOException;
+<i>13</i>&nbsp;import java.nio.file.Paths;
+<i>14</i>&nbsp;import java.util.ArrayList;
+<i>15</i>&nbsp;import java.util.Collections;
+<i>16</i>&nbsp;import java.util.HashMap;
+<i>17</i>&nbsp;import java.util.List;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;public class DeveloperVisitorTest implements CommitVisitor {
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    private List&lt;String&gt; hashCommits;
+<i>22</i>&nbsp;    private HashMap&lt;String, String&gt; hashmapTag;
+<i>23</i>&nbsp;    private final String projectName;
+<i>24</i>&nbsp;    private final File pathOutput;
+<i>25</i>&nbsp;    private final File pathProject;
+<i>26</i>&nbsp;
+<b class="fc"><i>27</i>&nbsp;    public DeveloperVisitorTest(String projectName, HashMap&lt;String, String&gt; hashmapTag) {</b>
+<b class="fc"><i>28</i>&nbsp;        hashCommits = Collections.synchronizedList(new ArrayList&lt;String&gt;());</b>
+<b class="fc"><i>29</i>&nbsp;        this.hashmapTag = hashmapTag;</b>
+<b class="fc"><i>30</i>&nbsp;        this.projectName = projectName;</b>
+<b class="fc"><i>31</i>&nbsp;        pathOutput = UtilsFileDirectory.createTempDirectory(&quot;output&quot;);</b>
+<b class="fc"><i>32</i>&nbsp;        pathProject = UtilsFileDirectory.createTempDirectory(pathOutput.getName() + &quot;/&quot; + projectName);</b>
+<b class="fc"><i>33</i>&nbsp;    }</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    public List&lt;String&gt; getHashCommit() {
+<b class="fc"><i>36</i>&nbsp;        return hashCommits;</b>
+<i>37</i>&nbsp;    }
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    public String getPathCommit() {
+<b class="fc"><i>40</i>&nbsp;        return pathProject.getPath();</b>
+<i>41</i>&nbsp;    }
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    @Override
+<i>44</i>&nbsp;    public void process(SCMRepository repo, Commit commit, PersistenceMechanism writer) {
+<i>45</i>&nbsp;        try {
+<b class="fc"><i>46</i>&nbsp;            hashCommits.add(commit.getHash());</b>
+<i>47</i>&nbsp;
+<b class="fc"><i>48</i>&nbsp;            repo.getScm().checkout(commit.getHash());</b>
+<i>49</i>&nbsp;
+<b class="fc"><i>50</i>&nbsp;            String tempCsvPathPrefix = Paths.get(pathOutput.getName(), pathProject.getName(), commit.getHash()).toString();</b>
+<b class="fc"><i>51</i>&nbsp;            UtilsFileDirectory.createTempDirectory(tempCsvPathPrefix);</b>
+<b class="fc"><i>52</i>&nbsp;            UtilsFileDirectory.srcFolderInPath(repo.getPath());</b>
+<b class="fc"><i>53</i>&nbsp;            ArrayList&lt;String&gt; pathsModuli = UtilsFileDirectory.paths;</b>
+<b class="fc"><i>54</i>&nbsp;            UtilsFileDirectory.addColumnsCSVExtended(pathOutput.getPath() + &quot;/&quot; + pathProject.getName() + &quot;/&quot; + commit.getHash());</b>
+<i>55</i>&nbsp;
+<b class="fc"><i>56</i>&nbsp;            for (String modulo : pathsModuli) {</b>
+<i>57</i>&nbsp;                try {
+<b class="fc"><i>58</i>&nbsp;                    System.out.println(&quot;#### &quot; + repo.getPath() + &quot; Per il commit &quot; + commit.getHash() + &quot; analizzo il modulo &quot; + modulo);</b>
+<b class="fc"><i>59</i>&nbsp;                    int lastIndex = modulo.lastIndexOf(&quot;\\&quot;);</b>
+<b class="fc"><i>60</i>&nbsp;                    String moduleName = modulo.substring(lastIndex + 1);</b>
+<b class="fc"><i>61</i>&nbsp;                    String tempCsvModule = Paths.get(pathOutput.getName(), pathProject.getName(), commit.getHash(), moduleName).toString();</b>
+<b class="fc"><i>62</i>&nbsp;                    UtilsFileDirectory.createTempDirectory(tempCsvModule);</b>
+<i>63</i>&nbsp;//                    Process runtimeProcess = Runtime.getRuntime().exec
+<i>64</i>&nbsp;//                            (&quot;java -jar Vitrum.jar &quot; + modulo + &quot; &quot; + pathOutput.getPath() + &quot;/&quot; + pathProject.getName() + &quot;/&quot; + commit.getHash()
+<i>65</i>&nbsp;//                                            + &quot;/&quot; + moduleName,
+<i>66</i>&nbsp;//                                    null,
+<i>67</i>&nbsp;//                                    new File(&quot;/mining&quot;));
+<i>68</i>&nbsp;
+<b class="fc"><i>69</i>&nbsp;                    new CoreController(false, false, false, 0, 0)</b>
+<b class="fc"><i>70</i>&nbsp;                            .startVitrumCLI(pathOutput.getPath() + &quot;/&quot; + pathProject.getName() + &quot;/&quot; + commit.getHash()</b>
+<i>71</i>&nbsp;                                    + &quot;/&quot; + moduleName, modulo, &quot;&quot;);
+<i>72</i>&nbsp;
+<b class="fc"><i>73</i>&nbsp;                    System.out.println(&quot;### VITRuM, progetto &quot; + projectName +</b>
+<b class="fc"><i>74</i>&nbsp;                            &quot; commit &quot; + commit.getHash() + &quot;-&gt; START&quot;);</b>
+<i>75</i>&nbsp;                    //int processComplete = runtimeProcess.waitFor(); // value 0 indicates normal termination
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;//                    if (processComplete == 0) {
+<b class="fc"><i>78</i>&nbsp;                    System.out.println(&quot;## VITRuM, progetto &quot; + projectName +</b>
+<b class="fc"><i>79</i>&nbsp;                            &quot; commit &quot; + commit.getHash() + &quot;-&gt; END&quot;);</b>
+<b class="fc"><i>80</i>&nbsp;                    UtilsCSV.mergeModules(pathOutput.getPath() + &quot;/&quot; + pathProject.getName() + &quot;/&quot; + commit.getHash() + &quot;/&quot; + &quot;resultTest.csv&quot;,</b>
+<b class="fc"><i>81</i>&nbsp;                            pathOutput.getPath() + &quot;/&quot; + pathProject.getName() + &quot;/&quot; + commit.getHash() + &quot;/&quot; + moduleName + &quot;/&quot; + &quot;resultTest.csv&quot;);</b>
+<i>82</i>&nbsp;//                    }
+<b class="nc"><i>83</i>&nbsp;                } catch (Exception e) {</b>
+<b class="nc"><i>84</i>&nbsp;                    e.printStackTrace();</b>
+<b class="fc"><i>85</i>&nbsp;                }</b>
+<b class="fc"><i>86</i>&nbsp;            }</b>
+<b class="fc"><i>87</i>&nbsp;            pathsModuli.clear();</b>
+<b class="fc"><i>88</i>&nbsp;            String infoAggiuntive = hashmapTag.get(commit.getHash()) + &quot;;&quot; + commit.getHash() + &quot;;&quot; + commit.getDate().getTime() + &quot;;&quot;;</b>
+<b class="fc"><i>89</i>&nbsp;            String resultTest =</b>
+<b class="fc"><i>90</i>&nbsp;                    UtilsFileDirectory.createTempFile(tempCsvPathPrefix, &quot;resultTest.csv&quot;).getPath();</b>
+<i>91</i>&nbsp;
+<b class="fc"><i>92</i>&nbsp;            UtilsCSV.addInfoToCSVTest(resultTest, infoAggiuntive);</b>
+<i>93</i>&nbsp;
+<b class="nc"><i>94</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>95</i>&nbsp;            e.printStackTrace();</b>
+<i>96</i>&nbsp;        } finally {
+<b class="fc"><i>97</i>&nbsp;            repo.getScm().reset();</b>
+<b class="fc"><i>98</i>&nbsp;            boolean delete = pathOutput.delete();</b>
+<i>99</i>&nbsp;
+<b class="pc"><i>100</i>&nbsp;            if (delete) {</b>
+<b class="nc"><i>101</i>&nbsp;                System.out.println(&quot;### Directory output eliminata:&quot;);</b>
+<i>102</i>&nbsp;            }
+<i>103</i>&nbsp;
+<b class="fc"><i>104</i>&nbsp;        }</b>
+<b class="fc"><i>105</i>&nbsp;    }</b>
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-05 10:36</div>
+</div>
+</body>
+</html>

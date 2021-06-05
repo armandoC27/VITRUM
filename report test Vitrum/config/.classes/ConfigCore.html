@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ConfigCore</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">config</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ConfigCore (config)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ConfigCore</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90%
+  </span>
+  <span class="absValue">
+    (9/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package config;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.unisa.testSmellDiffusion.utility.FileUtility;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import javax.swing.*;
+<i>6</i>&nbsp;import java.io.File;
+<i>7</i>&nbsp;
+<b class="nc"><i>8</i>&nbsp;public class ConfigCore {</b>
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;    public static String configOption() {
+<i>11</i>&nbsp;       // TestSmellMetricsThresholdsList list = new ConfigFileHandler().readThresholds(new File(&quot;C:\\Users\\Psycho\\IdeaProjects\\ProgettoExample\\default_config.ini&quot;));
+<b class="fc"><i>12</i>&nbsp;        String userDir = System.getProperty(&quot;user.home&quot;);</b>
+<b class="fc"><i>13</i>&nbsp;        String pluginFolder = userDir + &quot;\\.temevi&quot;;</b>
+<b class="fc"><i>14</i>&nbsp;        File config = new File(pluginFolder + &quot;\\default_config.ini&quot;);</b>
+<b class="fc"><i>15</i>&nbsp;        if(!config.exists()){</b>
+<b class="fc"><i>16</i>&nbsp;            String output = &quot;[NONDA]&quot; +</b>
+<i>17</i>&nbsp;                    &quot;\nname=Number of Non-Documented Assertions &quot; +
+<i>18</i>&nbsp;                    &quot;\ndescription=Number of assert statements without a description &quot; +
+<i>19</i>&nbsp;                    &quot;\ndetectionThreshold=1.0 &quot; +
+<i>20</i>&nbsp;                    &quot;\nguardThreshold=3.0 &quot; +
+<i>21</i>&nbsp;                    &quot;\nbelongingSmells=ASSERTION_ROULETTE &quot; +
+<i>22</i>&nbsp;                    &quot;\n[APCMC]&quot; +
+<i>23</i>&nbsp;                    &quot;\nname=Average Production Class Methods Calls &quot; +
+<i>24</i>&nbsp;                    &quot;\ndescription=Number of production class&#39; methods calls in the test suite, divided by the number of test methods &quot; +
+<i>25</i>&nbsp;                    &quot;\ndetectionThreshold=1.0 &quot; +
+<i>26</i>&nbsp;                    &quot;\nguardThreshold=3.0 &quot; +
+<i>27</i>&nbsp;                    &quot;\nbelongingSmells=EAGER_TEST &quot; +
+<i>28</i>&nbsp;                    &quot;\n[MEXR] &quot; +
+<i>29</i>&nbsp;                    &quot;\nname=Methods using External Resources &quot; +
+<i>30</i>&nbsp;                    &quot;\ndescription=Number of external resources uses made by test methods&quot; +
+<i>31</i>&nbsp;                    &quot;\ndetectionThreshold=1.0 &quot; +
+<i>32</i>&nbsp;                    &quot;\nguardThreshold=3.0 &quot; +
+<i>33</i>&nbsp;                    &quot;\nbelongingSmells=MYSTERY_GUEST &quot; +
+<i>34</i>&nbsp;                    &quot;\n[NEXEA] &quot; +
+<i>35</i>&nbsp;                    &quot;\nname=Number of EXternal resources Existence Assumptions &quot; +
+<i>36</i>&nbsp;                    &quot;\ndescription=Number of assumptions made in test methods about the existence of external resources (e.g. Files, Database) &quot; +
+<i>37</i>&nbsp;                    &quot;\ndetectionThreshold=1.0 &quot; +
+<i>38</i>&nbsp;                    &quot;\nguardThreshold=3.0 &quot; +
+<i>39</i>&nbsp;                    &quot;\nbelongingSmells=RESOURCE_OPTIMISM &quot; +
+<i>40</i>&nbsp;                    &quot;\n[GFMR]&quot; +
+<i>41</i>&nbsp;                    &quot;\nname=General Fixture Methods Rate &quot; +
+<i>42</i>&nbsp;                    &quot;\ndescription=The rate of test methods not using all the set-up variables defined &quot; +
+<i>43</i>&nbsp;                    &quot;\ndetectionThreshold=1.0 &quot; +
+<i>44</i>&nbsp;                    &quot;\nguardThreshold=3.0 &quot; +
+<i>45</i>&nbsp;                    &quot;\nbelongingSmells=GENERAL_FIXTURE &quot; +
+<i>46</i>&nbsp;                    &quot;\n[MTOOR] &quot; +
+<i>47</i>&nbsp;                    &quot;\nname=Methods Testing Other Objects Rate &quot; +
+<i>48</i>&nbsp;                    &quot;\ndescription=The rate of methods testing objects which are different from the production class &quot; +
+<i>49</i>&nbsp;                    &quot;\ndetectionThreshold=1.0 &quot; +
+<i>50</i>&nbsp;                    &quot;\nguardThreshold=3.0 &quot; +
+<i>51</i>&nbsp;                    &quot;\nbelongingSmells=INDIRECT_TESTING &quot; +
+<i>52</i>&nbsp;                    &quot;\n[TSEC] &quot; +
+<i>53</i>&nbsp;                    &quot;\nname=toString invocations in Equality Checks &quot; +
+<i>54</i>&nbsp;                    &quot;\ndescription=The number of toString invocations in equality checks &quot; +
+<i>55</i>&nbsp;                    &quot;\ndetectionThreshold=1.0 &quot; +
+<i>56</i>&nbsp;                    &quot;\nguardThreshold=3.0 &quot; +
+<i>57</i>&nbsp;                    &quot;\nbelongingSmells=SENSITIVE_EQUALITY&quot;;
+<b class="fc"><i>58</i>&nbsp;            File plugin = new File(pluginFolder);</b>
+<b class="fc"><i>59</i>&nbsp;            plugin.mkdirs();</b>
+<b class="fc"><i>60</i>&nbsp;            FileUtility.writeFile(output, pluginFolder + &quot;\\&quot; + &quot;default_config.ini&quot;);</b>
+<i>61</i>&nbsp;        }
+<b class="fc"><i>62</i>&nbsp;        return pluginFolder;</b>
+<i>63</i>&nbsp;    }
+<i>64</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-05 10:36</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: UtilsCSV</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">utils</a> ]
+</div>
+
+<h1>Coverage Summary for Class: UtilsCSV (utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UtilsCSV</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88%
+  </span>
+  <span class="absValue">
+    (73/ 83)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package utils;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.io.*;
+<i>4</i>&nbsp;import java.nio.file.Paths;
+<i>5</i>&nbsp;import java.util.List;
+<i>6</i>&nbsp;
+<b class="nc"><i>7</i>&nbsp;public class UtilsCSV {</b>
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;    protected static final String RESULT_TEST_CSV = &quot;resultTest.csv&quot;;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    public static void mergeCSVTest(String pathDestination, String nomeFile, String hashCommit,
+<i>12</i>&nbsp;                                String pathCommit) throws IOException {
+<i>13</i>&nbsp;
+<b class="fc"><i>14</i>&nbsp;        nomeFile = Paths.get(pathCommit, hashCommit, nomeFile).toString();</b>
+<b class="fc"><i>15</i>&nbsp;        System.out.println(&quot;#### merge di &quot; + nomeFile);</b>
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;
+<b class="fc"><i>19</i>&nbsp;        BufferedReader br = null;</b>
+<b class="fc"><i>20</i>&nbsp;        final String lineSep = System.getProperty(&quot;line.separator&quot;);</b>
+<b class="fc"><i>21</i>&nbsp;        File file = new File(nomeFile);</b>
+<b class="fc"><i>22</i>&nbsp;        Writer output = new BufferedWriter(new FileWriter(pathDestination, true));</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;        try {
+<i>25</i>&nbsp;            //names don&#39;t conflict or just use different folders
+<b class="fc"><i>26</i>&nbsp;            br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));</b>
+<i>27</i>&nbsp;            String line;
+<b class="fc"><i>28</i>&nbsp;            int i = 0;</b>
+<i>29</i>&nbsp;
+<b class="pc"><i>30</i>&nbsp;            for (line = br.readLine(); line != null; line = br.readLine(), i++) {</b>
+<b class="fc"><i>31</i>&nbsp;                if (i != 0) {</b>
+<i>32</i>&nbsp;
+<b class="fc"><i>33</i>&nbsp;                    String[] lineArray = line.split(&quot;;&quot;);</b>
+<b class="fc"><i>34</i>&nbsp;                    line = &quot;&quot;;</b>
+<b class="fc"><i>35</i>&nbsp;                    for(int y = 0; y &lt; lineArray.length; y++) {</b>
+<b class="fc"><i>36</i>&nbsp;                        if (!(y == 9 || y == 10 || y == 11 || y ==12)) {</b>
+<b class="fc"><i>37</i>&nbsp;                            line += lineArray[y] + &quot;;&quot;;</b>
+<i>38</i>&nbsp;                        }
+<i>39</i>&nbsp;                    }
+<b class="fc"><i>40</i>&nbsp;                    line=line.substring(0,line.length()-1);</b>
+<i>41</i>&nbsp;
+<b class="fc"><i>42</i>&nbsp;                    output.append(line).append(lineSep);</b>
+<i>43</i>&nbsp;                } else {
+<i>44</i>&nbsp;                }
+<i>45</i>&nbsp;            }
+<b class="nc"><i>46</i>&nbsp;        } catch (Exception e) {</b>
+<b class="nc"><i>47</i>&nbsp;            e.printStackTrace();</b>
+<i>48</i>&nbsp;        } finally {
+<b class="pc"><i>49</i>&nbsp;            if (br != null)</b>
+<b class="fc"><i>50</i>&nbsp;                br.close();</b>
+<b class="fc"><i>51</i>&nbsp;            output.close();</b>
+<b class="fc"><i>52</i>&nbsp;        }</b>
+<b class="fc"><i>53</i>&nbsp;    }</b>
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    public static void mergeAllTest(List&lt;String&gt; hashCommits, String line, String pathCommit, String baseOutputFolder) {
+<b class="fc"><i>56</i>&nbsp;        for (String hashCommit : hashCommits) {</b>
+<i>57</i>&nbsp;            try {
+<b class="fc"><i>58</i>&nbsp;                String repoName = UtilsGit.getNameFromGitUrl(line);</b>
+<b class="fc"><i>59</i>&nbsp;                String repoDir = Paths.get(baseOutputFolder + repoName).toString();</b>
+<i>60</i>&nbsp;
+<b class="fc"><i>61</i>&nbsp;                UtilsCSV.mergeCSVTest(Paths.get(repoDir, RESULT_TEST_CSV).toString(), RESULT_TEST_CSV,</b>
+<i>62</i>&nbsp;                        hashCommit, pathCommit);
+<i>63</i>&nbsp;
+<b class="nc"><i>64</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>65</i>&nbsp;                e.printStackTrace();</b>
+<b class="fc"><i>66</i>&nbsp;            }</b>
+<b class="fc"><i>67</i>&nbsp;        }</b>
+<b class="fc"><i>68</i>&nbsp;    }</b>
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    public static void addInfoToCSVTest(String nomeFile, String support) throws IOException {
+<b class="fc"><i>71</i>&nbsp;        BufferedReader br = null;</b>
+<b class="fc"><i>72</i>&nbsp;        BufferedWriter bw = null;</b>
+<b class="fc"><i>73</i>&nbsp;        final String lineSep = System.getProperty(&quot;line.separator&quot;);</b>
+<b class="fc"><i>74</i>&nbsp;        File file = null, file2 = null;</b>
+<i>75</i>&nbsp;        try {
+<b class="fc"><i>76</i>&nbsp;            file = new File(nomeFile);</b>
+<b class="fc"><i>77</i>&nbsp;            file2 = new File(nomeFile + &quot;1&quot;);//so the</b>
+<i>78</i>&nbsp;            //names don&#39;t conflict or just use different folders
+<b class="fc"><i>79</i>&nbsp;            br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));</b>
+<b class="fc"><i>80</i>&nbsp;            bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file2)));</b>
+<i>81</i>&nbsp;            String line;
+<i>82</i>&nbsp;            String addedColumn;
+<b class="fc"><i>83</i>&nbsp;            int i = 0;</b>
+<b class="pc"><i>84</i>&nbsp;            for (line = br.readLine(); line != null; line = br.readLine(), i++) {</b>
+<b class="fc"><i>85</i>&nbsp;                if (i == 0) {</b>
+<b class="fc"><i>86</i>&nbsp;                    addedColumn = &quot;NameTag;HashCommit;Date;&quot;;</b>
+<i>87</i>&nbsp;                } else {
+<b class="fc"><i>88</i>&nbsp;                    addedColumn = support;</b>
+<i>89</i>&nbsp;                }
+<b class="fc"><i>90</i>&nbsp;                bw.write(addedColumn + line + lineSep);</b>
+<i>91</i>&nbsp;            }
+<b class="nc"><i>92</i>&nbsp;        } catch (Exception e) {</b>
+<b class="nc"><i>93</i>&nbsp;            e.printStackTrace();</b>
+<i>94</i>&nbsp;        } finally {
+<b class="pc"><i>95</i>&nbsp;            if (br != null)</b>
+<b class="fc"><i>96</i>&nbsp;                br.close();</b>
+<b class="pc"><i>97</i>&nbsp;            if (bw != null)</b>
+<b class="fc"><i>98</i>&nbsp;                bw.close();</b>
+<b class="pc"><i>99</i>&nbsp;            if(file != null) {</b>
+<b class="fc"><i>100</i>&nbsp;                boolean delete = file.delete();</b>
+<i>101</i>&nbsp;
+<b class="pc"><i>102</i>&nbsp;                if(delete){</b>
+<b class="fc"><i>103</i>&nbsp;                    System.out.println(&quot;### File eliminato &quot;+nomeFile);</b>
+<i>104</i>&nbsp;                }
+<i>105</i>&nbsp;            }
+<i>106</i>&nbsp;
+<b class="fc"><i>107</i>&nbsp;            File fBuffer = new File(nomeFile);</b>
+<i>108</i>&nbsp;
+<b class="pc"><i>109</i>&nbsp;            if(file2!=null){</b>
+<b class="fc"><i>110</i>&nbsp;                boolean b = file2.renameTo(fBuffer);</b>
+<i>111</i>&nbsp;
+<b class="pc"><i>112</i>&nbsp;                if(b){</b>
+<b class="fc"><i>113</i>&nbsp;                    System.out.println(&quot;### File rinominato &quot;+fBuffer);</b>
+<i>114</i>&nbsp;                }
+<i>115</i>&nbsp;            }
+<b class="fc"><i>116</i>&nbsp;        }</b>
+<b class="fc"><i>117</i>&nbsp;    }</b>
+<i>118</i>&nbsp;
+<i>119</i>&nbsp;    public static void mergeModules(String pathDestination, String pathSource) throws IOException {
+<b class="fc"><i>120</i>&nbsp;        BufferedReader br = null;</b>
+<b class="fc"><i>121</i>&nbsp;        final String lineSep = System.getProperty(&quot;line.separator&quot;);</b>
+<b class="fc"><i>122</i>&nbsp;        File file = new File(pathSource);</b>
+<i>123</i>&nbsp;
+<b class="pc"><i>124</i>&nbsp;        if(!file.exists())</b>
+<b class="nc"><i>125</i>&nbsp;            return;</b>
+<i>126</i>&nbsp;
+<b class="fc"><i>127</i>&nbsp;        Writer output = new BufferedWriter(new FileWriter(pathDestination, true));</b>
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;        try {
+<i>130</i>&nbsp;            //names don&#39;t conflict or just use different folders
+<b class="fc"><i>131</i>&nbsp;            br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));</b>
+<i>132</i>&nbsp;            String line;
+<b class="fc"><i>133</i>&nbsp;            int i = 0;</b>
+<i>134</i>&nbsp;
+<b class="pc"><i>135</i>&nbsp;            for (line = br.readLine(); line != null; line = br.readLine(), i++) {</b>
+<b class="fc"><i>136</i>&nbsp;                if (i != 0) {</b>
+<b class="fc"><i>137</i>&nbsp;                    output.append(line).append(lineSep);</b>
+<i>138</i>&nbsp;                }
+<i>139</i>&nbsp;            }
+<b class="nc"><i>140</i>&nbsp;        } catch (Exception e) {</b>
+<b class="nc"><i>141</i>&nbsp;            e.printStackTrace();</b>
+<i>142</i>&nbsp;        } finally {
+<b class="pc"><i>143</i>&nbsp;            if (br != null)</b>
+<b class="fc"><i>144</i>&nbsp;                br.close();</b>
+<b class="fc"><i>145</i>&nbsp;            output.close();</b>
+<b class="fc"><i>146</i>&nbsp;        }</b>
+<b class="fc"><i>147</i>&nbsp;    }</b>
+<i>148</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-05 10:36</div>
+</div>
+</body>
+</html>

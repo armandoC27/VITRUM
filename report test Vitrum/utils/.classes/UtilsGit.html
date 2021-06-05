@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: UtilsGit</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">utils</a> ]
+</div>
+
+<h1>Coverage Summary for Class: UtilsGit (utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UtilsGit</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87%
+  </span>
+  <span class="absValue">
+    (20/ 23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package utils;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.json.simple.JSONArray;
+<i>4</i>&nbsp;import org.json.simple.JSONObject;
+<i>5</i>&nbsp;import org.json.simple.parser.JSONParser;
+<i>6</i>&nbsp;import org.json.simple.parser.ParseException;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import java.io.FileReader;
+<i>9</i>&nbsp;import java.io.IOException;
+<i>10</i>&nbsp;import java.util.ArrayList;
+<i>11</i>&nbsp;import java.util.HashMap;
+<i>12</i>&nbsp;import java.util.List;
+<i>13</i>&nbsp;
+<b class="nc"><i>14</i>&nbsp;public class UtilsGit {</b>
+<i>15</i>&nbsp;    public static String getNameFromGitUrl(String gitUrl){
+<b class="fc"><i>16</i>&nbsp;        int indexFirst = gitUrl.lastIndexOf(&quot;/&quot;);</b>
+<b class="fc"><i>17</i>&nbsp;        return gitUrl.substring(indexFirst+1,gitUrl.length()-4);</b>
+<i>18</i>&nbsp;    }
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    public static String getUrlTagsFromGitUrl(String gitUrl){
+<b class="fc"><i>21</i>&nbsp;       String firstPart = gitUrl.substring(0, gitUrl.lastIndexOf(&quot;/&quot;));</b>
+<b class="fc"><i>22</i>&nbsp;       String secondPart = gitUrl.substring(firstPart.lastIndexOf(&quot;/&quot;)+1, gitUrl.length()-4);</b>
+<i>23</i>&nbsp;
+<b class="fc"><i>24</i>&nbsp;        return &quot;https://api.github.com/repos/&quot;+secondPart+&quot;/tags&quot;;</b>
+<i>25</i>&nbsp;    }
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    public static HashMap&lt;String,String&gt; getTags(String url, String baseOutputFolder) {
+<b class="fc"><i>28</i>&nbsp;        HashMap&lt;String,String&gt; hashMap = new HashMap&lt;&gt;();</b>
+<b class="fc"><i>29</i>&nbsp;        JSONParser parser = new JSONParser();</b>
+<i>30</i>&nbsp;        JSONArray a;
+<i>31</i>&nbsp;        try {
+<b class="fc"><i>32</i>&nbsp;            a = (JSONArray) parser.parse(new FileReader(baseOutputFolder + UtilsGit.getNameFromGitUrl(url) + &quot;/tag.json&quot;));</b>
+<b class="pc"><i>33</i>&nbsp;            for (Object o : a) {</b>
+<b class="fc"><i>34</i>&nbsp;                JSONObject info = (JSONObject) o;</b>
+<b class="fc"><i>35</i>&nbsp;                JSONObject commit = (JSONObject) info.get(&quot;commit&quot;);</b>
+<i>36</i>&nbsp;
+<b class="fc"><i>37</i>&nbsp;                hashMap.put(commit.get(&quot;sha&quot;).toString(),info.get(&quot;name&quot;).toString());</b>
+<b class="fc"><i>38</i>&nbsp;            }</b>
+<b class="nc"><i>39</i>&nbsp;        } catch (IOException | ParseException e) {</b>
+<b class="nc"><i>40</i>&nbsp;            e.printStackTrace();</b>
+<b class="fc"><i>41</i>&nbsp;        }</b>
+<b class="fc"><i>42</i>&nbsp;        return hashMap;</b>
+<i>43</i>&nbsp;    }
+<i>44</i>&nbsp;    public static List&lt;String&gt; getHashTag(HashMap&lt;String,String&gt; hashTag){
+<b class="fc"><i>45</i>&nbsp;        List&lt;String&gt; arrayReturn = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>46</i>&nbsp;        for (String s : hashTag.keySet()){</b>
+<b class="fc"><i>47</i>&nbsp;            arrayReturn.add(s);</b>
+<b class="fc"><i>48</i>&nbsp;        }</b>
+<b class="fc"><i>49</i>&nbsp;        return arrayReturn;</b>
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-05 10:36</div>
+</div>
+</body>
+</html>

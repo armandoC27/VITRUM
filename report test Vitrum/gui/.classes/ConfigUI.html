@@ -1,0 +1,349 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ConfigUI</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">gui</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ConfigUI (gui)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ConfigUI</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 83)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ConfigUI$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 15)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ConfigUI$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ConfigUI$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 106)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package gui;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.intellij.ui.components.JBScrollPane;
+<i>4</i>&nbsp;import config.TestSmellMetricsThresholdsList;
+<i>5</i>&nbsp;import storage.ConfigFileManager;
+<i>6</i>&nbsp;import config.TestSmellMetricThresholds;
+<i>7</i>&nbsp;import org.apache.commons.io.FileUtils;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import javax.swing.*;
+<i>10</i>&nbsp;import javax.swing.border.Border;
+<i>11</i>&nbsp;import javax.swing.border.EmptyBorder;
+<i>12</i>&nbsp;import java.awt.*;
+<i>13</i>&nbsp;import java.awt.event.ActionEvent;
+<i>14</i>&nbsp;import java.awt.event.ActionListener;
+<i>15</i>&nbsp;import java.io.File;
+<i>16</i>&nbsp;import java.util.*;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;public class ConfigUI extends JFrame {
+<i>19</i>&nbsp;    private HashMap&lt;TestSmellMetricThresholds, Map.Entry&lt;JTextField, JTextField&gt;&gt; fields;
+<i>20</i>&nbsp;    private TestSmellMetricsThresholdsList metrics;
+<i>21</i>&nbsp;    private ArrayList&lt;TestSmellMetricThresholds&gt; metricsList;
+<i>22</i>&nbsp;    private JButton save;
+<i>23</i>&nbsp;    private JButton restore;
+<i>24</i>&nbsp;    private JButton exit;
+<i>25</i>&nbsp;    private File default_conf;
+<i>26</i>&nbsp;    private File conf;
+<i>27</i>&nbsp;    private String projdir;
+<i>28</i>&nbsp;    private JPanel gridPanel;
+<i>29</i>&nbsp;    // private SmellsThresholds thresholds;
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;
+<b class="nc"><i>32</i>&nbsp;    public ConfigUI(String projdir) throws HeadlessException {</b>
+<b class="nc"><i>33</i>&nbsp;        gridPanel = new JPanel();</b>
+<b class="nc"><i>34</i>&nbsp;        fields = new HashMap&lt;&gt;();</b>
+<b class="nc"><i>35</i>&nbsp;        this.projdir = projdir;</b>
+<b class="nc"><i>36</i>&nbsp;        this.setTitle(&quot;Metrics Thresholds Configuration&quot;);</b>
+<b class="nc"><i>37</i>&nbsp;        File default_conf = new File(System.getProperty(&quot;user.home&quot;) + &quot;\\.temevi&quot; + &quot;\\default_config.ini&quot;);</b>
+<b class="nc"><i>38</i>&nbsp;        File conf = new File(System.getProperty(&quot;user.home&quot;) + &quot;\\.temevi&quot; + &quot;\\config.ini&quot;);</b>
+<i>39</i>&nbsp;       /*if(!default_conf.exists()) {
+<i>40</i>&nbsp;            thresholds = new SmellsThresholds(1,1,1,1,1,1,1,1,1);
+<i>41</i>&nbsp;            new ConfigFileHandler().writeThresholds(new File(projdir + &quot;\\default_config.ini&quot;), thresholds);
+<i>42</i>&nbsp;        }*/
+<b class="nc"><i>43</i>&nbsp;        if (conf.exists())</b>
+<b class="nc"><i>44</i>&nbsp;            metrics = new ConfigFileManager().readThresholds(conf);</b>
+<i>45</i>&nbsp;        else
+<b class="nc"><i>46</i>&nbsp;            metrics = new ConfigFileManager().readThresholds(default_conf);</b>
+<i>47</i>&nbsp;
+<b class="nc"><i>48</i>&nbsp;        metricsList = metrics.getThresholds();</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;
+<b class="nc"><i>51</i>&nbsp;        for (TestSmellMetricThresholds metric : metricsList) {</b>
+<b class="nc"><i>52</i>&nbsp;            JTextField detectionThresholdField = new JTextField(4);</b>
+<b class="nc"><i>53</i>&nbsp;            detectionThresholdField.setText(&quot;&quot; + metric.getDetectionThreshold());</b>
+<b class="nc"><i>54</i>&nbsp;            JTextField guardThresholdField = new JTextField(4);</b>
+<b class="nc"><i>55</i>&nbsp;            guardThresholdField.setText(&quot;&quot; + metric.getGuardThreshold());</b>
+<b class="nc"><i>56</i>&nbsp;            fields.put(metric, new AbstractMap.SimpleEntry&lt;&gt;(detectionThresholdField, guardThresholdField));</b>
+<b class="nc"><i>57</i>&nbsp;        }</b>
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;        // System.out.println(arThresholds.get(0).getText());
+<b class="nc"><i>60</i>&nbsp;        save = new JButton(&quot;Save&quot;);</b>
+<b class="nc"><i>61</i>&nbsp;        restore = new JButton(&quot;Restore default&quot;);</b>
+<b class="nc"><i>62</i>&nbsp;        exit = new JButton(&quot;Exit&quot;);</b>
+<b class="nc"><i>63</i>&nbsp;        setPreferredSize(new Dimension(800, 600));</b>
+<b class="nc"><i>64</i>&nbsp;        add(createPanel(), BorderLayout.CENTER);</b>
+<b class="nc"><i>65</i>&nbsp;        add(buttonPanel(), BorderLayout.SOUTH);</b>
+<b class="nc"><i>66</i>&nbsp;        pack();</b>
+<b class="nc"><i>67</i>&nbsp;        setLocationRelativeTo(null);</b>
+<i>68</i>&nbsp;    }
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    public JScrollPane createPanel() {
+<b class="nc"><i>72</i>&nbsp;        Border margin = new EmptyBorder(10, 40, 10, 10);</b>
+<b class="nc"><i>73</i>&nbsp;        JPanel extPanel = new JPanel();</b>
+<b class="nc"><i>74</i>&nbsp;        extPanel.setBorder(margin);</b>
+<b class="nc"><i>75</i>&nbsp;        extPanel.setLayout(new FlowLayout(FlowLayout.LEFT));</b>
+<b class="nc"><i>76</i>&nbsp;        int size = metricsList.size();</b>
+<b class="nc"><i>77</i>&nbsp;        gridPanel.setLayout(new GridLayout((size * 5), 1));</b>
+<b class="nc"><i>78</i>&nbsp;        JScrollPane scrollPane = new JBScrollPane(extPanel);</b>
+<b class="nc"><i>79</i>&nbsp;        for (TestSmellMetricThresholds metrics : metricsList) {</b>
+<b class="nc"><i>80</i>&nbsp;            Map.Entry&lt;JTextField, JTextField&gt; entry = fields.get(metrics);</b>
+<b class="nc"><i>81</i>&nbsp;            JTextField detection = entry.getKey();</b>
+<b class="nc"><i>82</i>&nbsp;            JTextField guard = entry.getValue();</b>
+<b class="nc"><i>83</i>&nbsp;            addMetricPanel(metrics, detection, guard);</b>
+<b class="nc"><i>84</i>&nbsp;            gridPanel.add(new MyLine());</b>
+<b class="nc"><i>85</i>&nbsp;        }</b>
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;
+<b class="nc"><i>88</i>&nbsp;        extPanel.add(gridPanel);</b>
+<i>89</i>&nbsp;        //    scrollPane.add(arPanel);
+<i>90</i>&nbsp;        //  panel.add(scrollPane);
+<i>91</i>&nbsp;
+<b class="nc"><i>92</i>&nbsp;        return scrollPane;</b>
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;    }
+<i>95</i>&nbsp;
+<i>96</i>&nbsp;    private JPanel buttonPanel() {
+<b class="nc"><i>97</i>&nbsp;        JPanel panel = new JPanel();</b>
+<b class="nc"><i>98</i>&nbsp;        save.addActionListener(new ActionListener() {</b>
+<i>99</i>&nbsp;            @Override
+<i>100</i>&nbsp;            public void actionPerformed(ActionEvent actionEvent) {
+<i>101</i>&nbsp;                try {
+<b class="nc"><i>102</i>&nbsp;                    for (TestSmellMetricThresholds thresholds : metricsList) {</b>
+<b class="nc"><i>103</i>&nbsp;                        Map.Entry&lt;JTextField, JTextField&gt; entry = fields.get(thresholds);</b>
+<b class="nc"><i>104</i>&nbsp;                        JTextField detection = entry.getKey();</b>
+<b class="nc"><i>105</i>&nbsp;                        JTextField guard = entry.getValue();</b>
+<b class="nc"><i>106</i>&nbsp;                        double det = Double.parseDouble(detection.getText());</b>
+<b class="nc"><i>107</i>&nbsp;                        double gua = Double.parseDouble(guard.getText());</b>
+<i>108</i>&nbsp;
+<b class="nc"><i>109</i>&nbsp;                        thresholds.setDetectionThreshold(det);</b>
+<b class="nc"><i>110</i>&nbsp;                        thresholds.setGuardThreshold(gua);</b>
+<b class="nc"><i>111</i>&nbsp;                    }</b>
+<i>112</i>&nbsp;
+<b class="nc"><i>113</i>&nbsp;                    new ConfigFileManager().writeThresholds(new File(projdir + &quot;\\config.ini&quot;), metricsList);</b>
+<b class="nc"><i>114</i>&nbsp;                    JOptionPane.showMessageDialog(null, &quot;NUOVE SOGLIE SALVATE CON SUCCESSO!&quot;);</b>
+<b class="nc"><i>115</i>&nbsp;                } catch (NumberFormatException e) {</b>
+<b class="nc"><i>116</i>&nbsp;                    JOptionPane.showMessageDialog(panel, &quot;IL FORMATO DELLA SOGLIA NON RISPETTA IL TIPO DOUBLE!&quot;);</b>
+<b class="nc"><i>117</i>&nbsp;                }</b>
+<i>118</i>&nbsp;            }
+<i>119</i>&nbsp;        });
+<b class="nc"><i>120</i>&nbsp;        panel.add(save);</b>
+<b class="nc"><i>121</i>&nbsp;        restore.addActionListener(new ActionListener() {</b>
+<i>122</i>&nbsp;            @Override
+<i>123</i>&nbsp;            public void actionPerformed(ActionEvent actionEvent) {
+<i>124</i>&nbsp;                try {
+<b class="nc"><i>125</i>&nbsp;                    FileUtils.forceDelete(conf);</b>
+<b class="nc"><i>126</i>&nbsp;                    ConfigUI.this.dispose();</b>
+<b class="nc"><i>127</i>&nbsp;                } catch (Exception e) {</b>
+<b class="nc"><i>128</i>&nbsp;                    e.printStackTrace();</b>
+<b class="nc"><i>129</i>&nbsp;                }</b>
+<i>130</i>&nbsp;            }
+<i>131</i>&nbsp;        });
+<b class="nc"><i>132</i>&nbsp;        panel.add(restore);</b>
+<b class="nc"><i>133</i>&nbsp;        exit.addActionListener(new ActionListener() {</b>
+<i>134</i>&nbsp;            @Override
+<i>135</i>&nbsp;            public void actionPerformed(ActionEvent actionEvent) {
+<b class="nc"><i>136</i>&nbsp;                dispose();</b>
+<i>137</i>&nbsp;            }
+<i>138</i>&nbsp;        });
+<b class="nc"><i>139</i>&nbsp;        panel.add(exit);</b>
+<b class="nc"><i>140</i>&nbsp;        return panel;</b>
+<i>141</i>&nbsp;    }
+<i>142</i>&nbsp;
+<i>143</i>&nbsp;    private JPanel valuePanel(JTextField field, String label) {
+<b class="nc"><i>144</i>&nbsp;        JPanel valuePanel = new JPanel(new FlowLayout());</b>
+<i>145</i>&nbsp;        //  System.out.println(field.getText());
+<i>146</i>&nbsp;        //    valuePanel.add(new JLabel(&quot;&quot; + nome+ &quot;:  &quot;));
+<b class="nc"><i>147</i>&nbsp;        valuePanel.add(new JLabel(&quot;&lt;html&gt;&quot; + label + &quot;:&amp;nbsp;&lt;/html&gt;&quot;));</b>
+<b class="nc"><i>148</i>&nbsp;        valuePanel.add(field);</b>
+<b class="nc"><i>149</i>&nbsp;        return valuePanel;</b>
+<i>150</i>&nbsp;    }
+<i>151</i>&nbsp;
+<i>152</i>&nbsp;    private JPanel titlePanel(String title) {
+<b class="nc"><i>153</i>&nbsp;        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));</b>
+<i>154</i>&nbsp;        // Border border=BorderFactory.createLineBorder(Color.WHITE,1);
+<b class="nc"><i>155</i>&nbsp;        JLabel label = new JLabel(title);</b>
+<b class="nc"><i>156</i>&nbsp;        label.setForeground(Color.YELLOW);</b>
+<i>157</i>&nbsp;
+<b class="nc"><i>158</i>&nbsp;        titlePanel.add(label);</b>
+<b class="nc"><i>159</i>&nbsp;        return titlePanel;</b>
+<i>160</i>&nbsp;    }
+<i>161</i>&nbsp;
+<i>162</i>&nbsp;    private JPanel metricName(String name) {
+<b class="nc"><i>163</i>&nbsp;        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));</b>
+<i>164</i>&nbsp;        // Border border=BorderFactory.createLineBorder(Color.WHITE,1);
+<b class="nc"><i>165</i>&nbsp;        JLabel label = new JLabel(&quot;Name: &quot; + name);</b>
+<b class="nc"><i>166</i>&nbsp;        titlePanel.add(label);</b>
+<b class="nc"><i>167</i>&nbsp;        return titlePanel;</b>
+<i>168</i>&nbsp;    }
+<i>169</i>&nbsp;
+<i>170</i>&nbsp;    private JPanel descrPanel(String description) {
+<b class="nc"><i>171</i>&nbsp;        JPanel descr = new JPanel(new FlowLayout(FlowLayout.LEFT));</b>
+<i>172</i>&nbsp;
+<b class="nc"><i>173</i>&nbsp;        descr.add(new JLabel(&quot;&lt;html&gt;Description: &quot; + description + &quot;&lt;/html&gt;&quot;));</b>
+<i>174</i>&nbsp;        // descr.setForeground(Color.YELLOW);
+<b class="nc"><i>175</i>&nbsp;        return descr;</b>
+<i>176</i>&nbsp;    }
+<i>177</i>&nbsp;
+<i>178</i>&nbsp;    private void addMetricPanel(TestSmellMetricThresholds metric, JTextField detection, JTextField guard) {
+<b class="nc"><i>179</i>&nbsp;        gridPanel.add(titlePanel(metric.getId()));</b>
+<b class="nc"><i>180</i>&nbsp;        gridPanel.add(metricName(metric.getName()));</b>
+<b class="nc"><i>181</i>&nbsp;        JPanel setValues = new JPanel(new FlowLayout());</b>
+<b class="nc"><i>182</i>&nbsp;        setValues.add(valuePanel(detection, &quot;Detection Threshold&quot;));</b>
+<b class="nc"><i>183</i>&nbsp;        setValues.add(new JLabel());</b>
+<b class="nc"><i>184</i>&nbsp;        setValues.add(valuePanel(guard, &quot;Guard Threshold&quot;));</b>
+<b class="nc"><i>185</i>&nbsp;        gridPanel.add(setValues);</b>
+<b class="nc"><i>186</i>&nbsp;        String description = metric.getDescription();</b>
+<b class="nc"><i>187</i>&nbsp;        description += &quot;&lt;br&gt;Belonging Smells: &quot;;</b>
+<b class="nc"><i>188</i>&nbsp;        ArrayList&lt;String&gt; smellsStrings = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>189</i>&nbsp;        for (TestSmellMetricThresholds.TestSmells smell : metric.getBelongingSmells()) {</b>
+<b class="nc"><i>190</i>&nbsp;            smellsStrings.add(smell.name());</b>
+<b class="nc"><i>191</i>&nbsp;        }</b>
+<b class="nc"><i>192</i>&nbsp;        for (int i = 0; i &lt; smellsStrings.size() - 1; i++) {</b>
+<b class="nc"><i>193</i>&nbsp;            description += smellsStrings.get(i) + &quot;,&quot;;</b>
+<i>194</i>&nbsp;        }
+<b class="nc"><i>195</i>&nbsp;        description += smellsStrings.get(smellsStrings.size() - 1);</b>
+<b class="nc"><i>196</i>&nbsp;        gridPanel.add(descrPanel(description));</b>
+<i>197</i>&nbsp;
+<i>198</i>&nbsp;    }
+<i>199</i>&nbsp;}
+<i>200</i>&nbsp;
+<i>201</i>&nbsp;
+<i>202</i>&nbsp;
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-05 10:36</div>
+</div>
+</body>
+</html>

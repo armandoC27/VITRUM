@@ -1,0 +1,211 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ReportManager</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">storage</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ReportManager (storage)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ReportManager</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88,2%
+  </span>
+  <span class="absValue">
+    (82/ 93)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package storage;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import data.*;
+<i>4</i>&nbsp;import it.unisa.testSmellDiffusion.testSmellRules.TestSmellMetric;
+<i>5</i>&nbsp;import it.unisa.testSmellDiffusion.utility.FileUtility;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import java.io.File;
+<i>8</i>&nbsp;import java.text.SimpleDateFormat;
+<i>9</i>&nbsp;import java.util.Date;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;import org.apache.log4j.Logger;
+<i>12</i>&nbsp;
+<b class="nc"><i>13</i>&nbsp;public class ReportManager {</b>
+<b class="fc"><i>14</i>&nbsp;    private static final Logger LOGGER = Logger.getLogger(&quot;global&quot;);</b>
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    //flag per capire se il metodo è chiamato dal modulo CLI, in caso affermativo
+<i>17</i>&nbsp;    // il report viene salvato al percorso indicato nella variabile static &quot;path&quot;
+<b class="fc"><i>18</i>&nbsp;    private static boolean flagCLI = false;</b>
+<i>19</i>&nbsp;    private static String path;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    public static void saveReport(TestProjectAnalysis proj, String pathPar) {
+<b class="fc"><i>22</i>&nbsp;        path = pathPar;</b>
+<b class="fc"><i>23</i>&nbsp;        flagCLI = true;</b>
+<b class="fc"><i>24</i>&nbsp;        saveReport(proj);</b>
+<b class="fc"><i>25</i>&nbsp;    }</b>
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    public static void saveReport(TestProjectAnalysis proj) {
+<i>28</i>&nbsp;        // LOGGER.info(&quot;Starting report&quot;);
+<b class="fc"><i>29</i>&nbsp;        String fileName = new SimpleDateFormat(&quot;yyyyMMddHHmm&#39;.csv&#39;&quot;).format(new Date());</b>
+<b class="fc"><i>30</i>&nbsp;        String outputDir = &quot;&quot;;</b>
+<b class="fc"><i>31</i>&nbsp;        String output = &quot;&quot;;</b>
+<i>32</i>&nbsp;
+<b class="pc"><i>33</i>&nbsp;        if (flagCLI) {</b>
+<b class="fc"><i>34</i>&nbsp;            fileName = &quot;resultTest.csv&quot;;</b>
+<b class="fc"><i>35</i>&nbsp;            outputDir = path;</b>
+<b class="fc"><i>36</i>&nbsp;            flagCLI = false;</b>
+<i>37</i>&nbsp;        } else {
+<b class="nc"><i>38</i>&nbsp;            outputDir = proj.getPath() + &quot;\\reports&quot;;</b>
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;            //se viene chiamato dal plugin ( e non dal modulo controller) allora viene aggiunto l&#39;header iniziale
+<b class="nc"><i>41</i>&nbsp;            output += proj.getName() + &quot;;&quot; + proj.getLoc() + &quot;;&quot; + proj.getNom() + &quot;;&quot; + proj.getRfc() + &quot;;&quot; + proj.getWmc() + &quot;;&quot; + proj.getTestClassesNumber() + &quot;\n&quot;;</b>
+<i>42</i>&nbsp;        }
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;
+<b class="fc"><i>45</i>&nbsp;        output += &quot;testsuite;production;loc;nom;wmc;rfc;lc;bc;mc;ft;&quot;;</b>
+<b class="fc"><i>46</i>&nbsp;        TestSmellsMetrics idList = proj.getClassAnalysis().get(0).getSmells().getMetrics();</b>
+<b class="fc"><i>47</i>&nbsp;        for (TestSmellMetric metric : idList.getArMetrics()) {</b>
+<b class="fc"><i>48</i>&nbsp;            output += metric.getId() + &quot;;&quot;;</b>
+<b class="fc"><i>49</i>&nbsp;        }</b>
+<b class="fc"><i>50</i>&nbsp;        for (TestSmellMetric metric : idList.getEtMetrics()) {</b>
+<b class="fc"><i>51</i>&nbsp;            output += metric.getId() + &quot;;&quot;;</b>
+<b class="fc"><i>52</i>&nbsp;        }</b>
+<b class="fc"><i>53</i>&nbsp;        for (TestSmellMetric metric : idList.getItMetrics()) {</b>
+<b class="fc"><i>54</i>&nbsp;            output += metric.getId() + &quot;;&quot;;</b>
+<b class="fc"><i>55</i>&nbsp;        }</b>
+<b class="fc"><i>56</i>&nbsp;        for (TestSmellMetric metric : idList.getGfMetrics()) {</b>
+<b class="fc"><i>57</i>&nbsp;            output += metric.getId() + &quot;;&quot;;</b>
+<b class="fc"><i>58</i>&nbsp;        }</b>
+<b class="fc"><i>59</i>&nbsp;        for (TestSmellMetric metric : idList.getSeMetrics()) {</b>
+<b class="fc"><i>60</i>&nbsp;            output += metric.getId() + &quot;;&quot;;</b>
+<b class="fc"><i>61</i>&nbsp;        }</b>
+<b class="fc"><i>62</i>&nbsp;        for (TestSmellMetric metric : idList.getMgMetrics()) {</b>
+<b class="fc"><i>63</i>&nbsp;            output += metric.getId() + &quot;;&quot;;</b>
+<b class="fc"><i>64</i>&nbsp;        }</b>
+<b class="pc"><i>65</i>&nbsp;        for (TestSmellMetric metric : idList.getFtoMetrics()) {</b>
+<b class="nc"><i>66</i>&nbsp;            output += metric.getId() + &quot;;&quot;;</b>
+<b class="nc"><i>67</i>&nbsp;        }</b>
+<b class="pc"><i>68</i>&nbsp;        for (TestSmellMetric metric : idList.getLtMetrics()) {</b>
+<b class="nc"><i>69</i>&nbsp;            output += metric.getId() + &quot;;&quot;;</b>
+<b class="nc"><i>70</i>&nbsp;        }</b>
+<b class="fc"><i>71</i>&nbsp;        for (TestSmellMetric metric : idList.getRoMetrics()) {</b>
+<b class="fc"><i>72</i>&nbsp;            output += metric.getId() + &quot;;&quot;;</b>
+<b class="fc"><i>73</i>&nbsp;        }</b>
+<b class="fc"><i>74</i>&nbsp;        output = output.substring(0, output.length() - 1);</b>
+<b class="fc"><i>75</i>&nbsp;        output += &quot;\n&quot;;</b>
+<b class="fc"><i>76</i>&nbsp;        for (TestClassAnalysis info : proj.getClassAnalysis()) {</b>
+<b class="fc"><i>77</i>&nbsp;            ClassCKInfo ckInfo = info.getCkMetrics();</b>
+<b class="fc"><i>78</i>&nbsp;            ClassCoverageInfo covInfo = info.getCoverage();</b>
+<b class="fc"><i>79</i>&nbsp;            ClassTestSmellsInfo smellsInfo = info.getSmells();</b>
+<b class="fc"><i>80</i>&nbsp;            TestSmellsMetrics list = smellsInfo.getMetrics();</b>
+<b class="fc"><i>81</i>&nbsp;            ClassMutationCoverageInfo mutationInfo = info.getMutationCoverage();</b>
+<b class="fc"><i>82</i>&nbsp;            FlakyTestsInfo flakyTestsInfo = info.getFlakyTests();</b>
+<b class="fc"><i>83</i>&nbsp;            float numFlaky = -1;</b>
+<b class="pc"><i>84</i>&nbsp;            if (flakyTestsInfo.getFlakyMethods() != null)</b>
+<b class="fc"><i>85</i>&nbsp;                numFlaky = flakyTestsInfo.getFlakyMethods().size();</b>
+<i>86</i>&nbsp;
+<b class="fc"><i>87</i>&nbsp;            output += info.getBelongingPackage() + &quot;.&quot; + info.getName() + &quot;;&quot; + info.getProductionClass() + &quot;;&quot; + ckInfo.getLoc() + &quot;;&quot; + ckInfo.getNom() + &quot;;&quot; + ckInfo.getWmc() + &quot;;&quot; + ckInfo.getRfc() + &quot;;&quot; +</b>
+<b class="fc"><i>88</i>&nbsp;                    covInfo.getLineCoverage() + &quot;;&quot; + covInfo.getBranchCoverage() + &quot;;&quot; + mutationInfo.getMutationCoverage() + &quot;;&quot;</b>
+<i>89</i>&nbsp;                    + numFlaky + &quot;;&quot;;
+<i>90</i>&nbsp;
+<b class="fc"><i>91</i>&nbsp;            for (TestSmellMetric metric : list.getArMetrics()) {</b>
+<b class="fc"><i>92</i>&nbsp;                output += metric.getValue() + &quot;;&quot;;</b>
+<b class="fc"><i>93</i>&nbsp;            }</b>
+<b class="fc"><i>94</i>&nbsp;            for (TestSmellMetric metric : list.getEtMetrics()) {</b>
+<b class="fc"><i>95</i>&nbsp;                output += metric.getValue() + &quot;;&quot;;</b>
+<b class="fc"><i>96</i>&nbsp;            }</b>
+<b class="fc"><i>97</i>&nbsp;            for (TestSmellMetric metric : list.getItMetrics()) {</b>
+<b class="fc"><i>98</i>&nbsp;                output += metric.getValue() + &quot;;&quot;;</b>
+<b class="fc"><i>99</i>&nbsp;            }</b>
+<b class="fc"><i>100</i>&nbsp;            for (TestSmellMetric metric : list.getGfMetrics()) {</b>
+<b class="fc"><i>101</i>&nbsp;                output += metric.getValue() + &quot;;&quot;;</b>
+<b class="fc"><i>102</i>&nbsp;            }</b>
+<b class="fc"><i>103</i>&nbsp;            for (TestSmellMetric metric : list.getSeMetrics()) {</b>
+<b class="fc"><i>104</i>&nbsp;                output += metric.getValue() + &quot;;&quot;;</b>
+<b class="fc"><i>105</i>&nbsp;            }</b>
+<b class="fc"><i>106</i>&nbsp;            for (TestSmellMetric metric : list.getMgMetrics()) {</b>
+<b class="fc"><i>107</i>&nbsp;                output += metric.getValue() + &quot;;&quot;;</b>
+<b class="fc"><i>108</i>&nbsp;            }</b>
+<b class="pc"><i>109</i>&nbsp;            for (TestSmellMetric metric : list.getFtoMetrics()) {</b>
+<b class="nc"><i>110</i>&nbsp;                output += metric.getValue() + &quot;;&quot;;</b>
+<b class="nc"><i>111</i>&nbsp;            }</b>
+<b class="pc"><i>112</i>&nbsp;            for (TestSmellMetric metric : list.getLtMetrics()) {</b>
+<b class="nc"><i>113</i>&nbsp;                output += metric.getValue() + &quot;;&quot;;</b>
+<b class="nc"><i>114</i>&nbsp;            }</b>
+<b class="fc"><i>115</i>&nbsp;            for (TestSmellMetric metric : list.getRoMetrics()) {</b>
+<b class="fc"><i>116</i>&nbsp;                output += metric.getValue() + &quot;;&quot;;</b>
+<b class="fc"><i>117</i>&nbsp;            }</b>
+<b class="fc"><i>118</i>&nbsp;            output = output.substring(0, output.length() - 1);</b>
+<i>119</i>&nbsp;
+<b class="fc"><i>120</i>&nbsp;            output += &quot;\n&quot;;</b>
+<b class="fc"><i>121</i>&nbsp;        }</b>
+<i>122</i>&nbsp;        //   LOGGER.info(&quot;SONO QUI 3&quot;);
+<b class="fc"><i>123</i>&nbsp;        File out = new File(outputDir);</b>
+<b class="fc"><i>124</i>&nbsp;        out.mkdirs();</b>
+<b class="fc"><i>125</i>&nbsp;        FileUtility.writeFile(output, outputDir + &quot;\\&quot; + fileName);</b>
+<i>126</i>&nbsp;        //  LOGGER.info(&quot;FINITO&quot;);
+<b class="fc"><i>127</i>&nbsp;    }</b>
+<i>128</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-05 10:36</div>
+</div>
+</body>
+</html>

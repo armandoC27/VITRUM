@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: UtilsFileDirectory</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">utils</a> ]
+</div>
+
+<h1>Coverage Summary for Class: UtilsFileDirectory (utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UtilsFileDirectory</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87,5%
+  </span>
+  <span class="absValue">
+    (7/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75,8%
+  </span>
+  <span class="absValue">
+    (50/ 66)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package utils;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.io.*;
+<i>4</i>&nbsp;import java.nio.file.Paths;
+<i>5</i>&nbsp;import java.util.ArrayList;
+<i>6</i>&nbsp;
+<b class="nc"><i>7</i>&nbsp;public class UtilsFileDirectory {</b>
+<b class="fc"><i>8</i>&nbsp;    public static ArrayList&lt;String&gt; paths = new ArrayList&lt;&gt;();</b>
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;    public static boolean deleteDirectory(File f) {
+<b class="fc"><i>11</i>&nbsp;        File[] allContents = f.listFiles();</b>
+<b class="fc"><i>12</i>&nbsp;        if (allContents != null) {</b>
+<b class="fc"><i>13</i>&nbsp;            for (File file : allContents) {</b>
+<b class="fc"><i>14</i>&nbsp;                deleteDirectory(file);</b>
+<i>15</i>&nbsp;            }
+<i>16</i>&nbsp;        }
+<b class="fc"><i>17</i>&nbsp;        return f.delete();</b>
+<i>18</i>&nbsp;    }
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    public static void addColumnsCSVTest(String line, String baseOutputDirectory) {
+<b class="fc"><i>22</i>&nbsp;        Writer output = null;</b>
+<i>23</i>&nbsp;        try {
+<b class="fc"><i>24</i>&nbsp;            String repoDir = UtilsGit.getNameFromGitUrl(line);</b>
+<b class="fc"><i>25</i>&nbsp;            output = new BufferedWriter(new FileWriter(baseOutputDirectory</b>
+<i>26</i>&nbsp;                    + repoDir + &quot;/resultTest.csv&quot;));
+<i>27</i>&nbsp;
+<b class="fc"><i>28</i>&nbsp;            final String lineSep = System.getProperty(&quot;line.separator&quot;);</b>
+<i>29</i>&nbsp;
+<b class="fc"><i>30</i>&nbsp;            output.write(&quot;NameTag;HashCommit;Date;testsuite;production;loc;nom;wmc;rfc;ar1;et1;it1;gf1;se1;mg1;ro1&quot; + lineSep);</b>
+<b class="nc"><i>31</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>32</i>&nbsp;            e.printStackTrace();</b>
+<i>33</i>&nbsp;        } finally {
+<b class="nc"><i>34</i>&nbsp;            try {</b>
+<b class="pc"><i>35</i>&nbsp;                if (output != null) {</b>
+<b class="fc"><i>36</i>&nbsp;                    output.close();</b>
+<i>37</i>&nbsp;                }
+<b class="nc"><i>38</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>39</i>&nbsp;                e.printStackTrace();</b>
+<b class="fc"><i>40</i>&nbsp;            }</b>
+<b class="nc"><i>41</i>&nbsp;        }</b>
+<b class="fc"><i>42</i>&nbsp;    }</b>
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    public static void addColumnsCSVExtended(String baseOutputDirectory) {
+<b class="fc"><i>45</i>&nbsp;        Writer output = null;</b>
+<i>46</i>&nbsp;        try {
+<b class="fc"><i>47</i>&nbsp;            output = new BufferedWriter(new FileWriter(baseOutputDirectory</b>
+<i>48</i>&nbsp;                    +  &quot;/resultTest.csv&quot;));
+<i>49</i>&nbsp;
+<b class="fc"><i>50</i>&nbsp;            final String lineSep = System.getProperty(&quot;line.separator&quot;);</b>
+<i>51</i>&nbsp;
+<b class="fc"><i>52</i>&nbsp;            output.write(&quot;testsuite;production;loc;nom;wmc;rfc;lc;bc;mc;ft;ar1;et1;it1;gf1;se1;mg1;ro1&quot; + lineSep);</b>
+<b class="nc"><i>53</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>54</i>&nbsp;            e.printStackTrace();</b>
+<i>55</i>&nbsp;        } finally {
+<b class="nc"><i>56</i>&nbsp;            try {</b>
+<b class="pc"><i>57</i>&nbsp;                if (output != null) {</b>
+<b class="fc"><i>58</i>&nbsp;                    output.close();</b>
+<i>59</i>&nbsp;                }
+<b class="nc"><i>60</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>61</i>&nbsp;                e.printStackTrace();</b>
+<b class="fc"><i>62</i>&nbsp;            }</b>
+<b class="nc"><i>63</i>&nbsp;        }</b>
+<b class="fc"><i>64</i>&nbsp;    }</b>
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    public static File createTempFile(String prefix, String suffix) {
+<b class="fc"><i>67</i>&nbsp;        File parent = new File(System.getProperty(&quot;java.io.tmpdir&quot;));</b>
+<i>68</i>&nbsp;
+<b class="fc"><i>69</i>&nbsp;        File temp = new File(parent, Paths.get(prefix,suffix).toString());</b>
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;        try {
+<b class="fc"><i>72</i>&nbsp;            boolean newFile = temp.createNewFile();</b>
+<b class="pc"><i>73</i>&nbsp;            if(newFile){</b>
+<b class="nc"><i>74</i>&nbsp;                System.out.println(&quot;### File temporaneo creato &quot;+temp.getAbsolutePath());</b>
+<i>75</i>&nbsp;            }
+<b class="nc"><i>76</i>&nbsp;        } catch (IOException ex) {</b>
+<b class="nc"><i>77</i>&nbsp;            ex.printStackTrace();</b>
+<b class="fc"><i>78</i>&nbsp;        }</b>
+<i>79</i>&nbsp;
+<b class="fc"><i>80</i>&nbsp;        return temp;</b>
+<i>81</i>&nbsp;    }
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    public static File createTempDirectory(String dirname) {
+<b class="fc"><i>85</i>&nbsp;        File parent = new File(System.getProperty(&quot;java.io.tmpdir&quot;));</b>
+<i>86</i>&nbsp;
+<b class="fc"><i>87</i>&nbsp;        File temp = new File(parent, dirname);</b>
+<i>88</i>&nbsp;
+<b class="fc"><i>89</i>&nbsp;        boolean mkdir = temp.mkdir();</b>
+<i>90</i>&nbsp;
+<b class="fc"><i>91</i>&nbsp;        if(mkdir){</b>
+<b class="fc"><i>92</i>&nbsp;            System.out.println(&quot;### Cartella temporanea creata &quot;+temp);</b>
+<i>93</i>&nbsp;        }
+<i>94</i>&nbsp;
+<b class="fc"><i>95</i>&nbsp;        return temp;</b>
+<i>96</i>&nbsp;    }
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;    public static void srcFolderInPath(String pathRepo) {
+<b class="fc"><i>101</i>&nbsp;        File root = new File(pathRepo);</b>
+<b class="fc"><i>102</i>&nbsp;        File[] list = root.listFiles();</b>
+<i>103</i>&nbsp;
+<b class="fc"><i>104</i>&nbsp;        if (list == null) return;</b>
+<i>105</i>&nbsp;
+<b class="fc"><i>106</i>&nbsp;        for (File f : list) {</b>
+<b class="fc"><i>107</i>&nbsp;            if (f.isDirectory()) {</b>
+<b class="fc"><i>108</i>&nbsp;                if (f.getName().equals(&quot;src&quot;)) {</b>
+<b class="fc"><i>109</i>&nbsp;                    System.out.println(&quot;Sono in &quot; + f.getAbsolutePath());</b>
+<b class="fc"><i>110</i>&nbsp;                    File[] tests = f.listFiles();</b>
+<b class="fc"><i>111</i>&nbsp;                    for (File test : tests) {</b>
+<b class="fc"><i>112</i>&nbsp;                        if (test.getName().equals(&quot;test&quot;)) {</b>
+<b class="fc"><i>113</i>&nbsp;                            System.out.println(&quot;Sono in &quot; + test.getAbsolutePath());</b>
+<b class="fc"><i>114</i>&nbsp;                            System.out.println(&quot;Il path contenente la cartella test è &quot; + f.getParent());</b>
+<b class="fc"><i>115</i>&nbsp;                            paths.add(f.getParent());</b>
+<i>116</i>&nbsp;                        }
+<i>117</i>&nbsp;                    }
+<i>118</i>&nbsp;                }
+<i>119</i>&nbsp;            }
+<b class="fc"><i>120</i>&nbsp;            srcFolderInPath(f.getAbsolutePath());</b>
+<i>121</i>&nbsp;        }
+<b class="fc"><i>122</i>&nbsp;    }</b>
+<i>123</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-05 10:36</div>
+</div>
+</body>
+</html>

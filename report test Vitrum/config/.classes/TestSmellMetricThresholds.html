@@ -1,0 +1,196 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TestSmellMetricThresholds</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">config</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TestSmellMetricThresholds (config)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TestSmellMetricThresholds</td>
+<td class="coverageStat">
+  <span class="percent">
+    86,7%
+  </span>
+  <span class="absValue">
+    (13/ 15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (20/ 25)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">TestSmellMetricThresholds$TestSmells</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    88,2%
+  </span>
+  <span class="absValue">
+    (15/ 17)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81,5%
+  </span>
+  <span class="absValue">
+    (22/ 27)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package config;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.ArrayList;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;public class TestSmellMetricThresholds {
+<i>6</i>&nbsp;    private String name;
+<i>7</i>&nbsp;    private String description;
+<i>8</i>&nbsp;    private String id;
+<i>9</i>&nbsp;    private double detectionThreshold;
+<i>10</i>&nbsp;    private double guardThreshold;
+<i>11</i>&nbsp;    private ArrayList&lt;TestSmells&gt; belongingSmells;
+<i>12</i>&nbsp;
+<b class="nc"><i>13</i>&nbsp;    public TestSmellMetricThresholds(String name, String description) {</b>
+<b class="nc"><i>14</i>&nbsp;        this.name = name;</b>
+<b class="nc"><i>15</i>&nbsp;        this.description = description;</b>
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;
+<b class="nc"><i>18</i>&nbsp;    }</b>
+<i>19</i>&nbsp;
+<b class="fc"><i>20</i>&nbsp;    public TestSmellMetricThresholds() {</b>
+<i>21</i>&nbsp;
+<b class="fc"><i>22</i>&nbsp;    }</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    public String getName() {
+<b class="fc"><i>25</i>&nbsp;        return name;</b>
+<i>26</i>&nbsp;    }
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    public void setName(String name) {
+<b class="fc"><i>29</i>&nbsp;        this.name = name;</b>
+<b class="fc"><i>30</i>&nbsp;    }</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    public String getDescription() {
+<b class="fc"><i>33</i>&nbsp;        return description;</b>
+<i>34</i>&nbsp;    }
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    public void setDescription(String description) {
+<b class="fc"><i>37</i>&nbsp;        this.description = description;</b>
+<b class="fc"><i>38</i>&nbsp;    }</b>
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    public String getId() {
+<b class="fc"><i>41</i>&nbsp;        return id;</b>
+<i>42</i>&nbsp;    }
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    public void setId(String id) {
+<b class="fc"><i>45</i>&nbsp;        this.id = id;</b>
+<b class="fc"><i>46</i>&nbsp;    }</b>
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    public double getDetectionThreshold() {
+<b class="fc"><i>49</i>&nbsp;        return detectionThreshold;</b>
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    public void setDetectionThreshold(double detectionThreshold) {
+<b class="fc"><i>53</i>&nbsp;        this.detectionThreshold = detectionThreshold;</b>
+<b class="fc"><i>54</i>&nbsp;    }</b>
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    public double getGuardThreshold() {
+<b class="fc"><i>57</i>&nbsp;        return guardThreshold;</b>
+<i>58</i>&nbsp;    }
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    public void setGuardThreshold(double guardThreshold) {
+<b class="fc"><i>61</i>&nbsp;        this.guardThreshold = guardThreshold;</b>
+<b class="fc"><i>62</i>&nbsp;    }</b>
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    public ArrayList&lt;TestSmells&gt; getBelongingSmells() {
+<b class="fc"><i>65</i>&nbsp;        return belongingSmells;</b>
+<i>66</i>&nbsp;    }
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;    public void setBelongingSmells(ArrayList&lt;TestSmells&gt; belongingSmells) {
+<b class="fc"><i>69</i>&nbsp;        this.belongingSmells = belongingSmells;</b>
+<b class="fc"><i>70</i>&nbsp;    }</b>
+<i>71</i>&nbsp;
+<b class="fc"><i>72</i>&nbsp;    public enum TestSmells{</b>
+<b class="fc"><i>73</i>&nbsp;        ASSERTION_ROULETTE, EAGER_TEST, GENERAL_FIXTURE, MYSTERY_GUEST, RESOURCE_OPTIMISM, INDIRECT_TESTING, SENSITIVE_EQUALITY</b>
+<i>74</i>&nbsp;    }
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    @Override
+<i>77</i>&nbsp;    public String toString() {
+<b class="nc"><i>78</i>&nbsp;        return &quot;TestSmellMetricThresholds{&quot; +</b>
+<i>79</i>&nbsp;                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+<i>80</i>&nbsp;                &quot;, description=&#39;&quot; + description + &#39;\&#39;&#39; +
+<i>81</i>&nbsp;                &quot;, id=&#39;&quot; + id + &#39;\&#39;&#39; +
+<i>82</i>&nbsp;                &quot;, detectionThreshold=&quot; + detectionThreshold +
+<i>83</i>&nbsp;                &quot;, guardThreshold=&quot; + guardThreshold +
+<i>84</i>&nbsp;                &quot;, belongingSmells=&quot; + belongingSmells +
+<i>85</i>&nbsp;                &#39;}&#39;;
+<i>86</i>&nbsp;    }
+<i>87</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-05 10:36</div>
+</div>
+</body>
+</html>
